@@ -7,6 +7,10 @@ require "jeweler"
 require "rspec"
 require "rspec/core/rake_task"
 
+require 'rdoc/task'
+require "yard"
+
+
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require "io_shuten/version"
 
@@ -46,6 +50,18 @@ desc "Run all specs + code coverage"
 task "spec:cov" do
   ENV["COV"] = 'true'
   Rake::Task["spec"].invoke
+end
+
+
+
+RDoc::Task.new do |rdoc|
+  #rdoc.main = "README.md"
+  rdoc.rdoc_files.include("README.md", "lib/**/*.rb")
+end
+
+YARD::Rake::YardocTask.new do |t|
+  t.files   = ['lib/**/*.rb']
+  #t.options = ['--any', '--extra', '--opts']
 end
 
 

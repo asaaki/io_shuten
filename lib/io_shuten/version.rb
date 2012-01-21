@@ -1,4 +1,5 @@
 # encoding: utf-8
 module IO_shuten
-  VERSION = [0,0,1,'dev3'].join('.')
+  # @private
+  VERSION = [0,0,1,'dev4'].join('.')
 end
