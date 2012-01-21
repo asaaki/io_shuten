@@ -34,6 +34,7 @@ In japanese `io` means *500* or *big amount*, `shū･ten` means *endpoint* (tra
 
 An in-memory storage system (handles simple StringIO objects).
 
+Offers write-to-disk for single instance and all instances.
 
 ### IO_shuten::Redis
 

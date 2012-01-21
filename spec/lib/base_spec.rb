@@ -86,7 +86,20 @@ describe Base do
         end
 
       end
-    end
+
+      describe :save_instances do
+        it "writes all instances to disk" do
+          pending
+        end
+      end
+
+      describe :load_instances do
+        it "loads instances from disk" do
+          pending
+        end
+      end
+
+    end # class based memory storage
 
     describe :open do
 
@@ -163,6 +176,67 @@ describe Base do
         end
       end
     end
+
+    describe "a missing method" do
+      it "raises NotYetImplemented" do
+        expect do
+          Base.new.respond_to?(:not_implemented_method)
+        end.to raise_error(Base::NotYetImplemented)
+      end
+    end
+
+    describe "loading and writing" do
+
+      before do
+        @tmp_path  = File.expand_path("../../../tmp", __FILE__)
+        @root_path = File.expand_path("../../../tmp", __FILE__)
+      end
+
+      describe :load_from_file do
+
+        context "file exists" do
+          it "reads file and stores content into container"
+        end
+
+        context "file does not exist" do
+          it "raises FileNotFound error"
+        end
+
+      end
+
+      describe :save_to_file do
+
+        context "desired path accessible" do
+          context "with container name as default" do
+            it "writes container into the file" do
+              ios = Base.new("base.foobar.txt")
+              ios.write = "Test string"
+              ios.save_to_file.should be(true)
+            end
+          end
+
+          context "with custom name" do
+            it "writes container into the file" do
+              ios = Base.new("base.foobar.txt")
+              ios.write = "Test string"
+              ios.save_to_file("base.custom_name.txt").should be(true)
+            end
+          end
+
+        end
+
+        context "path not accessible" do
+          it "raises FileAccessError with corresponding reason" do
+            ios = Base.new("base.foobar.txt")
+            ios.write = "Test string"
+            expect { ios.save_to_file }.to raise_error(Base::FileAccessError, /reason/)
+          end
+        end
+
+      end
+
+    end # loading and writing
+
 
   end
 

@@ -4,7 +4,7 @@ module IO_shuten
 
     class NodeNotFoundError < StandardError; end
     class NodeNameError < StandardError; end
-    class NotImplementedYet < StandardError; end
+    class NotYetImplemented < StandardError; end
 
     @@instances = []
 
@@ -57,10 +57,23 @@ module IO_shuten
         end
       end
 
-      def exists? object_name
+      def exists? object_name = self.container.object_name
         false
       end
       alias_method :exist?, :exists?
+
+      def load_from_file
+        raise_not_implemented_yet
+      end
+
+      def save_to_file
+        raise_not_implemented_yet
+      end
+
+      def file_exists? object_name = self.container.object_name
+        raise_not_implemented_yet
+      end
+      alias_method :file_exist?, :file_exists?
 
     private
 
@@ -73,29 +86,29 @@ module IO_shuten
 
     end
 
-    def respond_to_missing? sym, include_private = true
-      unless object_respond_to?(sym, include_private)
-        raise_not_implemented_yet
-      else
+    def respond_to? sym
+      if self.methods.include?(sym) || respond_to_missing?(sym)
         true
+      else
+        raise_not_implemented_yet sym
       end
     end
 
-    def method_missing method, *args, &block
-      if respond_to_missing?(method)
-        @container.send method, *args, &block
+    def respond_to_missing? sym, include_private = true
+      if container_respond_to?(sym, include_private)
+        true
       else
-        raise_not_implemented_yet
+        raise_not_implemented_yet sym
       end
     end
 
   private
 
-    def raise_not_implemented_yet
-      raise NotImplementedYet, "Method :#{sym} is not (yet) supported by #{self.class} or #{self.container.class}."
+    def raise_not_implemented_yet sym = __callee__
+      raise NotYetImplemented, "Method :#{sym} is not (yet) supported by #{self.class} or #{self.container.class}."
     end
 
-    def object_respond_to? sym, include_private
+    def container_respond_to? sym, include_private
       @container.respond_to? sym, include_private
     end
 
