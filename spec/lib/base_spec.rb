@@ -134,10 +134,6 @@ describe Base do
 
     end # open
 
-    describe :close do
-      it :TODO
-    end
-
   end # Class Methods
 
   describe "Instance Methods" do

@@ -4,7 +4,12 @@ require "logger"
 
 describe "Logger" do
   it "accepts an IO_shuten::Base as logdev" do
-    logdev = IO_shuten::Base.new("logdev")
+    logdev = IO_shuten::Base.new(:logdev)
     logger = Logger.new(logdev)
+    logger.info "Foo log."
+    logger.info "Test message."
+    logger.info "Bar log."
+
+    logdev.string.should =~ /Test message/
   end
 end

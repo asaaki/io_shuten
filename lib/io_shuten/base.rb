@@ -75,13 +75,25 @@ module IO_shuten
 
     def respond_to_missing? sym, include_private = true
       unless object_respond_to?(sym, include_private)
-        raise NotImplementedYet, "Method :#{sym} is not (yet) supported by #{self.class} or #{self.container.class}."
+        raise_not_implemented_yet
       else
         true
       end
     end
 
+    def method_missing method, *args, &block
+      if respond_to_missing?(method)
+        @container.send method, *args, &block
+      else
+        raise_not_implemented_yet
+      end
+    end
+
   private
+
+    def raise_not_implemented_yet
+      raise NotImplementedYet, "Method :#{sym} is not (yet) supported by #{self.class} or #{self.container.class}."
+    end
 
     def object_respond_to? sym, include_private
       @container.respond_to? sym, include_private
