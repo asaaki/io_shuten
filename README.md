@@ -1,4 +1,4 @@
-# IO::shuten 【五百::終点】
+# IO::shuten 【五百::終点】 [![Build Status](https://secure.travis-ci.org/asaaki/io_shuten.png)](http://travis-ci.org/asaaki/io_shuten)
 
 Use databases as IO handler like you would do with files and streams.
 
