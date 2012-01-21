@@ -177,11 +177,15 @@ describe Base do
       end
     end
 
-    describe "a missing method" do
+    describe "method stub with #not_yet_implemented! call" do
       it "raises NotYetImplemented" do
-        expect do
-          Base.new.respond_to?(:not_implemented_method)
-        end.to raise_error(Base::NotYetImplemented)
+        ios = Base.new
+        ios.instance_eval do
+          def not_implemented_method
+            not_yet_implemented! __method__, "#{__FILE__}:#{__LINE__}"
+          end
+        end
+        expect { ios.not_implemented_method }.to raise_error(Base::NotYetImplemented)
       end
     end
 
@@ -210,7 +214,7 @@ describe Base do
           context "with container name as default" do
             it "writes container into the file" do
               ios = Base.new("base.foobar.txt")
-              ios.write = "Test string"
+              ios.puts = "Test string"
               ios.save_to_file.should be(true)
             end
           end
@@ -218,7 +222,7 @@ describe Base do
           context "with custom name" do
             it "writes container into the file" do
               ios = Base.new("base.foobar.txt")
-              ios.write = "Test string"
+              ios.puts = "Test string"
               ios.save_to_file("base.custom_name.txt").should be(true)
             end
           end
@@ -228,7 +232,7 @@ describe Base do
         context "path not accessible" do
           it "raises FileAccessError with corresponding reason" do
             ios = Base.new("base.foobar.txt")
-            ios.write = "Test string"
+            ios.puts = "Test string"
             expect { ios.save_to_file }.to raise_error(Base::FileAccessError, /reason/)
           end
         end
@@ -236,7 +240,6 @@ describe Base do
       end
 
     end # loading and writing
-
 
   end
 

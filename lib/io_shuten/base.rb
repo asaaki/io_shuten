@@ -3,8 +3,18 @@ module IO_shuten
   class Base
 
     class NodeNotFoundError < StandardError; end
-    class NodeNameError < StandardError; end
-    class NotYetImplemented < StandardError; end
+    class NodeNameError     < StandardError; end
+    class FileAccessError   < StandardError; end
+    class NotYetImplemented < StandardError
+      def initialize callee = nil, pos = nil
+        msg = if callee
+          "Method :#{callee} is not (yet) supported. #{pos ? ''+pos+'' : ''}"
+        else
+          "The method is not (yet) supported."
+        end
+        super msg
+      end
+    end
 
     @@instances = []
 
@@ -61,19 +71,6 @@ module IO_shuten
       end
       alias_method :exist?, :exists?
 
-      def load_from_file
-        raise_not_implemented_yet
-      end
-
-      def save_to_file
-        raise_not_implemented_yet
-      end
-
-      def file_exists? object_name = self.container.object_name
-        raise_not_implemented_yet
-      end
-      alias_method :file_exist?, :file_exists?
-
     private
 
       def load object_name
@@ -85,20 +82,26 @@ module IO_shuten
 
     end
 
+    def load_from_file
+      not_yet_implemented! __method__
+    end
+
+    def save_to_file
+      not_yet_implemented! __method__
+    end
+
+    def file_exists? object_name = self.container.object_name
+      not_yet_implemented! __method__
+    end
+    alias_method :file_exist?, :file_exists?
+
+
     def respond_to? sym
-      if self.methods.include?(sym) || respond_to_missing?(sym)
-        true
-      else
-        raise_not_implemented_yet sym
-      end
+      !!self.methods.include?(sym) || respond_to_missing?(sym)
     end
 
     def respond_to_missing? sym, include_private = true
-      if container_respond_to?(sym, include_private)
-        true
-      else
-        raise_not_implemented_yet sym
-      end
+      !!container_respond_to?(sym, include_private)
     end
 
     def method_missing method, *args, &block
@@ -109,8 +112,8 @@ module IO_shuten
 
   private
 
-    def raise_not_implemented_yet sym = __callee__
-      raise NotYetImplemented, "Method :#{sym} is not (yet) supported by #{self.class} or #{self.container.class}."
+    def not_yet_implemented! callee = nil, pos = nil
+      raise NotYetImplemented, callee, pos
     end
 
     def container_respond_to? sym, include_private
