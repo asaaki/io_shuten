@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.email       = ["chris@dinarrr.com"]
   gem.licenses    = ["MIT"]
   gem.homepage    = "http://github.com/asaaki/io_shuten"
-  gem.summary     = "IO::shuten – Use databases as IO handler."
+  gem.summary     = "IO::shuten – Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
   gem.description = "IO::shuten – Use databases as IO handler like you would do with files and streams."
 end
 
