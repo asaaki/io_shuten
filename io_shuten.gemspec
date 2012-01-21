@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "io_shuten"
-  s.version = "0.0.1.dev3"
+  s.version = "0.0.1.dev4"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
@@ -18,10 +18,15 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
+    ".rdoc_options",
     ".rspec",
     ".rvmrc",
     ".simplecov",
     ".travis.yml",
+    ".yardoc/checksums",
+    ".yardoc/objects/root.dat",
+    ".yardoc/proxy_types",
+    ".yardopts",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
@@ -60,6 +65,11 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<simplecov-rcov>, [">= 0"])
       s.add_development_dependency(%q<simplecov-csv>, [">= 0"])
+      s.add_development_dependency(%q<redcarpet>, [">= 0"])
+      s.add_development_dependency(%q<rdoc>, [">= 0"])
+      s.add_development_dependency(%q<yard>, [">= 0"])
+      s.add_development_dependency(%q<yard-rspec>, [">= 0"])
+      s.add_development_dependency(%q<yard-blame>, [">= 0"])
       s.add_development_dependency(%q<pry>, [">= 0"])
       s.add_development_dependency(%q<pry-doc>, [">= 0"])
     else
@@ -73,6 +83,11 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<simplecov-rcov>, [">= 0"])
       s.add_dependency(%q<simplecov-csv>, [">= 0"])
+      s.add_dependency(%q<redcarpet>, [">= 0"])
+      s.add_dependency(%q<rdoc>, [">= 0"])
+      s.add_dependency(%q<yard>, [">= 0"])
+      s.add_dependency(%q<yard-rspec>, [">= 0"])
+      s.add_dependency(%q<yard-blame>, [">= 0"])
       s.add_dependency(%q<pry>, [">= 0"])
       s.add_dependency(%q<pry-doc>, [">= 0"])
     end
@@ -87,6 +102,11 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<simplecov-rcov>, [">= 0"])
     s.add_dependency(%q<simplecov-csv>, [">= 0"])
+    s.add_dependency(%q<redcarpet>, [">= 0"])
+    s.add_dependency(%q<rdoc>, [">= 0"])
+    s.add_dependency(%q<yard>, [">= 0"])
+    s.add_dependency(%q<yard-rspec>, [">= 0"])
+    s.add_dependency(%q<yard-blame>, [">= 0"])
     s.add_dependency(%q<pry>, [">= 0"])
     s.add_dependency(%q<pry-doc>, [">= 0"])
   end
