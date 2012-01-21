@@ -20,6 +20,20 @@ logger = Logger.new(logdev)
 logger.info "This message will be stored in redis."
 ```
 
+# Types
+
+## IO_shuten::Base
+
+An in-memory storage system (handles simple StringIO objects).
+
+## IO_shuten::Redis
+
+Stores content in a redis database.
+
+## IO_shuten::Mongo
+
+Stores content in a mongodb database.
+
 # Not for production!
 
 This project is freshly started and currently not usable.
