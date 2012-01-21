@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "io_shuten"
-  s.version = "0.0.1.dev2"
+  s.version = "0.0.1.dev3"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     ".rspec",
     ".rvmrc",
     ".simplecov",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
@@ -43,7 +44,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.10"
-  s.summary = "IO::shuten \u{2013} Use databases as IO handler."
+  s.summary = "IO::shuten \u{2013} Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
