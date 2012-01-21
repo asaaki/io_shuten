@@ -87,17 +87,47 @@ describe Base do
 
       end
 
-      describe :save_instances do
-        it "writes all instances to disk" do
-          pending
+      describe "batch tasks" do
+
+        before do
+          Base.purge_instances!
+
+          @tmp_path  = File.expand_path("../../../tmp", __FILE__)
+
+          Dir.mkdir(@tmp_path) unless File.exists?(@tmp_path)
+
+          example_content = "This is a dummy file!"
+
+          @file_names = %w[file1 file2 file3]
+
+          @file_names.each do |file_name|
+            File.open("#{@tmp_path}/#{file_name}",'w') do |fh|
+              fh.puts example_content
+            end
+          end
         end
+
+        after do
+          @file_names.each do |file_name|
+            File.unlink("#{@tmp_path}/#{file_name}") if File.exists?("#{@tmp_path}/#{file_name}")
+          end
+          Base.purge_instances!
+        end
+
+        describe :save_instances do
+          it "writes all instances to disk" do
+            pending
+          end
+        end
+
+        describe :load_instances do
+          it "loads instances from disk" do
+            pending
+          end
+        end
+
       end
 
-      describe :load_instances do
-        it "loads instances from disk" do
-          pending
-        end
-      end
 
     end # class based memory storage
 
@@ -141,7 +171,7 @@ describe Base do
 
       context "with name and block" do
         it "opens object, yields the block and closes object" do
-
+          pending
         end
       end
 
@@ -193,7 +223,6 @@ describe Base do
 
       before do
         @tmp_path  = File.expand_path("../../../tmp", __FILE__)
-        @root_path = File.expand_path("../../../tmp", __FILE__)
         @tmp_true_file  = "#{@tmp_path}/base.exist_true.txt"
         @tmp_save_file  = "#{@tmp_path}/base.save_true.txt"
         @tmp_false_file = "#{@tmp_path}/base.exist_false.txt"

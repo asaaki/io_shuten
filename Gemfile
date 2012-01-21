@@ -15,6 +15,12 @@ group :development, :test do
   gem "simplecov-rcov", :require => false
   gem "simplecov-csv", :require => false
 
+  gem "redcarpet"
+  gem "rdoc"
+  gem "yard"
+  gem "yard-rspec"
+  gem "yard-blame"
+
   gem "pry"
   gem "pry-doc"
 end
