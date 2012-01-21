@@ -28,7 +28,7 @@ end
 
 task :gem => :build
 
-# Helper task because jeweler doesn't want to push my gem - how to fix it?
+desc "Release current gem version to rubygems.org"
 task "gem:release" => :gem do
   system "gem push pkg/io_shuten-#{IO_shuten::VERSION}.gem"
 end
