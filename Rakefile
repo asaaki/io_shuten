@@ -1,7 +1,8 @@
 # encoding: utf-8
+require "rubygems"
 require "bundler"
 Bundler.setup
-require 'jeweler'
+require "jeweler"
 
 require "rspec"
 require "rspec/core/rake_task"
@@ -20,7 +21,7 @@ Jeweler::Tasks.new do |gem|
   gem.licenses    = ["MIT"]
   gem.homepage    = "http://github.com/asaaki/io_shuten"
   gem.summary     = "IO::shuten – Use databases as IO handler."
-  gem.description = "IO::shuten – Use databases as IO handler like you would do with files and streamgem."
+  gem.description = "IO::shuten – Use databases as IO handler like you would do with files and streams."
 end
 
 
@@ -29,9 +30,12 @@ task :gem => :build
 
 # gem building and releasing tasks are provided by jeweler and so not needed to be implemented manually
 
+# Helper task because jeweler doesn't want to push my gem - how to fix it?
 task "gem:release" => :gem do
   system "gem push pkg/io_shuten-#{IO_shuten::VERSION}.gem"
 end
+
+task :release => "gem:release"
 
 desc "Run all specs"
 task RSpec::Core::RakeTask.new(:spec) do |t|
