@@ -14,17 +14,30 @@ Gem::Specification.new do |s|
   s.email = ["chris@dinarrr.com"]
   s.extra_rdoc_files = [
     "LICENSE",
+    "LICENSE.de",
     "README.md"
   ]
   s.files = [
+    ".rspec",
     ".rvmrc",
+    ".simplecov",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
+    "LICENSE.de",
     "README.md",
     "Rakefile",
+    "io_shuten.gemspec",
     "lib/io_shuten.rb",
-    "lib/io_shuten/version.rb"
+    "lib/io_shuten/base.rb",
+    "lib/io_shuten/mongo.rb",
+    "lib/io_shuten/redis.rb",
+    "lib/io_shuten/version.rb",
+    "spec/externals/logger_spec.rb",
+    "spec/lib/base_spec.rb",
+    "spec/lib/mongo_spec.rb",
+    "spec/lib/redis_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/asaaki/io_shuten"
   s.licenses = ["MIT"]
@@ -41,20 +54,26 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<bson_ext>, ["~> 1.5.2"])
       s.add_runtime_dependency(%q<mongo>, ["~> 1.5.2"])
       s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.8.0"])
-      s.add_development_dependency(%q<ruby-debug>, [">= 0"])
-      s.add_development_dependency(%q<SystemTimer>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.8.0"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<simplecov-rcov>, [">= 0"])
+      s.add_development_dependency(%q<simplecov-csv>, [">= 0"])
+      s.add_development_dependency(%q<pry>, [">= 0"])
+      s.add_development_dependency(%q<pry-doc>, [">= 0"])
     else
       s.add_dependency(%q<hiredis>, ["~> 0.4.4"])
       s.add_dependency(%q<redis>, ["~> 2.2.2"])
       s.add_dependency(%q<bson_ext>, ["~> 1.5.2"])
       s.add_dependency(%q<mongo>, ["~> 1.5.2"])
       s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["~> 2.8.0"])
-      s.add_dependency(%q<ruby-debug>, [">= 0"])
-      s.add_dependency(%q<SystemTimer>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<rspec>, ["~> 2.8.0"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<simplecov-rcov>, [">= 0"])
+      s.add_dependency(%q<simplecov-csv>, [">= 0"])
+      s.add_dependency(%q<pry>, [">= 0"])
+      s.add_dependency(%q<pry-doc>, [">= 0"])
     end
   else
     s.add_dependency(%q<hiredis>, ["~> 0.4.4"])
@@ -62,10 +81,13 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bson_ext>, ["~> 1.5.2"])
     s.add_dependency(%q<mongo>, ["~> 1.5.2"])
     s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<rspec>, ["~> 2.8.0"])
-    s.add_dependency(%q<ruby-debug>, [">= 0"])
-    s.add_dependency(%q<SystemTimer>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<rspec>, ["~> 2.8.0"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<simplecov-rcov>, [">= 0"])
+    s.add_dependency(%q<simplecov-csv>, [">= 0"])
+    s.add_dependency(%q<pry>, [">= 0"])
+    s.add_dependency(%q<pry-doc>, [">= 0"])
   end
 end
 
