@@ -35,16 +35,16 @@ describe Base do
     end
 
     describe "class based memory storage" do
-      describe :purge_instances do
+      describe :purge_instances! do
         it "purges all instances" do
-          Base.purge_instances
+          Base.purge_instances!
           Base.instances.should have(0).items
         end
       end
 
       describe :instances do
         it "retrieves all @@instances" do
-          Base.purge_instances
+          Base.purge_instances!
           objects = %w[first second last]
           objects.each do |object_name|
             Base.new(object_name)
@@ -56,7 +56,7 @@ describe Base do
 
       describe :delete_instance do
         before do
-          Base.purge_instances
+          Base.purge_instances!
           @object_names = %w[first second last]
           @objects = @object_names.inject([]) do |store, object_name|
             store << Base.new(object_name)
@@ -75,7 +75,7 @@ describe Base do
         end
 
         it "removes an instance by symbolized name from store" do
-          Base.purge_instances
+          Base.purge_instances!
           @object_names = %w[first second last].map(&:to_sym)
           @objects = @object_names.inject([]) do |store, object_name|
             store << Base.new(object_name)
@@ -104,7 +104,7 @@ describe Base do
     describe :open do
 
       before do
-        Base.purge_instances
+        Base.purge_instances!
       end
 
       context "without any args" do
@@ -194,36 +194,85 @@ describe Base do
       before do
         @tmp_path  = File.expand_path("../../../tmp", __FILE__)
         @root_path = File.expand_path("../../../tmp", __FILE__)
+        @tmp_true_file  = "#{@tmp_path}/base.exist_true.txt"
+        @tmp_save_file  = "#{@tmp_path}/base.save_true.txt"
+        @tmp_false_file = "#{@tmp_path}/base.exist_false.txt"
+        @denied_path    = "/invalid_file.txt"
+
+        Dir.mkdir(@tmp_path) unless File.exists?(@tmp_path)
+        f = File.new(@tmp_true_file,'w')
+        f.puts("true content")
+        f.close
+      end
+
+      after do
+        File.unlink(@tmp_true_file)
+        File.unlink(@tmp_save_file) if File.exists?(@tmp_save_file)
+        Base.purge_instances!
+      end
+
+      describe :file_exists? do
+
+        it "returns true if path is a file" do
+          ios = Base.new(@tmp_true_file)
+          ios.file_exists?.should be_true
+        end
+
+        it "returns true if custom path is a file" do
+          ios = Base.new(:different_name)
+          ios.file_exists?(@tmp_true_file).should be_true
+        end
+
+        it "returns false if path is not a file" do
+          ios = Base.new(@tmp_false_file)
+          ios.file_exists?.should be_false
+        end
+
       end
 
       describe :load_from_file do
 
         context "file exists" do
-          it "reads file and stores content into container"
+
+          it "reads file and stores content into container" do
+            ios = Base.new(@tmp_true_file)
+            ios.load_from_file.should be_true
+            ios.string.should =~ /true content/
+          end
+
+          it "reads file with custom name" do
+            ios = Base.new(:different_name)
+            ios.load_from_file(@tmp_true_file).should be_true
+            ios.string.should =~ /content/
+          end
+
         end
 
         context "file does not exist" do
-          it "raises FileNotFound error"
+          it "raises FileNotFoundError" do
+            ios = Base.new(@tmp_false_file)
+            expect { ios.load_from_file }.to raise_error(Base::FileNotFoundError)
+          end
         end
 
       end
 
       describe :save_to_file do
 
-        context "desired path accessible" do
+        context "file path accessible" do
           context "with container name as default" do
             it "writes container into the file" do
-              ios = Base.new("base.foobar.txt")
+              ios = Base.new(@tmp_save_file)
               ios.puts = "Test string"
-              ios.save_to_file.should be(true)
+              ios.save_to_file.should be_true
             end
           end
 
           context "with custom name" do
             it "writes container into the file" do
-              ios = Base.new("base.foobar.txt")
+              ios = Base.new(:different_name)
               ios.puts = "Test string"
-              ios.save_to_file("base.custom_name.txt").should be(true)
+              ios.save_to_file(@tmp_save_file).should be_true
             end
           end
 
@@ -231,9 +280,9 @@ describe Base do
 
         context "path not accessible" do
           it "raises FileAccessError with corresponding reason" do
-            ios = Base.new("base.foobar.txt")
+            ios = Base.new(@denied_path)
             ios.puts = "Test string"
-            expect { ios.save_to_file }.to raise_error(Base::FileAccessError, /reason/)
+            expect { ios.save_to_file }.to raise_error(Base::FileAccessError, /Reason/)
           end
         end
 

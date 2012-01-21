@@ -4,6 +4,7 @@ module IO_shuten
 
     class NodeNotFoundError < StandardError; end
     class NodeNameError     < StandardError; end
+    class FileNotFoundError < StandardError; end
     class FileAccessError   < StandardError; end
     class NotYetImplemented < StandardError
       def initialize callee = nil, pos = nil
@@ -38,7 +39,7 @@ module IO_shuten
         @@instances
       end
 
-      def purge_instances
+      def purge_instances!
         @@instances = []
       end
 
@@ -82,16 +83,33 @@ module IO_shuten
 
     end
 
-    def load_from_file
-      not_yet_implemented! __method__
+    ### instance methods
+
+    def load_from_file file_name = nil
+      file_name ||= self.object_name
+      if file_exists? file_name
+        self.container.string = File.read(file_name)
+        true
+      else
+        raise FileNotFoundError, self.object_name
+      end
     end
 
-    def save_to_file
-      not_yet_implemented! __method__
+    def save_to_file file_name = nil
+      file_name ||= self.object_name
+      begin
+        File.open(file_name, 'w') do |fh|
+          fh.write(self.container.string)
+        end
+        true
+      rescue Exception => e
+        raise FileAccessError, "Reason: #{e.message}"
+      end
     end
 
-    def file_exists? object_name = self.container.object_name
-      not_yet_implemented! __method__
+    def file_exists? file_name = nil
+      file_name ||= self.object_name
+      File.exists?(file_name)
     end
     alias_method :file_exist?, :file_exists?
 
