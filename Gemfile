@@ -1,8 +1,22 @@
 source "https://rubygems.org"
-gem "redis"
-gem "mongo"
+
+gem "hiredis", "~> 0.4.4"
+gem "redis", "~> 2.2.2", :require => ["redis/connection/hiredis", "redis"]
+
+gem "bson_ext", "~> 1.5.2"
+gem "mongo", "~> 1.5.2"
 
 group :development, :test do
   gem "rake"
-  gem "rspec"
+  gem "jeweler"
+
+  gem "rspec", "~> 2.8.0"
+  gem "simplecov", :require => false
+  gem "simplecov-rcov", :require => false
+  gem "simplecov-csv", :require => false
+
+  gem "pry"
+  gem "pry-doc"
 end
+
+
