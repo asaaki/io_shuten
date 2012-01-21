@@ -70,5 +70,4 @@ I like this approach and try to use it whenever possible, also in one-man-develo
 
 This gem/software is licensed under MIT/X11 license. See [LICENSE](https://raw.github.com/asaaki/io_shuten/develop/LICENSE) (or [LICENSE.de](https://raw.github.com/asaaki/io_shuten/develop/LICENSE.de) for german translation).
 
-— [Christoph 'asaaki' Grabo](https://github.com/asaaki) 〆
-
+— [Christoph 'asaaki' Grabo](https://github.com/asaaki)

@@ -113,7 +113,7 @@ describe Base do
           it "returns the requested object" do
             object_name = "foo bar"
             object_cont = "demo content of object"
-            object_mock = double(Base, :object_name => object_name, :object_content => object_cont)
+            object_mock = double(Base, :object_name => object_name, :container => object_cont)
 
             Base.should_receive(:exists?).with(object_name).and_return(true)
             Base.should_receive(:load).and_return(object_mock)
@@ -121,7 +121,7 @@ describe Base do
             ios = Base.open(object_name)
 
             ios.object_name.should == object_name
-            ios.object_content.should == object_cont
+            ios.container.should == object_cont
           end
         end
       end
@@ -142,31 +142,29 @@ describe Base do
 
   describe "Instance Methods" do
 
-    describe :each do
-      context "without block" do
-        it "creates an Enumerable for lines"
-      end
-
-      context "with block" do
-        it "iterates the lines"
-      end
-    end
-
-    describe :each_line do
-      it "is an alias to #each"
-    end
-
-    describe :lines do
-      it "is an alias to #each"
-    end
-
-    describe :each_byte do
-      context "without block" do
-        it "creates an Enumerable for bytes"
-      end
-
-      context "with block" do
-        it "iterates the bytes"
+    describe "StringIO method wrapper" do
+      method_list = %w[
+        binmode bytes
+        chars close close_read close_write closed? closed_read? closed_write? codepoints
+        each each_byte each_char each_codepoint each_line
+        eof eof?
+        external_encoding
+        fcntl fileno flush fsync
+        getbyte getc gets
+        internal_encoding isatty
+        length lineno lineno= lines
+        pid pos pos= print printf putc puts
+        read read_nonblock readbyte readchar readline readlines readpartial
+        reopen rewind
+        seek set_encoding size string string= sync sync= sysread syswrite
+        tell truncate tty?
+        ungetbyte ungetc
+        write write_nonblock
+      ]
+      method_list.each do |method_name|
+        it "- responds to ##{method_name}" do
+          Base.new.should respond_to(method_name)
+        end
       end
     end
 
