@@ -2,18 +2,43 @@
 module IO_shuten
   class Base
 
-    class NodeNotFound < StandardError; end
+    class NodeNotFoundError < StandardError; end
+    class NameError < StandardError; end
 
-    attr_reader :object_name
-    attr        :object_content, :object_content_size
+    @@instances = []
+
+    attr_reader  :object_name
+    attr         :object_content, :object_content_size
 
     def initialize(object_name = nil, *args)
-      @object_name         = object_name
-      @object_content      = StringIO.new("","w+")
-      @object_content_size = @object_content.size
+      if [String,Symbol,NilClass].include?(object_name.class)
+        @object_name         = object_name
+        @object_content      = StringIO.new("","w+")
+        @object_content_size = @object_content.size
+
+        @@instances << self unless @@instances.include?(self)
+      else
+        raise NameError, "Name must be kind of String or Symbol."
+      end
     end
 
     class << self
+
+      def instances
+        @@instances
+      end
+
+      def purge_instances
+        @@instances = []
+      end
+
+      def delete_instance object_name_or_instance
+        @@instances.delete_if do |object|
+          (object_name_or_instance.is_a?(Symbol) && object.object_name == object_name_or_instance) ||
+          (object_name_or_instance.is_a?(String) && object.object_name == object_name_or_instance) ||
+          (object_name_or_instance.is_a?(Base) && object == object_name_or_instance)
+        end
+      end
 
       def open object_name, *args
         if Base.exists? object_name
@@ -27,7 +52,7 @@ module IO_shuten
           end
 
         else
-          raise NodeNotFound
+          raise NodeNotFoundError
         end
       end
 
