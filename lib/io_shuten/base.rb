@@ -15,7 +15,6 @@ module IO_shuten
       if [String,Symbol,NilClass].include?(object_name.class)
         @object_name    = object_name
         @container      = StringIO.new("","w+")
-        @container_size = @container.size
 
         @@instances << self unless @@instances.include?(self)
       else
@@ -110,11 +109,6 @@ module IO_shuten
 
     def container_respond_to? sym, include_private
       @container.respond_to? sym, include_private
-    end
-
-    def set_object_content object_content
-      @container.string = object_content.to_s
-      @container_size = @container.size
     end
 
   end
