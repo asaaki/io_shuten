@@ -29,6 +29,10 @@ task :gem => :build
 
 # gem building and releasing tasks are provided by jeweler and so not needed to be implemented manually
 
+task "gem:release" => :gem do
+  system "gem push pkg/io_shuten-#{IO_shuten::VERSION}.gem"
+end
+
 desc "Run all specs"
 task RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = 'spec/**/*_spec.rb'
