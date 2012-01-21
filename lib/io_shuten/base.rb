@@ -101,6 +101,12 @@ module IO_shuten
       end
     end
 
+    def method_missing method, *args, &block
+      if respond_to_missing? method
+        @container.send method, *args, &block
+      end
+    end
+
   private
 
     def raise_not_implemented_yet sym = __callee__
