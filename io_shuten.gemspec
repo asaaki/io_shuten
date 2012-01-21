@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "lib/io_shuten/mongo.rb",
     "lib/io_shuten/redis.rb",
     "lib/io_shuten/version.rb",
-    "spec/externals/logger_spec.rb",
+    "spec/examples/logger_spec.rb",
     "spec/lib/base_spec.rb",
     "spec/lib/mongo_spec.rb",
     "spec/lib/redis_spec.rb",
