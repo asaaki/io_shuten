@@ -27,18 +27,18 @@ end
 
 task :gem => :build
 
-desc "Build gem to rubygemgem.org"
-task :build do
-  filename = "io_shuten-#{IO_shuten::VERSION}.gem"
-  system "rm pkg/#{filename}" if File.exists?("pkg/#{filename}")
-  system "gem build io_shuten.gemspec"
-  system "mv #{filename} pkg/"
-end
+#desc "Build gem for rubygems.org"
+#task :build do
+#  filename = "io_shuten-#{IO_shuten::VERSION}.gem"
+#  system "rm pkg/#{filename}" if File.exists?("pkg/#{filename}")
+#  system "gem build io_shuten.gemspec"
+#  system "mv #{filename} pkg/"
+#end
 
-desc "Install (push) gem to rubygems.org"
-task :install => :build do
-  system "gem install io_shuten-#{IO_shuten::VERSION}.gem"
-end
+#desc "Install gem locally."
+#task :install => :build do
+#  system "gem install pkg/io_shuten-#{IO_shuten::VERSION}.gem"
+#end
 
 desc "Release (push) gem to rubygems.org"
 task :release => :gem do
