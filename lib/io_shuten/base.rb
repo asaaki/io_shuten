@@ -2,18 +2,44 @@
 module IO_shuten
   class Base
 
-    class NodeNotFound < StandardError; end
+    class NodeNotFoundError < StandardError; end
+    class NodeNameError < StandardError; end
+    class NotImplementedYet < StandardError; end
 
-    attr_reader :object_name
-    attr        :object_content, :object_content_size
+    @@instances = []
+
+    attr_reader  :object_name
+    attr         :container, :container_size
 
     def initialize(object_name = nil, *args)
-      @object_name         = object_name
-      @object_content      = StringIO.new("","w+")
-      @object_content_size = @object_content.size
+      if [String,Symbol,NilClass].include?(object_name.class)
+        @object_name    = object_name
+        @container      = StringIO.new("","w+")
+        @container_size = @container.size
+
+        @@instances << self unless @@instances.include?(self)
+      else
+        raise NodeNameError, "Name must be kind of String or Symbol."
+      end
     end
 
     class << self
+
+      def instances
+        @@instances
+      end
+
+      def purge_instances
+        @@instances = []
+      end
+
+      def delete_instance object_name_or_instance
+        @@instances.delete_if do |object|
+          (object_name_or_instance.is_a?(Symbol) && object.object_name == object_name_or_instance) ||
+          (object_name_or_instance.is_a?(String) && object.object_name == object_name_or_instance) ||
+          (object_name_or_instance.is_a?(Base) && object == object_name_or_instance)
+        end
+      end
 
       def open object_name, *args
         if Base.exists? object_name
@@ -27,7 +53,7 @@ module IO_shuten
           end
 
         else
-          raise NodeNotFound
+          raise NodeNotFoundError
         end
       end
 
@@ -40,37 +66,30 @@ module IO_shuten
 
       def load object_name
         obj = Base.new object_name
-        obj.send :set_object_content, ""
+        obj.string ""
         obj
       end
       alias_method :load_object, :load
 
     end
 
-    def close
-    end
-
-    def read
-    end
-
-    def each
-    end
-    alias_method :each_line, :each
-    alias_method :lines,     :each
-
-    def write str
-      @object_content.puts str.to_s
+    def respond_to_missing? sym, include_private = true
+      unless object_respond_to?(sym, include_private)
+        raise NotImplementedYet, "Method :#{sym} is not (yet) supported by #{self.class} or #{self.container.class}."
+      else
+        true
+      end
     end
 
   private
 
-    def set_object_content object_content
-      @object_content.string = object_content.to_s
-      @object_content_size = @object_content.size
+    def object_respond_to? sym, include_private
+      @container.respond_to? sym, include_private
     end
 
-    def get_object_content
-      @object_content.string
+    def set_object_content object_content
+      @container.string = object_content.to_s
+      @container_size = @container.size
     end
 
   end

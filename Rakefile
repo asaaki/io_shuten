@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.email       = ["chris@dinarrr.com"]
   gem.licenses    = ["MIT"]
   gem.homepage    = "http://github.com/asaaki/io_shuten"
-  gem.summary     = "IO::shuten – Use databases as IO handler."
+  gem.summary     = "IO::shuten – Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
   gem.description = "IO::shuten – Use databases as IO handler like you would do with files and streams."
 end
 
@@ -28,7 +28,7 @@ end
 
 task :gem => :build
 
-# Helper task because jeweler doesn't want to push my gem - how to fix it?
+desc "Release current gem version to rubygems.org"
 task "gem:release" => :gem do
   system "gem push pkg/io_shuten-#{IO_shuten::VERSION}.gem"
 end
