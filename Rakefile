@@ -27,27 +27,7 @@ end
 
 task :gem => :build
 
-#desc "Build gem for rubygems.org"
-#task :build do
-#  filename = "io_shuten-#{IO_shuten::VERSION}.gem"
-#  system "rm pkg/#{filename}" if File.exists?("pkg/#{filename}")
-#  system "gem build io_shuten.gemspec"
-#  system "mv #{filename} pkg/"
-#end
-
-#desc "Install gem locally."
-#task :install => :build do
-#  system "gem install pkg/io_shuten-#{IO_shuten::VERSION}.gem"
-#end
-
-desc "Release (push) gem to rubygems.org"
-task :release => :gem do
-  system "git tag -a v#{IO_shuten::VERSION} -m 'Tagging #{IO_shuten::VERSION}'"
-  system "git push --tags"
-  system "gem push io_shuten-#{IO_shuten::VERSION}.gem"
-end
-
-
+# gem building and releasing tasks are provided by jeweler and so not needed to be implemented manually
 
 desc "Run all specs"
 task RSpec::Core::RakeTask.new(:spec) do |t|
