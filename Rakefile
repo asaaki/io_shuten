@@ -28,14 +28,13 @@ end
 
 task :gem => :build
 
-# gem building and releasing tasks are provided by jeweler and so not needed to be implemented manually
-
 # Helper task because jeweler doesn't want to push my gem - how to fix it?
 task "gem:release" => :gem do
   system "gem push pkg/io_shuten-#{IO_shuten::VERSION}.gem"
 end
 
-task :release => "gem:release"
+desc "A complete release cycle (build, git, gem, push to rubygems.org)"
+task "full:release" => [:release,"gem:release"]
 
 desc "Run all specs"
 task RSpec::Core::RakeTask.new(:spec) do |t|
