@@ -110,16 +110,6 @@ implementations.</p>
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="Mongo.html" title="IO_shuten::Mongo (class)">Mongo</a></span>, <span class='object_link'><a href="Redis.html" title="IO_shuten::Redis (class)">Redis</a></span></p>
 </div>
-<h2>Defined Under Namespace</h2>
-<p class="children">
-   
-    
-   
-    
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Base/FileAccessError.html" title="IO_shuten::Base::FileAccessError (class)">FileAccessError</a></span>, <span class='object_link'><a href="Base/FileNotFoundError.html" title="IO_shuten::Base::FileNotFoundError (class)">FileNotFoundError</a></span>, <span class='object_link'><a href="Base/NodeNameError.html" title="IO_shuten::Base::NodeNameError (class)">NodeNameError</a></span>, <span class='object_link'><a href="Base/NodeNotFoundError.html" title="IO_shuten::Base::NodeNotFoundError (class)">NodeNotFoundError</a></span>, <span class='object_link'><a href="Base/NotYetImplemented.html" title="IO_shuten::Base::NotYetImplemented (class)">NotYetImplemented</a></span>
-    
-  
-</p>
 
   <h2>Constant Summary</h2>
   
@@ -252,11 +242,11 @@ implementations.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#exists%3F-class_method" title="exists? (class method)">+ (Boolean) <strong>exists?</strong>(o_name = nil) </a>
+      <a href="#instance_exists%3F-class_method" title="instance_exists? (class method)">+ (Boolean) <strong>instance_exists?</strong>(object_name) </a>
     
 
     
-      (also: exist?)
+      (also: instance_exist?, exists?, exist?)
     
   </span>
   
@@ -278,6 +268,8 @@ implementations.</p>
       <a href="#instances-class_method" title="instances (class method)">+ (Array) <strong>instances</strong> </a>
     
 
+    
+      (also: pool)
     
   </span>
   
@@ -301,6 +293,8 @@ implementations.</p>
       <a href="#open-class_method" title="open (class method)">+ (Base, Boolean) <strong>open</strong>(object_name, *args) </a>
     
 
+    
+      (also: open_object)
     
   </span>
   
@@ -522,7 +516,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/NodeNameError.html" title="IO_shuten::Base::NodeNameError (class)">NodeNameError</a></span></tt>)</span>
+        <span class='type'>(<tt>NodeNameError</tt>)</span>
       
       
       
@@ -531,7 +525,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 47</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 26</span></caption>
   <tr>
     <td>
       <table>
@@ -544,18 +538,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">47</td>
+          <td class="lines">26</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_object_name'>object_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 16:25:37</td>
-          <td class="commit"><a title="Base works as a wrapper/proxy to StringIO.">361b9ae2</a><td>
-          <td class="lines">48</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">27</td>
           <td><pre class="code">  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>String</span><span class='comma'>,</span><span class='const'>Symbol</span><span class='comma'>,</span><span class='const'>NilClass</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_object_name'>object_name</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -566,7 +560,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 16:25:37</td>
           <td class="commit"><a title="Base works as a wrapper/proxy to StringIO.">361b9ae2</a><td>
-          <td class="lines">49</td>
+          <td class="lines">28</td>
+          <td><pre class="code">    <span class='kw'>unless</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-21 16:25:37</td>
+          <td class="commit"><a title="Base works as a wrapper/proxy to StringIO.">361b9ae2</a><td>
+          <td class="lines">29</td>
           <td><pre class="code">    <span class='ivar'>@object_name</span>    <span class='op'>=</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
@@ -577,7 +582,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">50</td>
+          <td class="lines">30</td>
           <td><pre class="code">    <span class='ivar'>@container</span>      <span class='op'>=</span> <span class='const'>StringIO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w+</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -588,8 +593,41 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">51</td>
+          <td class="lines">31</td>
           <td><pre class="code"></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author">No committed</td>
+        
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">32</td>
+          <td><pre class="code">    <span class='cvar'>@@instances</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author">No committed</td>
+        
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">33</td>
+          <td><pre class="code">    <span class='kw'>else</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author">No committed</td>
+        
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">34</td>
+          <td><pre class="code">      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNameExistsError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Node already in pool, replacement is not allowed.</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -599,18 +637,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">52</td>
-          <td><pre class="code">    <span class='cvar'>@@instances</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span></pre></td>
+          <td class="lines">35</td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 16:25:37</td>
-          <td class="commit"><a title="Base works as a wrapper/proxy to StringIO.">361b9ae2</a><td>
-          <td class="lines">53</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">36</td>
           <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -621,8 +659,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">54</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NodeNameError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Name must be kind of String or Symbol.</span><span class='tstring_end'>&quot;</span></span></pre></td>
+          <td class="lines">37</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNameError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Name must be kind of String or Symbol.</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -632,7 +670,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">55</td>
+          <td class="lines">38</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -643,7 +681,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">56</td>
+          <td class="lines">39</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -670,7 +708,7 @@ implementations.</p>
 
   
 </p><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 171</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 162</span></caption>
   <tr>
     <td>
       <table>
@@ -683,7 +721,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">171</td>
+          <td class="lines">162</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span></pre></td>
         </tr>
       
@@ -694,7 +732,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">172</td>
+          <td class="lines">163</td>
           <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span> <span class='id identifier rubyid_method'>method</span></pre></td>
         </tr>
       
@@ -705,7 +743,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">173</td>
+          <td class="lines">164</td>
           <td><pre class="code">    <span class='ivar'>@container</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span></pre></td>
         </tr>
       
@@ -716,7 +754,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">174</td>
+          <td class="lines">165</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -727,7 +765,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">175</td>
+          <td class="lines">166</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -778,7 +816,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 38</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 17</span></caption>
   <tr>
     <td>
       <table>
@@ -791,7 +829,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">38</td>
+          <td class="lines">17</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_container'>container</span></pre></td>
         </tr>
       
@@ -802,7 +840,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">39</td>
+          <td class="lines">18</td>
           <td><pre class="code">  <span class='ivar'>@container</span></pre></td>
         </tr>
       
@@ -813,7 +851,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">40</td>
+          <td class="lines">19</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -859,7 +897,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 34</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 13</span></caption>
   <tr>
     <td>
       <table>
@@ -872,7 +910,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">34</td>
+          <td class="lines">13</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
@@ -883,7 +921,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">35</td>
+          <td class="lines">14</td>
           <td><pre class="code">  <span class='ivar'>@object_name</span></pre></td>
         </tr>
       
@@ -894,7 +932,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">36</td>
+          <td class="lines">15</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -978,7 +1016,7 @@ implementations.</p>
 
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 78</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 63</span></caption>
   <tr>
     <td>
       <table>
@@ -991,7 +1029,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">78</td>
+          <td class="lines">63</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_delete_instance'>delete_instance</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span></pre></td>
         </tr>
       
@@ -1002,7 +1040,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">79</td>
+          <td class="lines">64</td>
           <td><pre class="code">  <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_object'>object</span><span class='op'>|</span></pre></td>
         </tr>
       
@@ -1013,7 +1051,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">80</td>
+          <td class="lines">65</td>
           <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Symbol</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span> <span class='op'>==</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
         </tr>
       
@@ -1024,7 +1062,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">81</td>
+          <td class="lines">66</td>
           <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span> <span class='op'>==</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
         </tr>
       
@@ -1035,7 +1073,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">82</td>
+          <td class="lines">67</td>
           <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Base</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span> <span class='op'>==</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1046,7 +1084,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">83</td>
+          <td class="lines">68</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1057,7 +1095,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">84</td>
+          <td class="lines">69</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1069,14 +1107,14 @@ implementations.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="exists?-class_method">
+  <p class="signature " id="instance_exists?-class_method">
   
-    + (<tt>Boolean</tt>) <strong>exists?</strong>(o_name = nil) 
+    + (<tt>Boolean</tt>) <strong>instance_exists?</strong>(object_name) 
   
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='exist?-class_method'>exist?</span></span>
+    <span class="names"><span id='instance_exist?-class_method'>instance_exist?</span>, <span id='exists?-class_method'>exists?</span>, <span id='exist?-class_method'>exist?</span></span>
     </span>
   
 </p><div class="docstring">
@@ -1086,7 +1124,43 @@ implementations.</p>
   </div>
 </div>
 <div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of object as String</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of object as Symbol</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -1102,7 +1176,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 107</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 74</span></caption>
   <tr>
     <td>
       <table>
@@ -1111,44 +1185,55 @@ implementations.</p>
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 23:54:47</td>
-          <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">107</td>
-          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span> <span class='id identifier rubyid_o_name'>o_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">74</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">108</td>
-          <td><pre class="code">  <span class='id identifier rubyid_o_name'>o_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">75</td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_instances'>instances</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">109</td>
-          <td><pre class="code">  <span class='kw'>false</span></pre></td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">76</td>
+          <td><pre class="code">    <span class='id identifier rubyid_instances'>instances</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:object_name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_object_name'>object_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">110</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">77</td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author">No committed</td>
+        
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">78</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1165,6 +1250,10 @@ implementations.</p>
     + (<tt>Array</tt>) <strong>instances</strong> 
   
 
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='pool-class_method'>pool</span></span>
+    </span>
   
 </p><div class="docstring">
   <div class="discussion">
@@ -1196,7 +1285,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 61</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 46</span></caption>
   <tr>
     <td>
       <table>
@@ -1209,7 +1298,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">61</td>
+          <td class="lines">46</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_instances'>instances</span></pre></td>
         </tr>
       
@@ -1220,18 +1309,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">62</td>
+          <td class="lines">47</td>
           <td><pre class="code">  <span class='cvar'>@@instances</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">63</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">48</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1248,6 +1337,10 @@ implementations.</p>
     + (<tt><span class='object_link'><a href="" title="IO_shuten::Base (class)">Base</a></span></tt>, <tt>Boolean</tt>) <strong>open</strong>(object_name, *args) 
   
 
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='open_object-class_method'>open_object</span></span>
+    </span>
   
 </p><div class="docstring">
   <div class="discussion">
@@ -1295,7 +1388,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/NodeNotFoundError.html" title="IO_shuten::Base::NodeNotFoundError (class)">NodeNotFoundError</a></span></tt>)</span>
+        <span class='type'>(<tt>NodeNotFoundError</tt>)</span>
       
       
       
@@ -1304,7 +1397,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 89</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 86</span></caption>
   <tr>
     <td>
       <table>
@@ -1313,11 +1406,11 @@ implementations.</p>
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">89</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">86</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_open'>open</span> <span class='id identifier rubyid_object_name'>object_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span></pre></td>
         </tr>
       
@@ -1328,8 +1421,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">90</td>
-          <td><pre class="code">  <span class='kw'>if</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">87</td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
         
@@ -1339,7 +1432,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">91</td>
+          <td class="lines">88</td>
           <td><pre class="code">    <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span></pre></td>
         </tr>
       
@@ -1350,7 +1443,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">92</td>
+          <td class="lines">89</td>
           <td><pre class="code">      <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
@@ -1361,7 +1454,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">93</td>
+          <td class="lines">90</td>
           <td><pre class="code">      <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1372,7 +1465,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">94</td>
+          <td class="lines">91</td>
           <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span></pre></td>
         </tr>
       
@@ -1383,7 +1476,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">95</td>
+          <td class="lines">92</td>
           <td><pre class="code">      <span class='kw'>true</span></pre></td>
         </tr>
       
@@ -1394,7 +1487,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">96</td>
+          <td class="lines">93</td>
           <td><pre class="code"></pre></td>
         </tr>
       
@@ -1405,7 +1498,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">97</td>
+          <td class="lines">94</td>
           <td><pre class="code">    <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -1416,7 +1509,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">98</td>
+          <td class="lines">95</td>
           <td><pre class="code">      <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
@@ -1427,7 +1520,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">99</td>
+          <td class="lines">96</td>
           <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1438,18 +1531,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">100</td>
+          <td class="lines">97</td>
           <td><pre class="code"></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">101</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">98</td>
           <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -1460,8 +1553,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">102</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NodeNotFoundError</span></pre></td>
+          <td class="lines">99</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNotFoundError</span></pre></td>
         </tr>
       
         
@@ -1471,18 +1564,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">103</td>
+          <td class="lines">100</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">104</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">101</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1525,7 +1618,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 68</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 54</span></caption>
   <tr>
     <td>
       <table>
@@ -1534,11 +1627,11 @@ implementations.</p>
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">68</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">54</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_purge_instances!'>purge_instances!</span></pre></td>
         </tr>
       
@@ -1547,10 +1640,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 23:54:47</td>
-          <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">69</td>
-          <td><pre class="code">  <span class='cvar'>@@instances</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span></pre></td>
+          <td class="date">2012-01-21 14:44:16</td>
+          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
+          <td class="lines">55</td>
+          <td><pre class="code">  <span class='cvar'>@@instances</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='kw'>and</span> <span class='kw'>true</span></pre></td>
         </tr>
       
         
@@ -1560,18 +1653,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">70</td>
-          <td><pre class="code">  <span class='kw'>true</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">71</td>
+          <td class="lines">56</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1622,7 +1704,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 154</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 145</span></caption>
   <tr>
     <td>
       <table>
@@ -1635,7 +1717,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">154</td>
+          <td class="lines">145</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_file_exists?'>file_exists?</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
@@ -1646,7 +1728,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">155</td>
+          <td class="lines">146</td>
           <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
@@ -1657,7 +1739,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">156</td>
+          <td class="lines">147</td>
           <td><pre class="code">  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1668,7 +1750,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">157</td>
+          <td class="lines">148</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1720,7 +1802,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/FileNotFoundError.html" title="IO_shuten::Base::FileNotFoundError (class)">FileNotFoundError</a></span></tt>)</span>
+        <span class='type'>(<tt>FileNotFoundError</tt>)</span>
       
       
       
@@ -1729,7 +1811,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 129</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 120</span></caption>
   <tr>
     <td>
       <table>
@@ -1742,7 +1824,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">129</td>
+          <td class="lines">120</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_load_from_file'>load_from_file</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
@@ -1753,7 +1835,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">130</td>
+          <td class="lines">121</td>
           <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
@@ -1764,7 +1846,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">131</td>
+          <td class="lines">122</td>
           <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_file_exists?'>file_exists?</span> <span class='id identifier rubyid_file_name'>file_name</span></pre></td>
         </tr>
       
@@ -1775,7 +1857,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">132</td>
+          <td class="lines">123</td>
           <td><pre class="code">    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1786,18 +1868,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">133</td>
+          <td class="lines">124</td>
           <td><pre class="code">    <span class='kw'>self</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 20:50:50</td>
-          <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">134</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">125</td>
           <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -1808,8 +1890,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">135</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileNotFoundError</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">126</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>FileNotFoundError</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
         
@@ -1819,7 +1901,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">136</td>
+          <td class="lines">127</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1830,7 +1912,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">137</td>
+          <td class="lines">128</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1882,7 +1964,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/FileAccessError.html" title="IO_shuten::Base::FileAccessError (class)">FileAccessError</a></span></tt>)</span>
+        <span class='type'>(<tt>FileAccessError</tt>)</span>
       
       
       
@@ -1891,7 +1973,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 141</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 132</span></caption>
   <tr>
     <td>
       <table>
@@ -1904,7 +1986,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">141</td>
+          <td class="lines">132</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_save_to_file'>save_to_file</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
@@ -1915,7 +1997,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">142</td>
+          <td class="lines">133</td>
           <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
         </tr>
       
@@ -1926,7 +2008,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">143</td>
+          <td class="lines">134</td>
           <td><pre class="code">  <span class='kw'>begin</span></pre></td>
         </tr>
       
@@ -1937,7 +2019,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">144</td>
+          <td class="lines">135</td>
           <td><pre class="code">    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fh'>fh</span><span class='op'>|</span></pre></td>
         </tr>
       
@@ -1948,7 +2030,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">145</td>
+          <td class="lines">136</td>
           <td><pre class="code">      <span class='id identifier rubyid_fh'>fh</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1959,7 +2041,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">146</td>
+          <td class="lines">137</td>
           <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1970,18 +2052,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">147</td>
+          <td class="lines">138</td>
           <td><pre class="code">    <span class='kw'>self</span></pre></td>
         </tr>
       
         
         <tr>
         
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+          <td class="author">No committed</td>
         
-          <td class="date">2012-01-21 20:50:50</td>
-          <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">148</td>
+          <td class="date">2012-01-22 15:44:26</td>
+          <td class="commit"><a title="Version of lib/io_shuten/base.rb from lib/io_shuten/base.rb">-</a><td>
+          <td class="lines">139</td>
           <td><pre class="code">  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span></pre></td>
         </tr>
       
@@ -1992,8 +2074,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">149</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileAccessError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reason: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span></pre></td>
+          <td class="lines">140</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>FileAccessError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reason: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -2003,7 +2085,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">150</td>
+          <td class="lines">141</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -2014,7 +2096,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">151</td>
+          <td class="lines">142</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -2030,7 +2112,7 @@ implementations.</p>
 </div>
     
     <div id="footer">
-  Generated on Sun Jan 22 01:06:28 2012 by 
+  Generated on Sun Jan 22 15:44:26 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

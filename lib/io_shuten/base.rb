@@ -4,27 +4,6 @@ module IO_shuten
   # IO_shuten::Base is the in-memory implementation and parent class for other implementations.
   class Base
 
-    # Exception if a node object was not found
-    class NodeNotFoundError < StandardError; end
-    # Exception if the node object name was of wrong type
-    class NodeNameError     < StandardError; end
-    # Exception if file was not found
-    class FileNotFoundError < StandardError; end
-    # Exception if something went wrong on file handling
-    class FileAccessError   < StandardError; end
-    # Exception for not yet implemented methods (stubs)
-    class NotYetImplemented < StandardError
-      # @private
-      def initialize callee = nil, pos = nil
-        msg = if callee
-          "Method :#{callee} is not (yet) supported. #{pos ? ''+pos+'' : ''}"
-        else
-          "The method is not (yet) supported."
-        end
-        super msg
-      end
-    end
-
     # Storage of current Base instances of the running process
     # @return [Array]
     @@instances = []
@@ -46,14 +25,20 @@ module IO_shuten
     # @raise [NodeNameError]
     def initialize(object_name = nil, *args)
       if [String,Symbol,NilClass].include?(object_name.class)
+        unless Base.instance_exists? object_name
         @object_name    = object_name
         @container      = StringIO.new("","w+")
 
         @@instances << self unless @@instances.include?(self)
+        else
+          raise Errors::NodeNameExistsError, "Node already in pool, replacement is not allowed."
+        end
       else
-        raise NodeNameError, "Name must be kind of String or Symbol."
+        raise Errors::NodeNameError, "Name must be kind of String or Symbol."
       end
     end
+
+    ### class methods
 
     class << self
 
@@ -61,13 +46,13 @@ module IO_shuten
       def instances
         @@instances
       end
+      alias_method :pool, :instances
 
       # Deletes ALL instances in the pool!
       #
       # @return [Boolean]
       def purge_instances!
-        @@instances = []
-        true
+        @@instances = [] and true
       end
 
       # Deletes a single instance of the pool
@@ -83,11 +68,23 @@ module IO_shuten
         end
       end
 
+      # @param [String] name of object as String
+      # @param [Symbol] name of object as Symbol
+      # @return [Boolean]
+      def instance_exists? object_name
+        if !instances.empty? && object_name
+          instances.map(&:object_name).include?(object_name)
+        end
+      end
+      alias_method :instance_exist?, :instance_exists?
+      alias_method :exists?,         :instance_exists?
+      alias_method :exist?,          :instance_exists?
+
       # @return [Base] itself on success if no block was given
       # @return [Boolean] true on success if block was given
       # @raise [NodeNotFoundError]
       def open object_name, *args
-        if Base.exists? object_name
+        if Base.instance_exists? object_name
           if block_given?
             base = Base.send :load, object_name
             yield(base)
@@ -99,24 +96,18 @@ module IO_shuten
           end
 
         else
-          raise NodeNotFoundError
+          raise Errors::NodeNotFoundError
         end
       end
-
-      # @return [Boolean]
-      def exists? o_name = nil
-        o_name ||= self.object_name
-        false
-      end
-      alias_method :exist?, :exists?
+      alias_method :open_object, :open
 
     private
 
       # @private
       def load object_name
-        obj = Base.new object_name
-        obj.string ""
-        obj
+        instances.select do |inst|
+          inst.object_name == object_name
+        end.first
       end
       alias_method :load_object, :load
 
@@ -132,7 +123,7 @@ module IO_shuten
         self.container.string = File.read(file_name)
         self
       else
-        raise FileNotFoundError, self.object_name
+        raise Errors::FileNotFoundError, self.object_name
       end
     end
 
@@ -146,7 +137,7 @@ module IO_shuten
         end
         self
       rescue Exception => e
-        raise FileAccessError, "Reason: #{e.message}"
+        raise Errors::FileAccessError, "Reason: #{e.message}"
       end
     end
 
@@ -178,7 +169,7 @@ module IO_shuten
 
     # @private
     def not_yet_implemented! callee = nil, pos = nil
-      raise NotYetImplemented, callee, pos
+      raise Errors::NotYetImplemented, callee, pos
     end
 
     # @private

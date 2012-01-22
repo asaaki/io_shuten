@@ -139,7 +139,7 @@ describe Base do
 
       context "without any args" do
         it "raises ArgumentError" do
-          expect { Base.open }.to raise_error(ArgumentError)
+          expect { Base.open }.to raise_error(::ArgumentError)
         end
       end
 
@@ -147,24 +147,18 @@ describe Base do
 
         context "and object does not exist" do
           it "raises NodeNotFound error" do
-            Base.stub(:exists?).and_return(false)
-            expect { Base.open("foo bar") }.to raise_error(Base::NodeNotFoundError)
+            expect { Base.open("foo bar") }.to raise_error(Errors::NodeNotFoundError)
           end
         end
 
         context "and object exists" do
           it "returns the requested object" do
             object_name = "foo bar"
-            object_cont = "demo content of object"
-            object_mock = double(Base, :object_name => object_name, :container => object_cont)
-
-            Base.should_receive(:exists?).with(object_name).and_return(true)
-            Base.should_receive(:load).and_return(object_mock)
+            stored_obj  = Base.new(object_name)
 
             ios = Base.open(object_name)
 
-            ios.object_name.should == object_name
-            ios.container.should == object_cont
+            ios.should === stored_obj
           end
         end
       end
@@ -226,7 +220,7 @@ describe Base do
             not_yet_implemented! __method__, "#{__FILE__}:#{__LINE__}"
           end
         end
-        expect { ios.not_implemented_method }.to raise_error(Base::NotYetImplemented)
+        expect { ios.not_implemented_method }.to raise_error(Errors::NotYetImplemented)
       end
     end
 
@@ -291,7 +285,7 @@ describe Base do
         context "file does not exist" do
           it "raises FileNotFoundError" do
             ios = Base.new(@tmp_false_file)
-            expect { ios.load_from_file }.to raise_error(Base::FileNotFoundError)
+            expect { ios.load_from_file }.to raise_error(Errors::FileNotFoundError)
           end
         end
 
@@ -322,7 +316,7 @@ describe Base do
           it "raises FileAccessError with corresponding reason" do
             ios = Base.new(@denied_path)
             ios.puts = "Test string"
-            expect { ios.save_to_file }.to raise_error(Base::FileAccessError, /Reason/)
+            expect { ios.save_to_file }.to raise_error(Errors::FileAccessError, /Reason/)
           end
         end
 

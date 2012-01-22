@@ -3,6 +3,7 @@
 # Namespace of the IO implementations
 module IO_shuten; end
 
+require "io_shuten/errors"
 require "io_shuten/base"
 require "io_shuten/redis"
 require "io_shuten/mongo"
