@@ -182,24 +182,35 @@ describe Base do
   describe "Instance Methods" do
 
     describe "StringIO method wrapper" do
-      method_list = %w[
+      m18 = %w[
         binmode bytes
-        chars close close_read close_write closed? closed_read? closed_write? codepoints
-        each each_byte each_char each_codepoint each_line
+        chars close close_read close_write closed? closed_read? closed_write?
+        each each_byte each_char each_line
         eof eof?
-        external_encoding
         fcntl fileno flush fsync
         getbyte getc gets
-        internal_encoding isatty
+        isatty
         length lineno lineno= lines
         pid pos pos= print printf putc puts
-        read read_nonblock readbyte readchar readline readlines readpartial
+        read readbyte readchar readline readlines
         reopen rewind
-        seek set_encoding size string string= sync sync= sysread syswrite
+        seek size string string= sync sync= sysread syswrite
         tell truncate tty?
-        ungetbyte ungetc
-        write write_nonblock
+        ungetc
+        write
       ]
+      m19 = %w[
+        codepoints
+        each_codepoint
+        external_encoding
+        internal_encoding
+        read_nonblock
+        readpartial
+        set_encoding
+        ungetbyte
+        write_nonblock
+      ]
+      method_list = RUBY_VERSION =~ /^1\.8\./ ? m18 : (m18 + m19)
       method_list.each do |method_name|
         it "- responds to ##{method_name}" do
           Base.new.should respond_to(method_name)
