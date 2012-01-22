@@ -103,7 +103,7 @@ describe Base do
 
           @tmp_path  = File.expand_path("../../../tmp", __FILE__)
 
-          Dir.mkdir_p(@tmp_path) unless File.exists?(@tmp_path)
+          Dir.mkdir(@tmp_path) unless File.exists?(@tmp_path)
 
           @example_content = "This is a dummy file!"
 
