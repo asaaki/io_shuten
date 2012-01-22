@@ -54,8 +54,6 @@ GEM
     yard (0.7.4)
     yard-blame (0.0.1)
       yard
-    yard-rspec (0.1)
-      yard
 
 PLATFORMS
   ruby
@@ -77,4 +75,3 @@ DEPENDENCIES
   simplecov-rcov
   yard
   yard-blame
-  yard-rspec

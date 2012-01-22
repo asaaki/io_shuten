@@ -18,7 +18,7 @@ group :development, :test do
   gem "redcarpet"
   gem "rdoc"
   gem "yard"
-  gem "yard-rspec"
+  #gem "yard-rspec" # not working :(
   gem "yard-blame"
 
   gem "pry"

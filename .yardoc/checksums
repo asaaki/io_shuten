@@ -1,5 +1,0 @@
-lib/io_shuten.rb 4aa27c4e6f67fc666a1f8ed61b6cc6a9cd7f08d3
-lib/io_shuten/base.rb fe06f9d82d6cf2c0eec94312fa7e5eab221fdacd
-lib/io_shuten/mongo.rb 493851f95e94e2b0b6c805e63452e86a0d7eb624
-lib/io_shuten/redis.rb 5a9fb88ca56df048bbfea7bcc114db5e5c9e54b7
-lib/io_shuten/version.rb 6cf0a70de0c812e4b08661bfa445e2bff87ad190

@@ -6,3 +6,7 @@ branches:
   only:
     - develop
     - master
+
+notifications:
+  email:
+    - chris@dinarrr.com

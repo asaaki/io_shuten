@@ -1,5 +1,7 @@
 coverage
-doc
 pkg
 tmp
+.rdoc_options
+.rake_tasks~
+.yardoc
 
