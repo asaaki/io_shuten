@@ -10,23 +10,23 @@ module IO_shuten
 
     # Name of current node instance
     # @return [String]
-    attr_reader :object_name
+    attr_reader :node_name
 
-    # holds StringIO object
+    # holds StringIO node
     # @return [StringIO]
     attr :container
 
-    # Creates a new Base object and stores it in the pool
+    # Creates a new Base node and stores it in the pool
     #
-    # @param [String] object_name Name of the node object (container)
-    # @param [Symbol] object_name also a symbol is allowed
+    # @param [String] node_name Name of the node node (container)
+    # @param [Symbol] node_name also a symbol is allowed
     # @param *args (not used)
     # @return [Base]
     # @raise [NodeNameError]
-    def initialize(object_name = nil, *args)
-      if [String,Symbol,NilClass].include?(object_name.class)
-        unless Base.instance_exists? object_name
-        @object_name    = object_name
+    def initialize(node_name = nil, *args)
+      if [String, Symbol].include?(node_name.class)
+        unless Base.instance_exists? node_name
+        @node_name    = node_name
         @container      = StringIO.new("","w+")
 
         @@instances << self unless @@instances.include?(self)
@@ -34,7 +34,7 @@ module IO_shuten
           raise Errors::NodeExistsError, "Node already in pool, replacement is not allowed."
         end
       else
-        raise Errors::NodeNameError, "Name must be kind of String or Symbol."
+        raise Errors::NodeNameError, "Name must be kind of String or Symbol and can't be nil."
       end
     end
 
@@ -46,7 +46,8 @@ module IO_shuten
       def instances
         @@instances
       end
-      alias_method :pool, :instances
+      alias_method :pool,  :instances
+      alias_method :nodes, :instances
 
       # Deletes ALL instances in the pool!
       #
@@ -57,24 +58,66 @@ module IO_shuten
 
       # Deletes a single instance of the pool
       #
-      # @param [Base] object
-      # @param [String] name of object as String
-      # @param [Symbol] name of object as Symbol
-      def delete_instance object_name_or_instance
-        @@instances.delete_if do |object|
-          (object_name_or_instance.is_a?(Symbol) && object.object_name == object_name_or_instance) ||
-          (object_name_or_instance.is_a?(String) && object.object_name == object_name_or_instance) ||
-          (object_name_or_instance.is_a?(Base) && object == object_name_or_instance)
+      # @param [Base] node instance
+      # @param [String] name of node as String
+      # @param [Symbol] name of node as Symbol
+      def delete_instance node_name_or_instance
+        @@instances.delete_if do |node|
+          (node_name_or_instance.is_a?(Symbol) && node.node_name == node_name_or_instance) ||
+          (node_name_or_instance.is_a?(String) && node.node_name == node_name_or_instance) ||
+          (node_name_or_instance.is_a?(Base) && node == node_name_or_instance)
         end
       end
 
-      # @param [String] name of object as String
-      # @param [Symbol] name of object as Symbol
+      # Loads instances from disk
+      #
+      # @param [String] Directory name
+      # @param [Array] File names (HINT: you can provide a Dir.glob)
       # @return [Boolean]
-      def instance_exists? object_name
-        if !instances.empty? && object_name
-          instances.map(&:object_name).include?(object_name)
+      def load_instances source
+        case source.class.to_s
+          when "Array"
+            source.each do |file_name|
+              node = Base.new(file_name)
+              node.puts File.read(file_name)
+            end
+          when "String"
+            if File.exists?(source) && File.directory?(source)
+              Dir[source+"/**/*"].each do |file_name|
+                node = Base.new(file_name)
+                node.puts File.read(file_name)
+              end
+            end
+          else
+            raise ArgumentError, "Input must be a kind of Array or String (but was: #{source.class})."
         end
+      end
+
+      # Saves all instances to disk
+      #
+      # @return [Boolean]
+      def save_instances
+        results = @@instances.inject({}) do |result, node|
+          File.open(node.node_name,"w") do |fh|
+            fh.puts node.string
+          end
+          result[node.node_name] = :failed unless File.exists?(node.node_name)
+        end
+        if results
+          false
+        else
+          true
+        end
+      end
+
+      # Checks for existence of a node
+      #
+      # @param [String] name of node as String
+      # @param [Symbol] name of node as Symbol
+      # @return [Boolean]
+      def instance_exists? node_name
+        # we need to check for node_name, otherwise it will fail though node exists
+        !instances.empty? && node_name && instances.map(&:node_name).include?(node_name)
       end
       alias_method :instance_exist?, :instance_exists?
       alias_method :exists?,         :instance_exists?
@@ -82,33 +125,36 @@ module IO_shuten
 
       # @return [Base] itself on success
       # @raise [NodeNotFoundError]
-      def open object_name, *args
-        if Base.instance_exists? object_name
+      def open node_name, *args
+        if Base.instance_exists? node_name
           if block_given?
-            base = Base.send :load, object_name
+            base = Base.send :load, node_name
+            base.reopen(base.container.string) if base.container.closed_write?
             yield(base)
             base.container.close_write
             base
 
           else
-            Base.send :load, object_name
+            base = Base.send :load, node_name
+            base.reopen(base.container.string) if base.container.closed_write?
+            base
           end
 
         else
           raise Errors::NodeNotFoundError
         end
       end
-      alias_method :open_object, :open
+      alias_method :open_node, :open
 
     private
 
       # @private
-      def load object_name
+      def load node_name
         instances.select do |inst|
-          inst.object_name == object_name
+          inst.node_name == node_name
         end.first
       end
-      alias_method :load_object, :load
+      alias_method :load_node, :load
 
     end
 
@@ -117,19 +163,19 @@ module IO_shuten
     # @return [Base] itself on success
     # @raise [FileNotFoundError]
     def load_from_file file_name = nil
-      file_name ||= self.object_name
+      file_name ||= self.node_name
       if file_exists? file_name
         self.container.string = File.read(file_name)
         self
       else
-        raise Errors::FileNotFoundError, self.object_name
+        raise Errors::FileNotFoundError, self.node_name
       end
     end
 
     # @return [Base] itself on success
     # @raise [FileAccessError]
     def save_to_file file_name = nil
-      file_name ||= self.object_name
+      file_name ||= self.node_name
       begin
         File.open(file_name, 'w') do |fh|
           fh.write(self.container.string)
@@ -142,7 +188,7 @@ module IO_shuten
 
     # @return [Boolean]
     def file_exists? file_name = nil
-      file_name ||= self.object_name
+      file_name ||= self.node_name
       File.exists?(file_name)
     end
     alias_method :file_exist?, :file_exists?
@@ -161,6 +207,8 @@ module IO_shuten
     def method_missing method, *args, &block
       if respond_to_missing? method
         @container.send method, *args, &block
+      else
+        not_yet_implemented! method
       end
     end
 
