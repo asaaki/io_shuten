@@ -30,6 +30,17 @@ describe Base do
           ios.should be_an(IO_shuten::Base)
           ios.object_name.should == object_name
         end
+
+        it "raises NodeNameError if wrong type" do
+          object_name = 1.23
+          expect { Base.new(object_name) }.to raise_error(Errors::NodeNameError)
+        end
+
+        it "raises NodeExistsError if object name is already taken" do
+          object_name = :already_taken
+          expect { Base.new(object_name) }.to_not raise_error
+          expect { Base.new(object_name) }.to raise_error(Errors::NodeExistsError)
+        end
       end
 
     end
@@ -157,15 +168,25 @@ describe Base do
             stored_obj  = Base.new(object_name)
 
             ios = Base.open(object_name)
-
             ios.should === stored_obj
           end
         end
       end
 
       context "with name and block" do
-        it "opens object, yields the block and closes object" do
-          pending
+        it "opens object, yields the block and closes object for writing" do
+          str      = "string set in block"
+          origin   = Base.new(:blocktest)
+
+          open_obj = Base.open :blocktest do |handle|
+            handle.write str
+          end
+
+          open_obj.should      === origin
+          origin.string.should === str
+          origin.should        be_closed_write
+          origin.should_not    be_closed_read
+          expect { origin.write 'foo' }.to raise_error(IOError)
         end
       end
 
@@ -216,11 +237,15 @@ describe Base do
       it "raises NotYetImplemented" do
         ios = Base.new
         ios.instance_eval do
-          def not_implemented_method
+          def not_implemented_method_a
+            not_yet_implemented!
+          end
+          def not_implemented_method_b
             not_yet_implemented! __method__, "#{__FILE__}:#{__LINE__}"
           end
         end
-        expect { ios.not_implemented_method }.to raise_error(Errors::NotYetImplemented)
+        expect { ios.not_implemented_method_a }.to raise_error(Errors::NotYetImplemented)
+        expect { ios.not_implemented_method_b }.to raise_error(Errors::NotYetImplemented)
       end
     end
 

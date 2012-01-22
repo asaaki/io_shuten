@@ -31,7 +31,7 @@ module IO_shuten
 
         @@instances << self unless @@instances.include?(self)
         else
-          raise Errors::NodeNameExistsError, "Node already in pool, replacement is not allowed."
+          raise Errors::NodeExistsError, "Node already in pool, replacement is not allowed."
         end
       else
         raise Errors::NodeNameError, "Name must be kind of String or Symbol."
@@ -80,16 +80,15 @@ module IO_shuten
       alias_method :exists?,         :instance_exists?
       alias_method :exist?,          :instance_exists?
 
-      # @return [Base] itself on success if no block was given
-      # @return [Boolean] true on success if block was given
+      # @return [Base] itself on success
       # @raise [NodeNotFoundError]
       def open object_name, *args
         if Base.instance_exists? object_name
           if block_given?
             base = Base.send :load, object_name
             yield(base)
-            base.close
-            true
+            base.container.close_write
+            base
 
           else
             Base.send :load, object_name

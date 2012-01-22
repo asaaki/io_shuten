@@ -6,22 +6,27 @@ module IO_shuten
   module Errors
 
     # Exception if a node object was not found
-    class NodeNotFoundError   < ::StandardError; end
+    class NodeNotFoundError < ::StandardError
+    end
 
     # Exception if the node object name was of wrong type
-    class NodeNameError       < ::StandardError; end
+    class NodeNameError < ::StandardError
+    end
 
     # Exception if the node object name was found in pool
-    class NodeNameExistsError < ::StandardError; end
+    class NodeExistsError < ::StandardError
+    end
 
     # Exception if file was not found
-    class FileNotFoundError   < ::StandardError; end
+    class FileNotFoundError < ::StandardError
+    end
 
     # Exception if something went wrong on file handling
-    class FileAccessError     < ::StandardError; end
+    class FileAccessError < ::StandardError
+    end
 
     # Exception for not yet implemented methods (stubs)
-    class NotYetImplemented   < ::StandardError
+    class NotYetImplemented < ::StandardError
       # @private
       def initialize callee = nil, pos = nil
         msg = if callee
