@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; IO::shuten 【五百::終点】
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/blame.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>IO::shuten 【五百::終点】 <a href="http://travis-ci.org/asaaki/io_shuten"><img src="https://secure.travis-ci.org/asaaki/io_shuten.png" alt="Build Status"></a></h1>
+
+<p>Use databases as IO handler like you would do with files and streams.</p>
+
+<h2>Motivation</h2>
+
+<p>One purpose for creating this project is to have an IO like interface to database storages.</p>
+
+<p>With this gem you should have the possibility to use redis or mongodb as endpoints for IO related tasks like logging.</p>
+
+<p>Example:</p>
+
+<p>```ruby
+require &quot;io_shuten&quot;
+require &quot;logger&quot;</p>
+
+<p>logdev = IO<em>shuten::Redis.new( REDIS</em>INSTANCE )
+logger = Logger.new(logdev)</p>
+
+<p>logger.info &quot;This message will be stored in redis.&quot;
+```</p>
+
+<h2>IO::shuten? 【五百::終点】(io shūten)!</h2>
+
+<p>In japanese <code>io</code> means <em>500</em> or <em>big amount</em>, <code>shū･ten</code> means <em>endpoint</em> (train terminus/last stop or mathematical endpoint).</p>
+
+<h2>Types</h2>
+
+<h3>IO_shuten::Base</h3>
+
+<p>An in-memory storage system (handles simple StringIO objects).</p>
+
+<p>Offers write-to-disk for single instance and all instances.</p>
+
+<h3>IO_shuten::Redis</h3>
+
+<p>Stores content in a redis database.</p>
+
+<h3>IO_shuten::Mongo</h3>
+
+<p>Stores content in a mongodb database.</p>
+
+<h2>Not for production!</h2>
+
+<p>This project is freshly started and currently not usable.</p>
+
+<p>Everything can and maybe will change.</p>
+
+<p>Feel free to contribute, write issues if you want to support me with your ideas and insights.</p>
+
+<h2>git flowed</h2>
+
+<p>Development will happen in the <code>develop</code> branch now, master should be in a deployable state.</p>
+
+<p>Read more about <code>git flow</code> and the branchin model here:</p>
+
+<ul>
+<li>http://nvie.com/posts/a-successful-git-branching-model/</li>
+<li>https://github.com/nvie/gitflow</li>
+</ul>
+
+<p>I like this approach and try to use it whenever possible, also in one-man-development.</p>
+
+<h2>License</h2>
+
+<p>This gem/software is licensed under MIT/X11 license. See <a href="https://raw.github.com/asaaki/io_shuten/develop/LICENSE">LICENSE</a> (or <a href="https://raw.github.com/asaaki/io_shuten/develop/LICENSE.de">LICENSE.de</a> for german translation).</p>
+
+<p>— <a href="https://github.com/asaaki">Christoph &#39;asaaki&#39; Grabo</a></p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Sun Jan 22 01:06:27 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

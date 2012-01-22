@@ -7,7 +7,6 @@ require "jeweler"
 require "rspec"
 require "rspec/core/rake_task"
 
-require 'rdoc/task'
 require "yard"
 
 
@@ -53,11 +52,6 @@ task "spec:cov" do
 end
 
 
-
-RDoc::Task.new do |rdoc|
-  #rdoc.main = "README.md"
-  rdoc.rdoc_files.include("README.md", "lib/**/*.rb")
-end
 
 YARD::Rake::YardocTask.new do |t|
   t.files   = ['lib/**/*.rb']
