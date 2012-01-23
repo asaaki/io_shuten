@@ -110,16 +110,6 @@ implementations.</p>
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="Mongo.html" title="IO_shuten::Mongo (class)">Mongo</a></span>, <span class='object_link'><a href="Redis.html" title="IO_shuten::Redis (class)">Redis</a></span></p>
 </div>
-<h2>Defined Under Namespace</h2>
-<p class="children">
-   
-    
-   
-    
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Base/FileAccessError.html" title="IO_shuten::Base::FileAccessError (class)">FileAccessError</a></span>, <span class='object_link'><a href="Base/FileNotFoundError.html" title="IO_shuten::Base::FileNotFoundError (class)">FileNotFoundError</a></span>, <span class='object_link'><a href="Base/NodeNameError.html" title="IO_shuten::Base::NodeNameError (class)">NodeNameError</a></span>, <span class='object_link'><a href="Base/NodeNotFoundError.html" title="IO_shuten::Base::NodeNotFoundError (class)">NodeNotFoundError</a></span>, <span class='object_link'><a href="Base/NotYetImplemented.html" title="IO_shuten::Base::NotYetImplemented (class)">NotYetImplemented</a></span>
-    
-  
-</p>
 
   <h2>Constant Summary</h2>
   
@@ -181,7 +171,7 @@ implementations.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>holds StringIO object.</p>
+<p>holds StringIO node.</p>
 </div></span>
   
 </li>
@@ -190,7 +180,7 @@ implementations.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#object_name-instance_method" title="#object_name (instance method)">- (String) <strong>object_name</strong> </a>
+      <a href="#node_name-instance_method" title="#node_name (instance method)">- (String) <strong>node_name</strong> </a>
     
 
     
@@ -229,7 +219,7 @@ implementations.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_instance-class_method" title="delete_instance (class method)">+ (Object) <strong>delete_instance</strong>(object_name_or_instance) </a>
+      <a href="#delete_instance-class_method" title="delete_instance (class method)">+ (Object) <strong>delete_instance</strong>(node_name_or_instance) </a>
     
 
     
@@ -252,11 +242,11 @@ implementations.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#exists%3F-class_method" title="exists? (class method)">+ (Boolean) <strong>exists?</strong>(o_name = nil) </a>
+      <a href="#instance_exists%3F-class_method" title="instance_exists? (class method)">+ (Boolean) <strong>instance_exists?</strong>(node_name) </a>
     
 
     
-      (also: exist?)
+      (also: instance_exist?, exists?, exist?)
     
   </span>
   
@@ -267,7 +257,9 @@ implementations.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Checks for existence of a node.</p>
+</div></span>
   
 </li>
 
@@ -278,6 +270,8 @@ implementations.</p>
       <a href="#instances-class_method" title="instances (class method)">+ (Array) <strong>instances</strong> </a>
     
 
+    
+      (also: pool, nodes)
     
   </span>
   
@@ -298,7 +292,7 @@ implementations.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#open-class_method" title="open (class method)">+ (Base, Boolean) <strong>open</strong>(object_name, *args) </a>
+      <a href="#load_instances-class_method" title="load_instances (class method)">+ (Boolean) <strong>load_instances</strong>(source) </a>
     
 
     
@@ -311,7 +305,34 @@ implementations.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Loads instances from disk.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open-class_method" title="open (class method)">+ (Base) <strong>open</strong>(node_name, *args) </a>
+    
+
+    
+      (also: open_node)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Itself on success.</p>
+</div></span>
   
 </li>
 
@@ -334,6 +355,29 @@ implementations.</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Deletes ALL instances in the pool!.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save_instances-class_method" title="save_instances (class method)">+ (Boolean) <strong>save_instances</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Saves all instances to disk.</p>
 </div></span>
   
 </li>
@@ -374,7 +418,7 @@ implementations.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Base) <strong>initialize</strong>(object_name = nil, *args) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Base) <strong>initialize</strong>(node_name = nil, *args) </a>
     
 
     
@@ -390,7 +434,7 @@ implementations.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Creates a new Base object and stores it in the pool.</p>
+<p>Creates a new Base node and stores it in the pool.</p>
 </div></span>
   
 </li>
@@ -451,14 +495,14 @@ implementations.</p>
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="IO_shuten::Base (class)">Base</a></span></tt>) <strong>initialize</strong>(object_name = nil, *args) 
+    - (<tt><span class='object_link'><a href="" title="IO_shuten::Base (class)">Base</a></span></tt>) <strong>initialize</strong>(node_name = nil, *args) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     
-<p>Creates a new Base object and stores it in the pool</p>
+<p>Creates a new Base node and stores it in the pool</p>
 
 
   </div>
@@ -469,7 +513,7 @@ implementations.</p>
   
     <li>
       
-        <span class='name'>object_name</span>
+        <span class='name'>node_name</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -480,14 +524,14 @@ implementations.</p>
       
         &mdash;
         <div class='inline'>
-<p>Name of the node object (container)</p>
+<p>Name of the node node (container)</p>
 </div>
       
     </li>
   
     <li>
       
-        <span class='name'>object_name</span>
+        <span class='name'>node_name</span>
       
       
         <span class='type'>(<tt>Symbol</tt>)</span>
@@ -522,7 +566,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/NodeNameError.html" title="IO_shuten::Base::NodeNameError (class)">NodeNameError</a></span></tt>)</span>
+        <span class='type'>(<tt>NodeNameError</tt>)</span>
       
       
       
@@ -531,7 +575,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 47</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 26</span></caption>
   <tr>
     <td>
       <table>
@@ -542,10 +586,32 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">47</td>
-          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_object_name'>object_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span></pre></td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">26</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">27</td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>String</span><span class='comma'>,</span> <span class='const'>Symbol</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">28</td>
+          <td><pre class="code">    <span class='kw'>unless</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -555,19 +621,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 16:25:37</td>
           <td class="commit"><a title="Base works as a wrapper/proxy to StringIO.">361b9ae2</a><td>
-          <td class="lines">48</td>
-          <td><pre class="code">  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>String</span><span class='comma'>,</span><span class='const'>Symbol</span><span class='comma'>,</span><span class='const'>NilClass</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_object_name'>object_name</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-21 16:25:37</td>
-          <td class="commit"><a title="Base works as a wrapper/proxy to StringIO.">361b9ae2</a><td>
-          <td class="lines">49</td>
-          <td><pre class="code">    <span class='ivar'>@object_name</span>    <span class='op'>=</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">29</td>
+          <td><pre class="code">    <span class='ivar'>@node_name</span>    <span class='op'>=</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -577,7 +632,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">50</td>
+          <td class="lines">30</td>
           <td><pre class="code">    <span class='ivar'>@container</span>      <span class='op'>=</span> <span class='const'>StringIO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w+</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -588,8 +643,41 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">51</td>
+          <td class="lines">31</td>
           <td><pre class="code"></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">32</td>
+          <td><pre class="code">    <span class='cvar'>@@instances</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 16:18:47</td>
+          <td class="commit"><a title="Update specs for some exceptions.">53887b37</a><td>
+          <td class="lines">33</td>
+          <td><pre class="code">    <span class='kw'>else</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">34</td>
+          <td><pre class="code">      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeExistsError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Node already in pool, replacement is not allowed.</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -599,8 +687,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">52</td>
-          <td><pre class="code">    <span class='cvar'>@@instances</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span></pre></td>
+          <td class="lines">35</td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -608,9 +696,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 16:25:37</td>
-          <td class="commit"><a title="Base works as a wrapper/proxy to StringIO.">361b9ae2</a><td>
-          <td class="lines">53</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">36</td>
           <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -621,8 +709,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">54</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NodeNameError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Name must be kind of String or Symbol.</span><span class='tstring_end'>&quot;</span></span></pre></td>
+          <td class="lines">37</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNameError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Name must be kind of String or Symbol and can't be nil.</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -632,7 +720,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">55</td>
+          <td class="lines">38</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -643,7 +731,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">56</td>
+          <td class="lines">39</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -670,7 +758,7 @@ implementations.</p>
 
   
 </p><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 171</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 207</span></caption>
   <tr>
     <td>
       <table>
@@ -683,7 +771,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">171</td>
+          <td class="lines">207</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span></pre></td>
         </tr>
       
@@ -694,7 +782,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">172</td>
+          <td class="lines">208</td>
           <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span> <span class='id identifier rubyid_method'>method</span></pre></td>
         </tr>
       
@@ -703,10 +791,21 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 18:02:36</td>
-          <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">173</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">209</td>
           <td><pre class="code">    <span class='ivar'>@container</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">210</td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -716,7 +815,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">174</td>
+          <td class="lines">211</td>
+          <td><pre class="code">    <span class='id identifier rubyid_not_yet_implemented!'>not_yet_implemented!</span> <span class='id identifier rubyid_method'>method</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-21 18:02:36</td>
+          <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
+          <td class="lines">212</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -727,7 +837,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
-          <td class="lines">175</td>
+          <td class="lines">213</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -756,7 +866,7 @@ implementations.</p>
 </p><div class="docstring">
   <div class="discussion">
     
-<p>holds StringIO object</p>
+<p>holds StringIO node</p>
 
 
   </div>
@@ -778,7 +888,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 38</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 17</span></caption>
   <tr>
     <td>
       <table>
@@ -791,7 +901,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">38</td>
+          <td class="lines">17</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_container'>container</span></pre></td>
         </tr>
       
@@ -800,9 +910,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 23:54:47</td>
-          <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">39</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">18</td>
           <td><pre class="code">  <span class='ivar'>@container</span></pre></td>
         </tr>
       
@@ -813,7 +923,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">40</td>
+          <td class="lines">19</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -826,11 +936,11 @@ implementations.</p>
     
       
       <span id=""></span>
-      <span id="object_name-instance_method"></span>
+      <span id="node_name-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="object_name-instance_method">
+  <p class="signature " id="node_name-instance_method">
   
-    - (<tt>String</tt>) <strong>object_name</strong>  <span class="extras">(readonly)</span>
+    - (<tt>String</tt>) <strong>node_name</strong>  <span class="extras">(readonly)</span>
   
 
   
@@ -859,7 +969,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 34</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 13</span></caption>
   <tr>
     <td>
       <table>
@@ -872,8 +982,19 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">34</td>
-          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">13</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">14</td>
+          <td><pre class="code">  <span class='ivar'>@node_name</span></pre></td>
         </tr>
       
         
@@ -883,18 +1004,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">35</td>
-          <td><pre class="code">  <span class='ivar'>@object_name</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-21 23:54:47</td>
-          <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">36</td>
+          <td class="lines">15</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -915,7 +1025,7 @@ implementations.</p>
       <div class="method_details first">
   <p class="signature first" id="delete_instance-class_method">
   
-    + (<tt>Object</tt>) <strong>delete_instance</strong>(object_name_or_instance) 
+    + (<tt>Object</tt>) <strong>delete_instance</strong>(node_name_or_instance) 
   
 
   
@@ -933,12 +1043,17 @@ implementations.</p>
   
     <li>
       
-        <span class='name'>object</span>
+        <span class='name'>node</span>
       
       
         <span class='type'>(<tt><span class='object_link'><a href="" title="IO_shuten::Base (class)">Base</a></span></tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>instance</p>
+</div>
       
     </li>
   
@@ -953,7 +1068,7 @@ implementations.</p>
       
         &mdash;
         <div class='inline'>
-<p>of object as String</p>
+<p>of node as String</p>
 </div>
       
     </li>
@@ -969,7 +1084,7 @@ implementations.</p>
       
         &mdash;
         <div class='inline'>
-<p>of object as Symbol</p>
+<p>of node as Symbol</p>
 </div>
       
     </li>
@@ -978,7 +1093,7 @@ implementations.</p>
 
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 78</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 64</span></caption>
   <tr>
     <td>
       <table>
@@ -989,10 +1104,43 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">78</td>
-          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_delete_instance'>delete_instance</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span></pre></td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">64</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_delete_instance'>delete_instance</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">65</td>
+          <td><pre class="code">  <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_node'>node</span><span class='op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">66</td>
+          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Symbol</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>==</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">67</td>
+          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>==</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
         </tr>
       
         
@@ -1002,8 +1150,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">79</td>
-          <td><pre class="code">  <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_object'>object</span><span class='op'>|</span></pre></td>
+          <td class="lines">68</td>
+          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Base</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node'>node</span> <span class='op'>==</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -1013,40 +1161,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">80</td>
-          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Symbol</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span> <span class='op'>==</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">81</td>
-          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span> <span class='op'>==</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">82</td>
-          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Base</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span> <span class='op'>==</span> <span class='id identifier rubyid_object_name_or_instance'>object_name_or_instance</span><span class='rparen'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">83</td>
+          <td class="lines">69</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1057,7 +1172,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">84</td>
+          <td class="lines">70</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1069,24 +1184,62 @@ implementations.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="exists?-class_method">
+  <p class="signature " id="instance_exists?-class_method">
   
-    + (<tt>Boolean</tt>) <strong>exists?</strong>(o_name = nil) 
+    + (<tt>Boolean</tt>) <strong>instance_exists?</strong>(node_name) 
   
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='exist?-class_method'>exist?</span></span>
+    <span class="names"><span id='instance_exist?-class_method'>instance_exist?</span>, <span id='exists?-class_method'>exists?</span>, <span id='exist?-class_method'>exist?</span></span>
     </span>
   
 </p><div class="docstring">
   <div class="discussion">
     
+<p>Checks for existence of a node</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of node as String</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of node as Symbol</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -1102,7 +1255,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 107</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 118</span></caption>
   <tr>
     <td>
       <table>
@@ -1113,10 +1266,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 23:54:47</td>
-          <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">107</td>
-          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span> <span class='id identifier rubyid_o_name'>o_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">118</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1124,10 +1277,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">108</td>
-          <td><pre class="code">  <span class='id identifier rubyid_o_name'>o_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">119</td>
+          <td><pre class="code">  <span class='comment'># we need to check for node_name, otherwise it will fail though node exists</pre></td>
         </tr>
       
         
@@ -1135,10 +1288,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">109</td>
-          <td><pre class="code">  <span class='kw'>false</span></pre></td>
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">120</td>
+          <td><pre class="code"></span>  <span class='op'>!</span><span class='id identifier rubyid_instances'>instances</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_instances'>instances</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:node_name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -1146,9 +1299,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">110</td>
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">121</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1165,6 +1318,10 @@ implementations.</p>
     + (<tt>Array</tt>) <strong>instances</strong> 
   
 
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='pool-class_method'>pool</span>, <span id='nodes-class_method'>nodes</span></span>
+    </span>
   
 </p><div class="docstring">
   <div class="discussion">
@@ -1196,7 +1353,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 61</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 46</span></caption>
   <tr>
     <td>
       <table>
@@ -1209,7 +1366,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">61</td>
+          <td class="lines">46</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_instances'>instances</span></pre></td>
         </tr>
       
@@ -1220,7 +1377,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">62</td>
+          <td class="lines">47</td>
           <td><pre class="code">  <span class='cvar'>@@instances</span></pre></td>
         </tr>
       
@@ -1229,9 +1386,288 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">63</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">48</td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="load_instances-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>load_instances</strong>(source) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Loads instances from disk</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>Directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>File</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>names (HINT: you can provide a Dir.glob)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 77</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">77</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_load_instances'>load_instances</span> <span class='id identifier rubyid_source'>source</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">78</td>
+          <td><pre class="code">  <span class='kw'>case</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">79</td>
+          <td><pre class="code">    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&quot;</span></span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">80</td>
+          <td><pre class="code">      <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file_name'>file_name</span><span class='op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">81</td>
+          <td><pre class="code">        <span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">82</td>
+          <td><pre class="code">        <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">83</td>
+          <td><pre class="code">      <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">84</td>
+          <td><pre class="code">    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">85</td>
+          <td><pre class="code">      <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">86</td>
+          <td><pre class="code">        <span class='const'>Dir</span><span class='lbracket'>[</span><span class='id identifier rubyid_source'>source</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/**/*</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file_name'>file_name</span><span class='op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">87</td>
+          <td><pre class="code">          <span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">88</td>
+          <td><pre class="code">          <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">89</td>
+          <td><pre class="code">        <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">90</td>
+          <td><pre class="code">      <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">91</td>
+          <td><pre class="code">    <span class='kw'>else</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">92</td>
+          <td><pre class="code">      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Input must be a kind of Array or String (but was: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>).</span><span class='tstring_end'>&quot;</span></span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">93</td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">94</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1245,13 +1681,19 @@ implementations.</p>
       <div class="method_details ">
   <p class="signature " id="open-class_method">
   
-    + (<tt><span class='object_link'><a href="" title="IO_shuten::Base (class)">Base</a></span></tt>, <tt>Boolean</tt>) <strong>open</strong>(object_name, *args) 
+    + (<tt><span class='object_link'><a href="" title="IO_shuten::Base (class)">Base</a></span></tt>) <strong>open</strong>(node_name, *args) 
   
 
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='open_node-class_method'>open_node</span></span>
+    </span>
   
 </p><div class="docstring">
   <div class="discussion">
     
+<p>Itself on success</p>
+
 
   </div>
 </div>
@@ -1269,21 +1711,7 @@ implementations.</p>
       
         &mdash;
         <div class='inline'>
-<p>itself on success if no block was given</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>true on success if block was given</p>
+<p>itself on success</p>
 </div>
       
     </li>
@@ -1295,7 +1723,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/NodeNotFoundError.html" title="IO_shuten::Base::NodeNotFoundError (class)">NodeNotFoundError</a></span></tt>)</span>
+        <span class='type'>(<tt>NodeNotFoundError</tt>)</span>
       
       
       
@@ -1304,7 +1732,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 89</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 128</span></caption>
   <tr>
     <td>
       <table>
@@ -1315,10 +1743,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">89</td>
-          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_open'>open</span> <span class='id identifier rubyid_object_name'>object_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span></pre></td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">128</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_open'>open</span> <span class='id identifier rubyid_node_name'>node_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span></pre></td>
         </tr>
       
         
@@ -1328,8 +1756,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">90</td>
-          <td><pre class="code">  <span class='kw'>if</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">129</td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1337,9 +1765,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">91</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">130</td>
           <td><pre class="code">    <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span></pre></td>
         </tr>
       
@@ -1348,10 +1776,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">92</td>
-          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">131</td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1361,7 +1789,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">93</td>
+          <td class="lines">132</td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_closed_write?'>closed_write?</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 16:18:47</td>
+          <td class="commit"><a title="Update specs for some exceptions.">53887b37</a><td>
+          <td class="lines">133</td>
           <td><pre class="code">      <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1370,10 +1809,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 23:54:47</td>
-          <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">94</td>
-          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span></pre></td>
+          <td class="date">2012-01-22 16:18:47</td>
+          <td class="commit"><a title="Update specs for some exceptions.">53887b37</a><td>
+          <td class="lines">134</td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_close_write'>close_write</span></pre></td>
         </tr>
       
         
@@ -1383,8 +1822,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">95</td>
-          <td><pre class="code">      <span class='kw'>true</span></pre></td>
+          <td class="lines">135</td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span></pre></td>
         </tr>
       
         
@@ -1394,7 +1833,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">96</td>
+          <td class="lines">136</td>
           <td><pre class="code"></pre></td>
         </tr>
       
@@ -1403,9 +1842,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">97</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">137</td>
           <td><pre class="code">    <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -1414,10 +1853,21 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">98</td>
-          <td><pre class="code">      <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">138</td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">139</td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_closed_write?'>closed_write?</span></pre></td>
         </tr>
       
         
@@ -1427,7 +1877,18 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">99</td>
+          <td class="lines">140</td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-21 12:30:09</td>
+          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
+          <td class="lines">141</td>
           <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1438,7 +1899,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">100</td>
+          <td class="lines">142</td>
           <td><pre class="code"></pre></td>
         </tr>
       
@@ -1447,9 +1908,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">101</td>
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">143</td>
           <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -1460,8 +1921,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">102</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NodeNotFoundError</span></pre></td>
+          <td class="lines">144</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNotFoundError</span></pre></td>
         </tr>
       
         
@@ -1471,7 +1932,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 12:30:09</td>
           <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">103</td>
+          <td class="lines">145</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1480,9 +1941,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 12:30:09</td>
-          <td class="commit"><a title="Update stuff">bfd768dc</a><td>
-          <td class="lines">104</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">146</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1525,7 +1986,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 68</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 55</span></caption>
   <tr>
     <td>
       <table>
@@ -1536,9 +1997,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">68</td>
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">55</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_purge_instances!'>purge_instances!</span></pre></td>
         </tr>
       
@@ -1547,10 +2008,10 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 23:54:47</td>
-          <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">69</td>
-          <td><pre class="code">  <span class='cvar'>@@instances</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span></pre></td>
+          <td class="date">2012-01-21 14:44:16</td>
+          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
+          <td class="lines">56</td>
+          <td><pre class="code">  <span class='cvar'>@@instances</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='kw'>and</span> <span class='kw'>true</span></pre></td>
         </tr>
       
         
@@ -1560,8 +2021,64 @@ implementations.</p>
         
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">70</td>
-          <td><pre class="code">  <span class='kw'>true</span></pre></td>
+          <td class="lines">57</td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="save_instances-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>save_instances</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Saves all instances to disk</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 99</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">99</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_save_instances'>save_instances</span></pre></td>
         </tr>
       
         
@@ -1569,9 +2086,130 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 14:44:16</td>
-          <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
-          <td class="lines">71</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">100</td>
+          <td><pre class="code">  <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_node'>node</span><span class='op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">101</td>
+          <td><pre class="code">    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fh'>fh</span><span class='op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">102</td>
+          <td><pre class="code">      <span class='id identifier rubyid_fh'>fh</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">103</td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">104</td>
+          <td><pre class="code">    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:failed</span> <span class='kw'>unless</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rparen'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">105</td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">106</td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_results'>results</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">107</td>
+          <td><pre class="code">    <span class='kw'>false</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">108</td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">109</td>
+          <td><pre class="code">    <span class='kw'>true</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">110</td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">111</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1622,7 +2260,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 154</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 190</span></caption>
   <tr>
     <td>
       <table>
@@ -1633,9 +2271,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 20:50:50</td>
-          <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">154</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">190</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_file_exists?'>file_exists?</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
@@ -1646,8 +2284,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">155</td>
-          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">191</td>
+          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1657,7 +2295,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">156</td>
+          <td class="lines">192</td>
           <td><pre class="code">  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1668,7 +2306,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">157</td>
+          <td class="lines">193</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1720,7 +2358,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/FileNotFoundError.html" title="IO_shuten::Base::FileNotFoundError (class)">FileNotFoundError</a></span></tt>)</span>
+        <span class='type'>(<tt>FileNotFoundError</tt>)</span>
       
       
       
@@ -1729,7 +2367,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 129</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 165</span></caption>
   <tr>
     <td>
       <table>
@@ -1740,9 +2378,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 20:50:50</td>
-          <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">129</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">165</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_load_from_file'>load_from_file</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
@@ -1753,8 +2391,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">130</td>
-          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">166</td>
+          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1764,7 +2402,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">131</td>
+          <td class="lines">167</td>
           <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_file_exists?'>file_exists?</span> <span class='id identifier rubyid_file_name'>file_name</span></pre></td>
         </tr>
       
@@ -1775,7 +2413,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">132</td>
+          <td class="lines">168</td>
           <td><pre class="code">    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1786,7 +2424,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">133</td>
+          <td class="lines">169</td>
           <td><pre class="code">    <span class='kw'>self</span></pre></td>
         </tr>
       
@@ -1795,9 +2433,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 20:50:50</td>
-          <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">134</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">170</td>
           <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
@@ -1808,8 +2446,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">135</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileNotFoundError</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">171</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>FileNotFoundError</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1819,7 +2457,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">136</td>
+          <td class="lines">172</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1830,7 +2468,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">137</td>
+          <td class="lines">173</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1882,7 +2520,7 @@ implementations.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Base/FileAccessError.html" title="IO_shuten::Base::FileAccessError (class)">FileAccessError</a></span></tt>)</span>
+        <span class='type'>(<tt>FileAccessError</tt>)</span>
       
       
       
@@ -1891,7 +2529,7 @@ implementations.</p>
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 141</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/base.rb', line 177</span></caption>
   <tr>
     <td>
       <table>
@@ -1902,9 +2540,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 20:50:50</td>
-          <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">141</td>
+          <td class="date">2012-01-22 21:35:53</td>
+          <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
+          <td class="lines">177</td>
           <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_save_to_file'>save_to_file</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
@@ -1915,8 +2553,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">142</td>
-          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_name'>object_name</span></pre></td>
+          <td class="lines">178</td>
+          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1926,7 +2564,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">143</td>
+          <td class="lines">179</td>
           <td><pre class="code">  <span class='kw'>begin</span></pre></td>
         </tr>
       
@@ -1937,7 +2575,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">144</td>
+          <td class="lines">180</td>
           <td><pre class="code">    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fh'>fh</span><span class='op'>|</span></pre></td>
         </tr>
       
@@ -1948,7 +2586,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">145</td>
+          <td class="lines">181</td>
           <td><pre class="code">      <span class='id identifier rubyid_fh'>fh</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span></pre></td>
         </tr>
       
@@ -1959,7 +2597,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
-          <td class="lines">146</td>
+          <td class="lines">182</td>
           <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -1970,7 +2608,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">147</td>
+          <td class="lines">183</td>
           <td><pre class="code">    <span class='kw'>self</span></pre></td>
         </tr>
       
@@ -1979,9 +2617,9 @@ implementations.</p>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-21 20:50:50</td>
-          <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">148</td>
+          <td class="date">2012-01-22 15:46:58</td>
+          <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
+          <td class="lines">184</td>
           <td><pre class="code">  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span></pre></td>
         </tr>
       
@@ -1992,8 +2630,8 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:50:50</td>
           <td class="commit"><a title="Base can load and save files.">a1da5745</a><td>
-          <td class="lines">149</td>
-          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileAccessError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reason: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span></pre></td>
+          <td class="lines">185</td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>FileAccessError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reason: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -2003,7 +2641,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">150</td>
+          <td class="lines">186</td>
           <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
@@ -2014,7 +2652,7 @@ implementations.</p>
         
           <td class="date">2012-01-21 20:02:53</td>
           <td class="commit"><a title="Fix respond_to logic and exception.">2bfef608</a><td>
-          <td class="lines">151</td>
+          <td class="lines">187</td>
           <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
@@ -2030,7 +2668,7 @@ implementations.</p>
 </div>
     
     <div id="footer">
-  Generated on Sun Jan 22 01:06:28 2012 by 
+  Generated on Mon Jan 23 01:15:28 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

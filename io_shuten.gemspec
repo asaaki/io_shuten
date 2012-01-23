@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "io_shuten"
-  s.version = "0.0.1.dev4"
+  s.version = "0.0.1.dev5"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
-  s.date = "2012-01-21"
+  s.date = "2012-01-23"
   s.description = "IO::shuten \u{2013} Use databases as IO handler like you would do with files and streams."
   s.email = ["chris@dinarrr.com"]
   s.extra_rdoc_files = [
@@ -18,14 +18,10 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
-    ".rdoc_options",
     ".rspec",
     ".rvmrc",
     ".simplecov",
     ".travis.yml",
-    ".yardoc/checksums",
-    ".yardoc/objects/root.dat",
-    ".yardoc/proxy_types",
     ".yardopts",
     "Gemfile",
     "Gemfile.lock",
@@ -33,22 +29,76 @@ Gem::Specification.new do |s|
     "LICENSE.de",
     "README.md",
     "Rakefile",
+    "doc/IO_shuten.html",
+    "doc/IO_shuten/Base.html",
+    "doc/IO_shuten/Base/FileAccessError.html",
+    "doc/IO_shuten/Base/FileNotFoundError.html",
+    "doc/IO_shuten/Base/NodeNameError.html",
+    "doc/IO_shuten/Base/NodeNotFoundError.html",
+    "doc/IO_shuten/Base/NotYetImplemented.html",
+    "doc/IO_shuten/Errors.html",
+    "doc/IO_shuten/Errors/FileAccessError.html",
+    "doc/IO_shuten/Errors/FileNotFoundError.html",
+    "doc/IO_shuten/Errors/NodeExistsError.html",
+    "doc/IO_shuten/Errors/NodeNameError.html",
+    "doc/IO_shuten/Errors/NodeNameExistsError.html",
+    "doc/IO_shuten/Errors/NodeNotFoundError.html",
+    "doc/IO_shuten/Errors/NotYetImplemented.html",
+    "doc/IO_shuten/Mongo.html",
+    "doc/IO_shuten/Redis.html",
+    "doc/IO_shuten/Stores.html",
+    "doc/IO_shuten/Stores/Mongo.html",
+    "doc/IO_shuten/Stores/Mongo/Collection.html",
+    "doc/IO_shuten/Stores/Mongo/GridFS.html",
+    "doc/IO_shuten/Stores/Redis.html",
+    "doc/IO_shuten/Stores/Redis/KeyValue.html",
+    "doc/IO_shuten/Stores/Redis/PubSub.html",
+    "doc/_index.html",
+    "doc/class_list.html",
+    "doc/css/blame.css",
+    "doc/css/common.css",
+    "doc/css/full_list.css",
+    "doc/css/style.css",
+    "doc/file.README.html",
+    "doc/file_list.html",
+    "doc/frames.html",
+    "doc/index.html",
+    "doc/js/app.js",
+    "doc/js/full_list.js",
+    "doc/js/jquery.js",
+    "doc/method_list.html",
+    "doc/top-level-namespace.html",
     "io_shuten.gemspec",
     "lib/io_shuten.rb",
     "lib/io_shuten/base.rb",
+    "lib/io_shuten/errors.rb",
     "lib/io_shuten/mongo.rb",
     "lib/io_shuten/redis.rb",
+    "lib/io_shuten/stores.rb",
+    "lib/io_shuten/stores/mongo.rb",
+    "lib/io_shuten/stores/mongo/collection.rb",
+    "lib/io_shuten/stores/mongo/gridfs.rb",
+    "lib/io_shuten/stores/redis.rb",
+    "lib/io_shuten/stores/redis/key_value.rb",
+    "lib/io_shuten/stores/redis/pub_sub.rb",
     "lib/io_shuten/version.rb",
     "spec/examples/logger_spec.rb",
     "spec/lib/base_spec.rb",
     "spec/lib/mongo_spec.rb",
     "spec/lib/redis_spec.rb",
+    "spec/lib/stores/mongo/collection_spec.rb",
+    "spec/lib/stores/mongo/gridfs_spec.rb",
+    "spec/lib/stores/mongo_spec.rb",
+    "spec/lib/stores/redis/key_value_spec.rb",
+    "spec/lib/stores/redis/pub_sub_spec.rb",
+    "spec/lib/stores/redis_spec.rb",
+    "spec/lib/stores_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/asaaki/io_shuten"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.15"
   s.summary = "IO::shuten \u{2013} Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
 
   if s.respond_to? :specification_version then
@@ -68,7 +118,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<redcarpet>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<yard-rspec>, [">= 0"])
       s.add_development_dependency(%q<yard-blame>, [">= 0"])
       s.add_development_dependency(%q<pry>, [">= 0"])
       s.add_development_dependency(%q<pry-doc>, [">= 0"])
@@ -86,7 +135,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<redcarpet>, [">= 0"])
       s.add_dependency(%q<rdoc>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<yard-rspec>, [">= 0"])
       s.add_dependency(%q<yard-blame>, [">= 0"])
       s.add_dependency(%q<pry>, [">= 0"])
       s.add_dependency(%q<pry-doc>, [">= 0"])
@@ -105,7 +153,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<redcarpet>, [">= 0"])
     s.add_dependency(%q<rdoc>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<yard-rspec>, [">= 0"])
     s.add_dependency(%q<yard-blame>, [">= 0"])
     s.add_dependency(%q<pry>, [">= 0"])
     s.add_dependency(%q<pry-doc>, [">= 0"])

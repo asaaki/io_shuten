@@ -4,56 +4,41 @@ module IO_shuten
   # IO_shuten::Base is the in-memory implementation and parent class for other implementations.
   class Base
 
-    # Exception if a node object was not found
-    class NodeNotFoundError < StandardError; end
-    # Exception if the node object name was of wrong type
-    class NodeNameError     < StandardError; end
-    # Exception if file was not found
-    class FileNotFoundError < StandardError; end
-    # Exception if something went wrong on file handling
-    class FileAccessError   < StandardError; end
-    # Exception for not yet implemented methods (stubs)
-    class NotYetImplemented < StandardError
-      # @private
-      def initialize callee = nil, pos = nil
-        msg = if callee
-          "Method :#{callee} is not (yet) supported. #{pos ? ''+pos+'' : ''}"
-        else
-          "The method is not (yet) supported."
-        end
-        super msg
-      end
-    end
-
     # Storage of current Base instances of the running process
     # @return [Array]
     @@instances = []
 
     # Name of current node instance
     # @return [String]
-    attr_reader :object_name
+    attr_reader :node_name
 
-    # holds StringIO object
+    # holds StringIO node
     # @return [StringIO]
     attr :container
 
-    # Creates a new Base object and stores it in the pool
+    # Creates a new Base node and stores it in the pool
     #
-    # @param [String] object_name Name of the node object (container)
-    # @param [Symbol] object_name also a symbol is allowed
+    # @param [String] node_name Name of the node node (container)
+    # @param [Symbol] node_name also a symbol is allowed
     # @param *args (not used)
     # @return [Base]
     # @raise [NodeNameError]
-    def initialize(object_name = nil, *args)
-      if [String,Symbol,NilClass].include?(object_name.class)
-        @object_name    = object_name
+    def initialize(node_name = nil, *args)
+      if [String, Symbol].include?(node_name.class)
+        unless Base.instance_exists? node_name
+        @node_name    = node_name
         @container      = StringIO.new("","w+")
 
         @@instances << self unless @@instances.include?(self)
+        else
+          raise Errors::NodeExistsError, "Node already in pool, replacement is not allowed."
+        end
       else
-        raise NodeNameError, "Name must be kind of String or Symbol."
+        raise Errors::NodeNameError, "Name must be kind of String or Symbol and can't be nil."
       end
     end
+
+    ### class methods
 
     class << self
 
@@ -61,64 +46,115 @@ module IO_shuten
       def instances
         @@instances
       end
+      alias_method :pool,  :instances
+      alias_method :nodes, :instances
 
       # Deletes ALL instances in the pool!
       #
       # @return [Boolean]
       def purge_instances!
-        @@instances = []
-        true
+        @@instances = [] and true
       end
 
       # Deletes a single instance of the pool
       #
-      # @param [Base] object
-      # @param [String] name of object as String
-      # @param [Symbol] name of object as Symbol
-      def delete_instance object_name_or_instance
-        @@instances.delete_if do |object|
-          (object_name_or_instance.is_a?(Symbol) && object.object_name == object_name_or_instance) ||
-          (object_name_or_instance.is_a?(String) && object.object_name == object_name_or_instance) ||
-          (object_name_or_instance.is_a?(Base) && object == object_name_or_instance)
+      # @param [Base] node instance
+      # @param [String] name of node as String
+      # @param [Symbol] name of node as Symbol
+      def delete_instance node_name_or_instance
+        @@instances.delete_if do |node|
+          (node_name_or_instance.is_a?(Symbol) && node.node_name == node_name_or_instance) ||
+          (node_name_or_instance.is_a?(String) && node.node_name == node_name_or_instance) ||
+          (node_name_or_instance.is_a?(Base) && node == node_name_or_instance)
         end
       end
 
-      # @return [Base] itself on success if no block was given
-      # @return [Boolean] true on success if block was given
+      # Loads instances from disk
+      #
+      # @param [String] Directory name
+      # @param [Array] File names (HINT: you can provide a Dir.glob)
+      # @return [Boolean]
+      def load_instances source
+        case source.class.to_s
+          when "Array"
+            source.each do |file_name|
+              node = Base.new(file_name)
+              node.puts File.read(file_name)
+            end
+          when "String"
+            if File.exists?(source) && File.directory?(source)
+              Dir[source+"/**/*"].each do |file_name|
+                node = Base.new(file_name)
+                node.puts File.read(file_name)
+              end
+            end
+          else
+            raise ArgumentError, "Input must be a kind of Array or String (but was: #{source.class})."
+        end
+      end
+
+      # Saves all instances to disk
+      #
+      # @return [Boolean]
+      def save_instances
+        results = @@instances.inject({}) do |result, node|
+          File.open(node.node_name,"w") do |fh|
+            fh.puts node.string
+          end
+          result[node.node_name] = :failed unless File.exists?(node.node_name)
+        end
+        if results
+          false
+        else
+          true
+        end
+      end
+
+      # Checks for existence of a node
+      #
+      # @param [String] name of node as String
+      # @param [Symbol] name of node as Symbol
+      # @return [Boolean]
+      def instance_exists? node_name
+        # we need to check for node_name, otherwise it will fail though node exists
+        !instances.empty? && node_name && instances.map(&:node_name).include?(node_name)
+      end
+      alias_method :instance_exist?, :instance_exists?
+      alias_method :exists?,         :instance_exists?
+      alias_method :exist?,          :instance_exists?
+
+      # @return [Base] itself on success
       # @raise [NodeNotFoundError]
-      def open object_name, *args
-        if Base.exists? object_name
+      def open node_name, *args
+        if Base.instance_exists? node_name
           if block_given?
-            base = Base.send :load, object_name
+            base = Base.send :load, node_name
+            base.reopen(base.container.string) if base.container.closed_write?
             yield(base)
-            base.close
-            true
+            base.container.close_write
+            base
 
           else
-            Base.send :load, object_name
+            base = Base.send :load, node_name
+            base.reopen(base.container.string) if base.container.closed_write?
+            base
           end
 
         else
-          raise NodeNotFoundError
+          raise Errors::NodeNotFoundError
         end
       end
-
-      # @return [Boolean]
-      def exists? o_name = nil
-        o_name ||= self.object_name
-        false
-      end
-      alias_method :exist?, :exists?
+      alias_method :open_node, :open
 
     private
 
       # @private
-      def load object_name
-        obj = Base.new object_name
-        obj.string ""
-        obj
+      def load node_name
+        instances.select do |inst|
+          inst.node_name == node_name
+        end.first
       end
-      alias_method :load_object, :load
+      alias_method :load_node, :load
 
     end
 
@@ -127,32 +163,32 @@ module IO_shuten
     # @return [Base] itself on success
     # @raise [FileNotFoundError]
     def load_from_file file_name = nil
-      file_name ||= self.object_name
+      file_name ||= self.node_name
       if file_exists? file_name
         self.container.string = File.read(file_name)
         self
       else
-        raise FileNotFoundError, self.object_name
+        raise Errors::FileNotFoundError, self.node_name
       end
     end
 
     # @return [Base] itself on success
     # @raise [FileAccessError]
     def save_to_file file_name = nil
-      file_name ||= self.object_name
+      file_name ||= self.node_name
       begin
         File.open(file_name, 'w') do |fh|
           fh.write(self.container.string)
         end
         self
       rescue Exception => e
-        raise FileAccessError, "Reason: #{e.message}"
+        raise Errors::FileAccessError, "Reason: #{e.message}"
       end
     end
 
     # @return [Boolean]
     def file_exists? file_name = nil
-      file_name ||= self.object_name
+      file_name ||= self.node_name
       File.exists?(file_name)
     end
     alias_method :file_exist?, :file_exists?
@@ -171,6 +207,8 @@ module IO_shuten
     def method_missing method, *args, &block
       if respond_to_missing? method
         @container.send method, *args, &block
+      else
+        not_yet_implemented! method
       end
     end
 
@@ -178,7 +216,7 @@ module IO_shuten
 
     # @private
     def not_yet_implemented! callee = nil, pos = nil
-      raise NotYetImplemented, callee, pos
+      raise Errors::NotYetImplemented, callee, pos
     end
 
     # @private
