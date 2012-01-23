@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "io_shuten"
-  s.version = "0.0.1.dev5"
+  s.version = "0.0.2.dev1"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
@@ -83,7 +83,6 @@ Gem::Specification.new do |s|
     "lib/io_shuten/stores/redis/pub_sub.rb",
     "lib/io_shuten/version.rb",
     "spec/examples/logger_spec.rb",
-    "spec/lib/base_spec.rb",
     "spec/lib/mongo_spec.rb",
     "spec/lib/redis_spec.rb",
     "spec/lib/stores/mongo/collection_spec.rb",

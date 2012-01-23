@@ -3,5 +3,5 @@ require File.expand_path("../../spec_helper.rb", __FILE__)
 
 include IO_shuten
 describe Redis do
-  it { Redis.should inherit_from(IO_shuten::Base) }
+  it { IO_shuten::Redis.should inherit_from(IO_shuten::Base) }
 end

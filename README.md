@@ -15,10 +15,10 @@ Example:
 require "io_shuten"
 require "logger"
 
-logdev = IO_shuten::Redis.new( REDIS_INSTANCE )
+logdev = IO_shuten::Memory.new('log_node')
 logger = Logger.new(logdev)
 
-logger.info "This message will be stored in redis."
+logger.info "This message will be stored in memory."
 ```
 
 
@@ -30,20 +30,27 @@ In japanese `io` means *500* or *big amount*, `shū･ten` means *endpoint* (tra
 ## Types
 
 
-### IO_shuten::Base
+### IO_shuten::Memory
 
 An in-memory storage system (handles simple StringIO objects).
 
 Offers write-to-disk for single instance and all instances.
 
+Provides all methods of StringIO.
+
 ### IO_shuten::Redis
 
 Stores content in a redis database.
 
+Provides basic methods like `#read`, `#write` and `#close`.
+A logger only needs write and close methods of an IO object.
 
 ### IO_shuten::Mongo
 
 Stores content in a mongodb database.
+
+Provides basic methods like `#read`, `#write` and `#close`.
+A logger only needs write and close methods of an IO object.
 
 
 ## Not for production!
