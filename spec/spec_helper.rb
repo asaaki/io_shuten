@@ -28,3 +28,12 @@ class Object
   alias_method_chain :raise, :helpfulness
 end
 
+### Custom Matchers
+
+require 'rspec/expectations'
+
+RSpec::Matchers.define :inherit_from do |expected|
+  match do |actual|
+    actual.ancestors.include?(expected)
+  end
+end
