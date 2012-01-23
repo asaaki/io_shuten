@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
-  s.date = "2012-01-22"
+  s.date = "2012-01-23"
   s.description = "IO::shuten \u{2013} Use databases as IO handler like you would do with files and streams."
   s.email = ["chris@dinarrr.com"]
   s.extra_rdoc_files = [
@@ -46,6 +46,13 @@ Gem::Specification.new do |s|
     "doc/IO_shuten/Errors/NotYetImplemented.html",
     "doc/IO_shuten/Mongo.html",
     "doc/IO_shuten/Redis.html",
+    "doc/IO_shuten/Stores.html",
+    "doc/IO_shuten/Stores/Mongo.html",
+    "doc/IO_shuten/Stores/Mongo/Collection.html",
+    "doc/IO_shuten/Stores/Mongo/GridFS.html",
+    "doc/IO_shuten/Stores/Redis.html",
+    "doc/IO_shuten/Stores/Redis/KeyValue.html",
+    "doc/IO_shuten/Stores/Redis/PubSub.html",
     "doc/_index.html",
     "doc/class_list.html",
     "doc/css/blame.css",
@@ -67,11 +74,25 @@ Gem::Specification.new do |s|
     "lib/io_shuten/errors.rb",
     "lib/io_shuten/mongo.rb",
     "lib/io_shuten/redis.rb",
+    "lib/io_shuten/stores.rb",
+    "lib/io_shuten/stores/mongo.rb",
+    "lib/io_shuten/stores/mongo/collection.rb",
+    "lib/io_shuten/stores/mongo/gridfs.rb",
+    "lib/io_shuten/stores/redis.rb",
+    "lib/io_shuten/stores/redis/key_value.rb",
+    "lib/io_shuten/stores/redis/pub_sub.rb",
     "lib/io_shuten/version.rb",
     "spec/examples/logger_spec.rb",
     "spec/lib/base_spec.rb",
     "spec/lib/mongo_spec.rb",
     "spec/lib/redis_spec.rb",
+    "spec/lib/stores/mongo/collection_spec.rb",
+    "spec/lib/stores/mongo/gridfs_spec.rb",
+    "spec/lib/stores/mongo_spec.rb",
+    "spec/lib/stores/redis/key_value_spec.rb",
+    "spec/lib/stores/redis/pub_sub_spec.rb",
+    "spec/lib/stores/redis_spec.rb",
+    "spec/lib/stores_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/asaaki/io_shuten"
