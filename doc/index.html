@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   File: README
   
@@ -72,10 +72,10 @@
 require &quot;io_shuten&quot;
 require &quot;logger&quot;</p>
 
-<p>logdev = IO<em>shuten::Redis.new( REDIS</em>INSTANCE )
+<p>logdev = IO<em>shuten::Memory.new(&#39;log</em>node&#39;)
 logger = Logger.new(logdev)</p>
 
-<p>logger.info &quot;This message will be stored in redis.&quot;
+<p>logger.info &quot;This message will be stored in memory.&quot;
 ```</p>
 
 <h2>IO::shuten? 【五百::終点】(io shūten)!</h2>
@@ -84,19 +84,34 @@ logger = Logger.new(logdev)</p>
 
 <h2>Types</h2>
 
-<h3>IO_shuten::Base</h3>
+<h3>IO_shuten::Memory</h3>
 
 <p>An in-memory storage system (handles simple StringIO objects).</p>
 
 <p>Offers write-to-disk for single instance and all instances.</p>
 
+<p>Provides all methods of StringIO.</p>
+
+<h3>IO_shuten::Buffer</h3>
+
+<p>Like IO_shuten::Memory but with IO::Buffer as container instead of StringIO.
+(Install it with <code>gem install iobuffer</code>.)</p>
+
+<p>Performance depends on machine and ruby version. Almost same throughput, on 1.9.3 is the native StringIO better than the IO::Buffer cext.</p>
+
 <h3>IO_shuten::Redis</h3>
 
 <p>Stores content in a redis database.</p>
 
+<p>Provides basic methods like <code>#read</code>, <code>#write</code> and <code>#close</code>.
+A logger only needs write and close methods of an IO object.</p>
+
 <h3>IO_shuten::Mongo</h3>
 
 <p>Stores content in a mongodb database.</p>
+
+<p>Provides basic methods like <code>#read</code>, <code>#write</code> and <code>#close</code>.
+A logger only needs write and close methods of an IO object.</p>
 
 <h2>Not for production!</h2>
 
@@ -127,9 +142,9 @@ logger = Logger.new(logdev)</p>
 </div></div>
     
     <div id="footer">
-  Generated on Mon Jan 23 01:15:28 2012 by 
+  Generated on Thu Jan 26 00:45:39 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.4 (ruby-1.8.7).
 </div>
 
   </body>

@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem "iobuffer", "~> 1.0.0"
+
 gem "hiredis", "~> 0.4.4"
 gem "redis", "~> 2.2.2", :require => ["redis/connection/hiredis", "redis"]
 
@@ -16,13 +18,10 @@ group :development, :test do
   gem "simplecov-csv", :require => false
 
   gem "redcarpet"
-  gem "rdoc"
   gem "yard"
-  #gem "yard-rspec" # not working :(
   gem "yard-blame"
 
   gem "pry"
-  gem "pry-doc"
+  #gem "pry-doc"
 end
-
 

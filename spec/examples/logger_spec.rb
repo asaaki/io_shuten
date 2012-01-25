@@ -3,8 +3,9 @@ require File.expand_path("../../spec_helper.rb", __FILE__)
 require "logger"
 
 describe "Logger" do
-  it "accepts an IO_shuten::Base as logdev" do
-    logdev = IO_shuten::Base.new(:logdev)
+
+  it "accepts an IO_shuten::Memory as logdev" do
+    logdev = IO_shuten::Memory.new(:mlogdev)
     logger = Logger.new(logdev)
     logger.info "Foo log."
     logger.info "Test message."
@@ -12,4 +13,19 @@ describe "Logger" do
 
     logdev.string.should =~ /Test message/
   end
+
+  it "accepts an IO_shuten::Buffer as logdev" do
+    logdev = IO_shuten::Buffer.new(:blogdev)
+    logger = Logger.new(logdev)
+    logger.info "Foo log."
+    logger.info "Test message."
+    logger.info "Bar log."
+
+    logdev.read.should =~ /Test message/
+  end
+
+  it "accepts an IO_shuten::Redis as logdev"
+
+  it "accepts an IO_shuten::Mongo as logdev"
+
 end

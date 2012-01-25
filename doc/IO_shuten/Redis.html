@@ -101,13 +101,28 @@
     
   <div class="note todo">
     <strong>TODO:</strong> 
-    <div class='inline'>
-<p>Needs two backends (default database interface and pub/sub interface)!</p>
+    <div class='inline'><p>
+Needs two backends (default database interface and pub/sub interface)!
+</p>
 </div>
   </div>
 
-
-<p>Implementation of the Redis storage</p>
+<p>
+Implementation of the Redis storage
+</p>
+<p>
+Two backends are possible: simple key-value and pub-sub messaging
+</p>
+<p>
+KeyValue has different node types. Incremental single message store: each
+write will create a new key. Message collection store: all writes go to a
+single key. Good for events or logs.
+</p>
+<p>
+PubSub has different node types: publisher and subscriber. In future maybe
+a combined publisher-subscriber type possible, but in general less needed.
+Good for live event messaging.
+</p>
 
 
   </div>
@@ -116,6 +131,50 @@
   
 
 </div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="redis-classvariable" class="">@@redis =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+Global redis client instance for the pool
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Redis instance
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='colon3 op'>::</span><span class='rubyid_Redis constant id'>Redis</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
+</pre></dd>
+      
+    </dl>
+  
+
 
   
   
@@ -132,20 +191,433 @@
   <p class="inherited"><span class='object_link'><a href="Base.html#container-instance_method" title="IO_shuten::Base#container (method)">container</a></span>, <span class='object_link'><a href="Base.html#node_name-instance_method" title="IO_shuten::Base#node_name (method)">node_name</a></span></p>
 
 
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#redis-class_method" title="redis (class method)">+ (Object) <strong>redis</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Current redis client.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#redis%3D-class_method" title="redis= (class method)">+ (Object) <strong>redis=</strong>(new_redis) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Sets a new global redis client for the pool.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">- (Object) <strong>close</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Redis) <strong>initialize</strong>(node_name, backend, type, redis_instance = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Redis.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">- (Object) <strong>read</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+instance methods ###.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write-instance_method" title="#write (instance method)">- (Object) <strong>write</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
 
   
   
   
   
   
-  <h2>Method Summary</h2>
+  
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="IO_shuten::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#delete_instance-class_method" title="IO_shuten::Base.delete_instance (method)">delete_instance</a></span>, <span class='object_link'><a href="Base.html#file_exists%3F-instance_method" title="IO_shuten::Base#file_exists? (method)">#file_exists?</a></span>, <span class='object_link'><a href="Base.html#initialize-instance_method" title="IO_shuten::Base#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Base.html#instance_exists%3F-class_method" title="IO_shuten::Base.instance_exists? (method)">instance_exists?</a></span>, <span class='object_link'><a href="Base.html#instances-class_method" title="IO_shuten::Base.instances (method)">instances</a></span>, <span class='object_link'><a href="Base.html#load_from_file-instance_method" title="IO_shuten::Base#load_from_file (method)">#load_from_file</a></span>, <span class='object_link'><a href="Base.html#load_instances-class_method" title="IO_shuten::Base.load_instances (method)">load_instances</a></span>, <span class='object_link'><a href="Base.html#open-class_method" title="IO_shuten::Base.open (method)">open</a></span>, <span class='object_link'><a href="Base.html#purge_instances%21-class_method" title="IO_shuten::Base.purge_instances! (method)">purge_instances!</a></span>, <span class='object_link'><a href="Base.html#save_instances-class_method" title="IO_shuten::Base.save_instances (method)">save_instances</a></span>, <span class='object_link'><a href="Base.html#save_to_file-instance_method" title="IO_shuten::Base#save_to_file (method)">#save_to_file</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Base.html#delete_instance-class_method" title="IO_shuten::Base.delete_instance (method)">delete_instance</a></span>, <span class='object_link'><a href="Base.html#instance_exists%3F-class_method" title="IO_shuten::Base.instance_exists? (method)">instance_exists?</a></span>, <span class='object_link'><a href="Base.html#instances-class_method" title="IO_shuten::Base.instances (method)">instances</a></span>, <span class='object_link'><a href="Base.html#purge_instances%21-class_method" title="IO_shuten::Base.purge_instances! (method)">purge_instances!</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
-    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Base.html#initialize-instance_method" title="IO_shuten::Base#initialize (method)">IO_shuten::Base</a></span></p>
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="IO_shuten::Redis (class)">Redis</a></span></tt>) <strong>initialize</strong>(node_name, backend, type, redis_instance = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Redis
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>node_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>node_name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>backend</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+:key_value, :pub_sub
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+for backend :key_value =&gt; [:single,:collection], for backend :pub_sub
+=&gt; [:publisher,:subscriber]
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Redis</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an instance for this specific node, otherwise the Redis.redis instance will
+be used
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 33</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">33</td>
+          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span> <span class='rubyid_node_name identifier id'>node_name</span><span class='comma token'>,</span> <span class='rubyid_backend identifier id'>backend</span><span class='comma token'>,</span> <span class='rubyid_type identifier id'>type</span><span class='comma token'>,</span> <span class='rubyid_redis_instance identifier id'>redis_instance</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">34</td>
+          <td><pre class="code">  <span class='comment val'># based on the backend type it should instantiate the corresponding backend store module</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">35</td>
+          <td><pre class="code">  <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='symbol val'>:nil</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">36</td>
+          <td><pre class="code">  <span class='rubyid_case case kw'>case</span> <span class='rubyid_backend identifier id'>backend</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">37</td>
+          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='symbol val'>:key_value</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">38</td>
+          <td><pre class="code">      <span class='rubyid_Stores constant id'>Stores</span><span class='colon2 op'>::</span><span class='rubyid_Redis constant id'>Redis</span><span class='colon2 op'>::</span><span class='rubyid_KeyValue constant id'>KeyValue</span> <span class='comment val'>#.create(type)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">39</td>
+          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='symbol val'>:pub_sub</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">40</td>
+          <td><pre class="code">      <span class='rubyid_Stores constant id'>Stores</span><span class='colon2 op'>::</span><span class='rubyid_Redis constant id'>Redis</span><span class='colon2 op'>::</span><span class='rubyid_PubSub constant id'>PubSub</span> <span class='comment val'>#.create(type)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">41</td>
+          <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">42</td>
+          <td><pre class="code">      <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='string val'>&quot;Backend type unknown. Use :key_value or :pub_sub&quot;</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">43</td>
+          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">44</td>
+          <td><pre class="code">  <span class='rubyid_@@instances ivar id'>@@instances</span> <span class='lshft op'>&lt;&lt;</span> <span class='rubyid_node identifier id'>node</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">45</td>
+          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
   
 </div>
 <div id="method_missing_details" class="method_details_list">
@@ -160,12 +632,335 @@
 </div>
 
 
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="redis-class_method">
+  
+    + (<tt>Object</tt>) <strong>redis</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Current redis client
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+current redis client
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 52</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">52</td>
+          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_redis identifier id'>redis</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">53</td>
+          <td><pre class="code">  <span class='rubyid_@@redis ivar id'>@@redis</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">54</td>
+          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="redis=-class_method">
+  
+    + (<tt>Object</tt>) <strong>redis=</strong>(new_redis) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Sets a new global redis client for the pool
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+new redis client
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 58</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">58</td>
+          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_redis= identifier id'>redis=</span> <span class='rubyid_new_redis identifier id'>new_redis</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">59</td>
+          <td><pre class="code">  <span class='rubyid_@redis ivar id'>@redis</span> <span class='assign token'>=</span> <span class='rubyid_new_redis identifier id'>new_redis</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">60</td>
+          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="close-instance_method">
+  
+    - (<tt>Object</tt>) <strong>close</strong> 
+  
+
+  
+</p><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 71</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">71</td>
+          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_close identifier id'>close</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">72</td>
+          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="read-instance_method">
+  
+    - (<tt>Object</tt>) <strong>read</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+instance methods ###
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 65</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">65</td>
+          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_read identifier id'>read</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">66</td>
+          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="write-instance_method">
+  
+    - (<tt>Object</tt>) <strong>write</strong> 
+  
+
+  
+</p><table class="source_code blame">
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 68</span></caption>
+  <tr>
+    <td>
+      <table>
+      
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">68</td>
+          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_write identifier id'>write</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">69</td>
+          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+      </table>
+    </td>
+    <td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
     
     <div id="footer">
-  Generated on Mon Jan 23 01:15:28 2012 by 
+  Generated on Thu Jan 26 00:45:40 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.4 (ruby-1.8.7).
 </div>
 
   </body>

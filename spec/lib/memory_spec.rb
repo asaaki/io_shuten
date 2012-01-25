@@ -2,42 +2,42 @@
 require File.expand_path("../../spec_helper.rb", __FILE__)
 
 include IO_shuten
-describe Base do
+describe Memory do
 
   describe "Class Methods" do
 
     describe :new do
 
       context "without node_name" do
-        it "raises " do
-          expect { Base.new }.to raise_error(Errors::NodeNameError)
+        it "raises Errors::NodeNameError" do
+          expect { Memory.new }.to raise_error(Errors::NodeNameError)
         end
       end
 
       context "with node_name" do
         it "creates a new node with name as String" do
           node_name = "foo bar"
-          ios = Base.new(node_name)
-          ios.should be_an(IO_shuten::Base)
-          ios.node_name.should == node_name
+          iom = Memory.new(node_name)
+          iom.should be_an(IO_shuten::Memory)
+          iom.node_name.should == node_name
         end
 
         it "creates a new node with name as Symbol" do
           node_name = :foobar
-          ios = Base.new(node_name)
-          ios.should be_an(IO_shuten::Base)
-          ios.node_name.should == node_name
+          iom = Memory.new(node_name)
+          iom.should be_an(IO_shuten::Memory)
+          iom.node_name.should == node_name
         end
 
         it "raises NodeNameError if wrong type" do
           node_name = 1.23
-          expect { Base.new(node_name) }.to raise_error(Errors::NodeNameError)
+          expect { Memory.new(node_name) }.to raise_error(Errors::NodeNameError)
         end
 
         it "raises NodeExistsError if node name is already taken" do
           node_name = :already_taken
-          expect { Base.new(node_name) }.to_not raise_error
-          expect { Base.new(node_name) }.to raise_error(Errors::NodeExistsError)
+          expect { Memory.new(node_name) }.to_not raise_error
+          expect { Memory.new(node_name) }.to raise_error(Errors::NodeExistsError)
         end
       end
 
@@ -46,52 +46,52 @@ describe Base do
     describe "class based memory storage" do
       describe :purge_instances! do
         it "purges all instances" do
-          Base.purge_instances!
-          Base.instances.should have(0).items
+          Memory.purge_instances!
+          Memory.instances.should have(0).items
         end
       end
 
       describe :instances do
         it "retrieves all @@instances" do
-          Base.purge_instances!
+          Memory.purge_instances!
           nodes = %w[first second last]
           nodes.each do |node_name|
-            Base.new(node_name)
+            Memory.new(node_name)
           end
 
-          Base.instances.should have(3).items
+          Memory.instances.should have(3).items
         end
       end
 
       describe :delete_instance do
         before do
-          Base.purge_instances!
+          Memory.purge_instances!
           @node_names = %w[first second last]
           @nodes = @node_names.inject([]) do |store, node_name|
-            store << Base.new(node_name)
+            store << Memory.new(node_name)
             store
           end
         end
 
         it "removes an node by name from store" do
-          Base.delete_instance(@node_names.first)
-          Base.instances.should_not include(@nodes.first)
+          Memory.delete_instance(@node_names.first)
+          Memory.instances.should_not include(@nodes.first)
         end
 
         it "removes an node by instance from store" do
-          Base.delete_instance(@nodes.first)
-          Base.instances.should_not include(@nodes.first)
+          Memory.delete_instance(@nodes.first)
+          Memory.instances.should_not include(@nodes.first)
         end
 
         it "removes an node by symbolized name from store" do
-          Base.purge_instances!
+          Memory.purge_instances!
           @node_names = %w[first second last].map(&:to_sym)
           @nodes = @node_names.inject([]) do |store, node_name|
-            store << Base.new(node_name)
+            store << Memory.new(node_name)
             store
           end
-          Base.delete_instance(@node_names.first)
-          Base.instances.should_not include(@nodes.first)
+          Memory.delete_instance(@node_names.first)
+          Memory.instances.should_not include(@nodes.first)
         end
 
       end
@@ -99,7 +99,7 @@ describe Base do
       describe "batch tasks" do
 
         before do
-          Base.purge_instances!
+          Memory.purge_instances!
 
           @tmp_path  = File.expand_path("../../../tmp", __FILE__)
 
@@ -121,7 +121,7 @@ describe Base do
           @file_names.each do |file_name|
             File.unlink("#{@tmp_path}/#{file_name}") if File.exists?("#{@tmp_path}/#{file_name}")
           end
-          Base.purge_instances!
+          Memory.purge_instances!
         end
 
         describe :save_instances do
@@ -137,11 +137,11 @@ describe Base do
 
           it "writes all instances to disk" do
             @file_names2.each do |file_name|
-              node = Base.new("#{@tmp_path}/#{file_name}")
+              node = Memory.new("#{@tmp_path}/#{file_name}")
               node.puts "content of file: #{file_name}"
             end
 
-            Base.save_instances.should be_true
+            Memory.save_instances.should be_true
           end
         end
 
@@ -150,18 +150,18 @@ describe Base do
             absolute_files = @file_names.inject([]) do |store, file_name|
               store << "#{@tmp_path}/#{file_name}"
             end
-            Base.load_instances absolute_files
-            Base.pool.should have(3).items
+            Memory.load_instances absolute_files
+            Memory.pool.should have(3).items
           end
 
           it "loads an array of files provided by Dir.glob" do
-            Base.load_instances Dir.glob(@tmp_path+"/**/*")
-            Base.pool.should have(3).items
+            Memory.load_instances Dir.glob(@tmp_path+"/**/*")
+            Memory.pool.should have(3).items
           end
 
           it "loads files from a directory name (String)" do
-            Base.load_instances @tmp_path
-            Base.pool.should have(3).items
+            Memory.load_instances @tmp_path
+            Memory.pool.should have(3).items
           end
         end
 
@@ -173,12 +173,12 @@ describe Base do
     describe :open do
 
       before do
-        Base.purge_instances!
+        Memory.purge_instances!
       end
 
       context "without any args" do
         it "raises ArgumentError" do
-          expect { Base.open }.to raise_error(::ArgumentError)
+          expect { Memory.open }.to raise_error(::ArgumentError)
         end
       end
 
@@ -186,26 +186,26 @@ describe Base do
 
         context "and node does not exist" do
           it "raises NodeNotFound error" do
-            expect { Base.open("foo bar") }.to raise_error(Errors::NodeNotFoundError)
+            expect { Memory.open("foo bar") }.to raise_error(Errors::NodeNotFoundError)
           end
         end
 
         context "and node exists" do
           it "returns the requested node" do
             node_name = "foo bar"
-            stored_obj  = Base.new(node_name)
+            stored_obj  = Memory.new(node_name)
 
-            ios = Base.open(node_name)
-            ios.should === stored_obj
+            iom = Memory.open(node_name)
+            iom.should === stored_obj
           end
 
           it "always reopens node for writing (and reading)" do
             node_name = :always_reopenable
-            node = Base.new(node_name)
+            node = Memory.new(node_name)
             node.close
 
             node.should be_closed
-            Base.open(node_name).should_not be_closed
+            Memory.open(node_name).should_not be_closed
           end
         end
       end
@@ -213,9 +213,9 @@ describe Base do
       context "with name and block" do
         it "opens node, yields the block and closes node for writing" do
           str      = "string set in block"
-          origin   = Base.new(:blocktest)
+          origin   = Memory.new(:blocktest)
 
-          open_obj = Base.open :blocktest do |handle|
+          open_obj = Memory.open :blocktest do |handle|
             handle.write str
           end
 
@@ -229,18 +229,18 @@ describe Base do
         it "can reopen an node for manipulation" do
           str       = "string set in block"
           other_str = "new string"
-          origin    = Base.new(:blocktest)
+          origin    = Memory.new(:blocktest)
 
-          Base.open :blocktest do |handle|
+          Memory.open :blocktest do |handle|
             handle.write str
           end
 
           expect do
-            Base.open :blocktest do |handle|
+            Memory.open :blocktest do |handle|
               handle.puts other_str
             end
           end.to_not raise_error
-          Base.open(:blocktest).string.should match(other_str)
+          Memory.open(:blocktest).string.should match(other_str)
         end
       end
 
@@ -251,7 +251,7 @@ describe Base do
   describe "Instance Methods" do
 
     before do
-      Base.purge_instances!
+      Memory.purge_instances!
     end
 
     describe "StringIO method wrapper (for: #{RUBY_VERSION})" do
@@ -283,19 +283,29 @@ describe Base do
         ungetbyte
         write_nonblock
       ]
+      rbx19_excludes = %w[
+        codepoints
+        each_codepoint
+        external_encoding
+        internal_encoding
+        set_encoding
+        ungetbyte
+        write_nonblock
+      ]
       method_list = RUBY_VERSION =~ /^1\.8\./ ? m18 : (m18 + m19_additionals)
+      method_list = (RUBY_ENGINE == 'rbx' && RUBY_VERSION =~ /^1\.9\./) ? (m18 + m19_additionals - rbx19_excludes) : method_list
 
       method_list.each do |method_name|
         it "- responds to ##{method_name}" do
-          Base.new(:string_io_test).should respond_to(method_name)
+          Memory.new(:string_io_test).should respond_to(method_name)
         end
       end
     end
 
     describe "method stub with #not_yet_implemented! call" do
       it "raises NotYetImplemented" do
-        ios = Base.new(:not_implemented)
-        ios.instance_eval do
+        iom = Memory.new(:not_implemented)
+        iom.instance_eval do
           def not_implemented_method_a
             not_yet_implemented!
           end
@@ -303,9 +313,9 @@ describe Base do
             not_yet_implemented! __method__, "#{__FILE__}:#{__LINE__}"
           end
         end
-        expect { ios.not_implemented_method_a }.to raise_error(Errors::NotYetImplemented)
-        expect { ios.not_implemented_method_b }.to raise_error(Errors::NotYetImplemented)
-        expect { ios.not_implemented_method_c }.to raise_error(Errors::NotYetImplemented)
+        expect { iom.not_implemented_method_a }.to raise_error(Errors::NotYetImplemented)
+        expect { iom.not_implemented_method_b }.to raise_error(Errors::NotYetImplemented)
+        expect { iom.not_implemented_method_c }.to raise_error(Errors::NotYetImplemented)
       end
     end
 
@@ -327,24 +337,24 @@ describe Base do
       after do
         File.unlink(@tmp_true_file)
         File.unlink(@tmp_save_file) if File.exists?(@tmp_save_file)
-        Base.purge_instances!
+        Memory.purge_instances!
       end
 
       describe :file_exists? do
 
         it "returns true if path is a file" do
-          ios = Base.new(@tmp_true_file)
-          ios.file_exists?.should be_true
+          iom = Memory.new(@tmp_true_file)
+          iom.file_exists?.should be_true
         end
 
         it "returns true if custom path is a file" do
-          ios = Base.new(:different_name)
-          ios.file_exists?(@tmp_true_file).should be_true
+          iom = Memory.new(:different_name)
+          iom.file_exists?(@tmp_true_file).should be_true
         end
 
         it "returns false if path is not a file" do
-          ios = Base.new(@tmp_false_file)
-          ios.file_exists?.should be_false
+          iom = Memory.new(@tmp_false_file)
+          iom.file_exists?.should be_false
         end
 
       end
@@ -354,23 +364,23 @@ describe Base do
         context "file exists" do
 
           it "reads file and stores content into container" do
-            ios = Base.new(@tmp_true_file)
-            ios.load_from_file.should be_true
-            ios.string.should =~ /true content/
+            iom = Memory.new(@tmp_true_file)
+            iom.load_from_file.should be_true
+            iom.string.should =~ /true content/
           end
 
           it "reads file with custom name" do
-            ios = Base.new(:different_name)
-            ios.load_from_file(@tmp_true_file).should be_true
-            ios.string.should =~ /content/
+            iom = Memory.new(:different_name)
+            iom.load_from_file(@tmp_true_file).should be_true
+            iom.string.should =~ /content/
           end
 
         end
 
         context "file does not exist" do
           it "raises FileNotFoundError" do
-            ios = Base.new(@tmp_false_file)
-            expect { ios.load_from_file }.to raise_error(Errors::FileNotFoundError)
+            iom = Memory.new(@tmp_false_file)
+            expect { iom.load_from_file }.to raise_error(Errors::FileNotFoundError)
           end
         end
 
@@ -381,17 +391,17 @@ describe Base do
         context "file path accessible" do
           context "with container name as default" do
             it "writes container into the file" do
-              ios = Base.new(@tmp_save_file)
-              ios.puts "Test string"
-              ios.save_to_file.should be_true
+              iom = Memory.new(@tmp_save_file)
+              iom.puts "Test string"
+              iom.save_to_file.should be_true
             end
           end
 
           context "with custom name" do
             it "writes container into the file" do
-              ios = Base.new(:different_name)
-              ios.puts "Test string"
-              ios.save_to_file(@tmp_save_file).should be_true
+              iom = Memory.new(:different_name)
+              iom.puts "Test string"
+              iom.save_to_file(@tmp_save_file).should be_true
             end
           end
 
@@ -399,9 +409,9 @@ describe Base do
 
         context "path not accessible" do
           it "raises FileAccessError with corresponding reason" do
-            ios = Base.new(@denied_path)
-            ios.puts "Test string"
-            expect { ios.save_to_file }.to raise_error(Errors::FileAccessError, /Reason/)
+            iom = Memory.new(@denied_path)
+            iom.puts "Test string"
+            expect { iom.save_to_file }.to raise_error(Errors::FileAccessError, /Reason/)
           end
         end
 
