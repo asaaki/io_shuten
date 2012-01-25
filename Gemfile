@@ -22,6 +22,5 @@ group :development, :test do
   gem "yard-blame"
 
   gem "pry"
-  #gem "pry-doc"
 end
 
