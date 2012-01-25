@@ -1,20 +1,22 @@
 # encoding: utf-8
 
-module IO_shuten
-  # Implementation of the Memory storage
-  class Memory < IO_shuten::Base
+require "iobuffer"
 
-    # Creates a new Memory node and stores it in the pool
+module IO_shuten
+  # Implementation of the Buffer storage
+  class Buffer < IO_shuten::Base
+
+    # Creates a new Buffer node and stores it in the pool
     #
     # @param [String] node_name Name of the node node (container)
     # @param [Symbol] node_name also a symbol is allowed
-    # @return [Memory]
+    # @return [Buffer]
     # @raise [NodeNameError]
     def initialize(node_name = nil)
       if [String, Symbol].include?(node_name.class)
-        unless Memory.instance_exists? node_name
+        unless Buffer.instance_exists? node_name
         @node_name  = node_name
-        @container  = ::StringIO.new("","w+")
+        @container  = ::IO::Buffer.new
 
         @@instances << self unless @@instances.include?(self)
         else
@@ -38,14 +40,18 @@ module IO_shuten
         case source.class.to_s
           when "Array"
             source.each do |file_name|
-              node = Memory.new(file_name)
-              node.puts File.read(file_name)
+              node = Buffer.new(file_name)
+              File.open(file_name,'r') do |fh|
+                node.read_from fh
+              end
             end
           when "String"
             if File.exists?(source) && File.directory?(source)
               Dir[source+"/**/*"].each do |file_name|
-                node = Memory.new(file_name)
-                node.puts File.read(file_name)
+                node = Buffer.new(file_name)
+                File.open(file_name,'r') do |fh|
+                  node.read_from fh
+                end
               end
             end
           else
@@ -59,8 +65,9 @@ module IO_shuten
       def save_instances
         results = instances.inject({}) do |result, node|
           File.open(node.node_name,"w") do |fh|
-            fh.puts node.string
+            node.write_to(fh)
           end
+
           result[node.node_name] = :failed unless File.exists?(node.node_name)
         end
         if results
@@ -70,20 +77,17 @@ module IO_shuten
         end
       end
 
-      # @return [Memory] itself on success
+      # @return [Buffer] itself on success
       # @raise [NodeNotFoundError]
       def open node_name, *args
-        if Memory.instance_exists? node_name
+        if Buffer.instance_exists? node_name
           if block_given?
-            base = Memory.send :load, node_name
-            base.reopen(base.container.string) if base.container.closed_write?
+            base = Buffer.send :load, node_name
             yield(base)
-            base.container.close_write
             base
 
           else
-            base = Memory.send :load, node_name
-            base.reopen(base.container.string) if base.container.closed_write?
+            base = Buffer.send :load, node_name
             base
           end
 
@@ -107,25 +111,27 @@ module IO_shuten
 
     ### instance methods
 
-    # @return [Memory] itself on success
+    # @return [Buffer] itself on success
     # @raise [FileNotFoundError]
     def load_from_file file_name = nil
       file_name ||= self.node_name
       if file_exists? file_name
-        self.container.string = File.read(file_name)
+        File.open(file_name) do |fh|
+          self.container.read_from(fh)
+        end
         self
       else
         raise Errors::FileNotFoundError, self.node_name
       end
     end
 
-    # @return [Memory] itself on success
+    # @return [Buffer] itself on success
     # @raise [FileAccessError]
     def save_to_file file_name = nil
       file_name ||= self.node_name
       begin
         File.open(file_name, 'w') do |fh|
-          fh.write(self.container.string)
+          self.container.write_to(fh)
         end
         self
       rescue Exception => e
@@ -139,6 +145,10 @@ module IO_shuten
       File.exists?(file_name)
     end
     alias_method :file_exist?, :file_exists?
+
+    def close
+      # Dummy for Logger::LogDevice
+    end
 
   end
 end

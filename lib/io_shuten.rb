@@ -6,6 +6,7 @@ module IO_shuten; end
 require "io_shuten/errors"
 require "io_shuten/base"
 require "io_shuten/memory"
+require "io_shuten/buffer"
 require "io_shuten/stores"
 require "io_shuten/mongo"
 require "io_shuten/redis"
