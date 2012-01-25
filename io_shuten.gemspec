@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "io_shuten"
-  s.version = "0.0.2.dev1"
+  s.version = "0.0.3.dev1"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
-  s.date = "2012-01-23"
-  s.description = "IO::shuten \u{2013} Use databases as IO handler like you would do with files and streams."
+  s.date = "2012-01-25"
+  s.description = "IO::shuten \342\200\223 Use databases as IO handler like you would do with files and streams."
   s.email = ["chris@dinarrr.com"]
   s.extra_rdoc_files = [
     "LICENSE",
@@ -29,6 +29,8 @@ Gem::Specification.new do |s|
     "LICENSE.de",
     "README.md",
     "Rakefile",
+    "benchmark/compare_mem_w_buf.rb",
+    "doc/IO_3A_3ABuffer.html",
     "doc/IO_shuten.html",
     "doc/IO_shuten/Base.html",
     "doc/IO_shuten/Base/FileAccessError.html",
@@ -36,6 +38,7 @@ Gem::Specification.new do |s|
     "doc/IO_shuten/Base/NodeNameError.html",
     "doc/IO_shuten/Base/NodeNotFoundError.html",
     "doc/IO_shuten/Base/NotYetImplemented.html",
+    "doc/IO_shuten/Buffer.html",
     "doc/IO_shuten/Errors.html",
     "doc/IO_shuten/Errors/FileAccessError.html",
     "doc/IO_shuten/Errors/FileNotFoundError.html",
@@ -44,6 +47,7 @@ Gem::Specification.new do |s|
     "doc/IO_shuten/Errors/NodeNameExistsError.html",
     "doc/IO_shuten/Errors/NodeNotFoundError.html",
     "doc/IO_shuten/Errors/NotYetImplemented.html",
+    "doc/IO_shuten/Memory.html",
     "doc/IO_shuten/Mongo.html",
     "doc/IO_shuten/Redis.html",
     "doc/IO_shuten/Stores.html",
@@ -71,7 +75,9 @@ Gem::Specification.new do |s|
     "io_shuten.gemspec",
     "lib/io_shuten.rb",
     "lib/io_shuten/base.rb",
+    "lib/io_shuten/buffer.rb",
     "lib/io_shuten/errors.rb",
+    "lib/io_shuten/memory.rb",
     "lib/io_shuten/mongo.rb",
     "lib/io_shuten/redis.rb",
     "lib/io_shuten/stores.rb",
@@ -83,6 +89,8 @@ Gem::Specification.new do |s|
     "lib/io_shuten/stores/redis/pub_sub.rb",
     "lib/io_shuten/version.rb",
     "spec/examples/logger_spec.rb",
+    "spec/lib/buffer_spec.rb",
+    "spec/lib/memory_spec.rb",
     "spec/lib/mongo_spec.rb",
     "spec/lib/redis_spec.rb",
     "spec/lib/stores/mongo/collection_spec.rb",
@@ -97,13 +105,14 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/asaaki/io_shuten"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
-  s.summary = "IO::shuten \u{2013} Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
+  s.rubygems_version = "1.8.10"
+  s.summary = "IO::shuten \342\200\223 Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<iobuffer>, ["~> 1.0.0"])
       s.add_runtime_dependency(%q<hiredis>, ["~> 0.4.4"])
       s.add_runtime_dependency(%q<redis>, ["~> 2.2.2"])
       s.add_runtime_dependency(%q<bson_ext>, ["~> 1.5.2"])
@@ -115,12 +124,11 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<simplecov-rcov>, [">= 0"])
       s.add_development_dependency(%q<simplecov-csv>, [">= 0"])
       s.add_development_dependency(%q<redcarpet>, [">= 0"])
-      s.add_development_dependency(%q<rdoc>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<yard-blame>, [">= 0"])
       s.add_development_dependency(%q<pry>, [">= 0"])
-      s.add_development_dependency(%q<pry-doc>, [">= 0"])
     else
+      s.add_dependency(%q<iobuffer>, ["~> 1.0.0"])
       s.add_dependency(%q<hiredis>, ["~> 0.4.4"])
       s.add_dependency(%q<redis>, ["~> 2.2.2"])
       s.add_dependency(%q<bson_ext>, ["~> 1.5.2"])
@@ -132,13 +140,12 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<simplecov-rcov>, [">= 0"])
       s.add_dependency(%q<simplecov-csv>, [">= 0"])
       s.add_dependency(%q<redcarpet>, [">= 0"])
-      s.add_dependency(%q<rdoc>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<yard-blame>, [">= 0"])
       s.add_dependency(%q<pry>, [">= 0"])
-      s.add_dependency(%q<pry-doc>, [">= 0"])
     end
   else
+    s.add_dependency(%q<iobuffer>, ["~> 1.0.0"])
     s.add_dependency(%q<hiredis>, ["~> 0.4.4"])
     s.add_dependency(%q<redis>, ["~> 2.2.2"])
     s.add_dependency(%q<bson_ext>, ["~> 1.5.2"])
@@ -150,11 +157,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<simplecov-rcov>, [">= 0"])
     s.add_dependency(%q<simplecov-csv>, [">= 0"])
     s.add_dependency(%q<redcarpet>, [">= 0"])
-    s.add_dependency(%q<rdoc>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<yard-blame>, [">= 0"])
     s.add_dependency(%q<pry>, [">= 0"])
-    s.add_dependency(%q<pry-doc>, [">= 0"])
   end
 end
 
