@@ -38,6 +38,13 @@ Offers write-to-disk for single instance and all instances.
 
 Provides all methods of StringIO.
 
+### IO_shuten::Buffer
+
+Like IO_shuten::Memory but with IO::Buffer as container instead of StringIO.
+(Install it with `gem install iobuffer`.)
+
+Performance depends on machine and ruby version. Almost same throughput, on 1.9.3 is the native StringIO better than the IO::Buffer cext.
+
 ### IO_shuten::Redis
 
 Stores content in a redis database.

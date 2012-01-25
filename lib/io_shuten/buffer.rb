@@ -2,6 +2,7 @@
 
 require "iobuffer"
 
+# @private
 class ::IO::Buffer
   def close; end #dummy
 end

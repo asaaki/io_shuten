@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: IO_shuten::Memory
+  Class: IO_shuten::Buffer
   
     &mdash; IO::shuten 【五百::終点】
   
@@ -35,10 +35,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (M)</a> &raquo; 
+    <a href="../_index.html">Index (B)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../IO_shuten.html" title="IO_shuten (module)">IO_shuten</a></span></span>
      &raquo; 
-    <span class="title">Memory</span>
+    <span class="title">Buffer</span>
   
   
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -58,7 +58,7 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Class: IO_shuten::Memory
+    <div id="content"><h1>Class: IO_shuten::Buffer
   
   
   
@@ -75,7 +75,7 @@
           
             <li class="next"><span class='object_link'><a href="Base.html" title="IO_shuten::Base (class)">Base</a></span></li>
           
-            <li class="next">IO_shuten::Memory</li>
+            <li class="next">IO_shuten::Buffer</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -91,7 +91,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/io_shuten/memory.rb</dd>
+    <dd class="r2 last">lib/io_shuten/buffer.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -99,7 +99,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>
-Implementation of the Memory storage
+Implementation of the Buffer storage
 </p>
 
 
@@ -160,7 +160,7 @@ Loads instances from disk.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#open-class_method" title="open (class method)">+ (Memory) <strong>open</strong>(node_name, *args) </a>
+      <a href="#open-class_method" title="open (class method)">+ (Buffer) <strong>open</strong>(node_name, *args) </a>
     
 
     
@@ -242,7 +242,7 @@ Saves all instances to disk.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Memory) <strong>initialize</strong>(node_name = nil) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Buffer) <strong>initialize</strong>(node_name = nil) </a>
     
 
     
@@ -258,7 +258,7 @@ Saves all instances to disk.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Creates a new Memory node and stores it in the pool.
+Creates a new Buffer node and stores it in the pool.
 </p>
 </div></span>
   
@@ -268,7 +268,7 @@ Creates a new Memory node and stores it in the pool.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#load_from_file-instance_method" title="#load_from_file (instance method)">- (Memory) <strong>load_from_file</strong>(file_name = nil) </a>
+      <a href="#load_from_file-instance_method" title="#load_from_file (instance method)">- (Buffer) <strong>load_from_file</strong>(file_name = nil) </a>
     
 
     
@@ -292,7 +292,7 @@ Itself on success.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#save_to_file-instance_method" title="#save_to_file (instance method)">- (Memory) <strong>save_to_file</strong>(file_name = nil) </a>
+      <a href="#save_to_file-instance_method" title="#save_to_file (instance method)">- (Buffer) <strong>save_to_file</strong>(file_name = nil) </a>
     
 
     
@@ -332,14 +332,14 @@ Itself on success.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="IO_shuten::Memory (class)">Memory</a></span></tt>) <strong>initialize</strong>(node_name = nil) 
+    - (<tt><span class='object_link'><a href="" title="IO_shuten::Buffer (class)">Buffer</a></span></tt>) <strong>initialize</strong>(node_name = nil) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Creates a new Memory node and stores it in the pool
+Creates a new Buffer node and stores it in the pool
 </p>
 
 
@@ -404,7 +404,7 @@ also a symbol is allowed
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/memory.rb', line 13</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/buffer.rb', line 20</span></caption>
   <tr>
     <td>
       <table>
@@ -415,32 +415,10 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">13</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">20</td>
           <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_node_name identifier id'>node_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span><span class='rparen token'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">14</td>
-          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='lbrack token'>[</span><span class='rubyid_String constant id'>String</span><span class='comma token'>,</span> <span class='rubyid_Symbol constant id'>Symbol</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_node_name identifier id'>node_name</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='rparen token'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">15</td>
-          <td><pre class="code">    <span class='rubyid_unless unless kw'>unless</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_instance_exists? fid id'>instance_exists?</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
         
@@ -450,7 +428,29 @@ also a symbol is allowed
         
           <td class="date">2012-01-25 22:35:33</td>
           <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
-          <td class="lines">16</td>
+          <td class="lines">21</td>
+          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='lbrack token'>[</span><span class='rubyid_String constant id'>String</span><span class='comma token'>,</span> <span class='rubyid_Symbol constant id'>Symbol</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_node_name identifier id'>node_name</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='rparen token'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">22</td>
+          <td><pre class="code">    <span class='rubyid_unless unless kw'>unless</span> <span class='rubyid_Buffer constant id'>Buffer</span><span class='dot token'>.</span><span class='rubyid_instance_exists? fid id'>instance_exists?</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">23</td>
           <td><pre class="code">    <span class='rubyid_@node_name ivar id'>@node_name</span>  <span class='assign token'>=</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
@@ -459,10 +459,10 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">17</td>
-          <td><pre class="code">    <span class='rubyid_@container ivar id'>@container</span>  <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_StringIO constant id'>StringIO</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>&quot;&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;w+&quot;</span><span class='rparen token'>)</span></pre></td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">24</td>
+          <td><pre class="code">    <span class='rubyid_@container ivar id'>@container</span>  <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_IO constant id'>IO</span><span class='colon2 op'>::</span><span class='rubyid_Buffer constant id'>Buffer</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span></pre></td>
         </tr>
       
         
@@ -470,9 +470,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">18</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">25</td>
           <td><pre class="code"></pre></td>
         </tr>
       
@@ -481,9 +481,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">19</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">26</td>
           <td><pre class="code">    <span class='rubyid_@@instances ivar id'>@@instances</span> <span class='lshft op'>&lt;&lt;</span> <span class='rubyid_self self kw'>self</span> <span class='rubyid_unless unless_mod kw'>unless</span> <span class='rubyid_@@instances ivar id'>@@instances</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span></pre></td>
         </tr>
       
@@ -492,9 +492,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">20</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">27</td>
           <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
         </tr>
       
@@ -503,9 +503,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">21</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">28</td>
           <td><pre class="code">      <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_NodeExistsError constant id'>NodeExistsError</span><span class='comma token'>,</span> <span class='string val'>&quot;Node already in pool, replacement is not allowed.&quot;</span></pre></td>
         </tr>
       
@@ -514,9 +514,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">22</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">29</td>
           <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -525,9 +525,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">23</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">30</td>
           <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
         </tr>
       
@@ -536,9 +536,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">24</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">31</td>
           <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_NodeNameError constant id'>NodeNameError</span><span class='comma token'>,</span> <span class='string val'>&quot;Name must be kind of String or Symbol and can't be nil.&quot;</span></pre></td>
         </tr>
       
@@ -547,9 +547,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">25</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">32</td>
           <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -558,9 +558,9 @@ also a symbol is allowed
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">26</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">33</td>
           <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -659,7 +659,7 @@ names (HINT: you can provide a Dir.glob)
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/memory.rb', line 37</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/buffer.rb', line 44</span></caption>
   <tr>
     <td>
       <table>
@@ -670,9 +670,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">37</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">44</td>
           <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_load_instances identifier id'>load_instances</span> <span class='rubyid_source identifier id'>source</span></pre></td>
         </tr>
       
@@ -681,9 +681,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">38</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">45</td>
           <td><pre class="code">  <span class='rubyid_case case kw'>case</span> <span class='rubyid_source identifier id'>source</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='dot token'>.</span><span class='rubyid_to_s identifier id'>to_s</span></pre></td>
         </tr>
       
@@ -692,9 +692,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">39</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">46</td>
           <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='string val'>&quot;Array&quot;</span></pre></td>
         </tr>
       
@@ -703,9 +703,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">40</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">47</td>
           <td><pre class="code">      <span class='rubyid_source identifier id'>source</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_file_name identifier id'>file_name</span><span class='bitor op'>|</span></pre></td>
         </tr>
       
@@ -714,87 +714,10 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">41</td>
-          <td><pre class="code">        <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">42</td>
-          <td><pre class="code">        <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">43</td>
-          <td><pre class="code">      <span class='rubyid_end end kw'>end</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">44</td>
-          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='string val'>&quot;String&quot;</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">45</td>
-          <td><pre class="code">      <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_source identifier id'>source</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_directory? fid id'>directory?</span><span class='lparen token'>(</span><span class='rubyid_source identifier id'>source</span><span class='rparen token'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">46</td>
-          <td><pre class="code">        <span class='rubyid_Dir constant id'>Dir</span><span class='lbrack token'>[</span><span class='rubyid_source identifier id'>source</span><span class='plus op'>+</span><span class='string val'>&quot;/**/*&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_file_name identifier id'>file_name</span><span class='bitor op'>|</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">47</td>
-          <td><pre class="code">          <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
           <td class="lines">48</td>
-          <td><pre class="code">          <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">        <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_Buffer constant id'>Buffer</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
         </tr>
       
         
@@ -802,9 +725,31 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
           <td class="lines">49</td>
+          <td><pre class="code">        <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='comma token'>,</span><span class='string val'>'r'</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_fh identifier id'>fh</span><span class='bitor op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">50</td>
+          <td><pre class="code">          <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_read_from identifier id'>read_from</span> <span class='rubyid_fh identifier id'>fh</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">51</td>
           <td><pre class="code">        <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -813,9 +758,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">50</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">52</td>
           <td><pre class="code">      <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -824,9 +769,108 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">51</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">53</td>
+          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='string val'>&quot;String&quot;</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">54</td>
+          <td><pre class="code">      <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_source identifier id'>source</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_directory? fid id'>directory?</span><span class='lparen token'>(</span><span class='rubyid_source identifier id'>source</span><span class='rparen token'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">55</td>
+          <td><pre class="code">        <span class='rubyid_Dir constant id'>Dir</span><span class='lbrack token'>[</span><span class='rubyid_source identifier id'>source</span><span class='plus op'>+</span><span class='string val'>&quot;/**/*&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_file_name identifier id'>file_name</span><span class='bitor op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">56</td>
+          <td><pre class="code">          <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_Buffer constant id'>Buffer</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">57</td>
+          <td><pre class="code">          <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='comma token'>,</span><span class='string val'>'r'</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_fh identifier id'>fh</span><span class='bitor op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">58</td>
+          <td><pre class="code">            <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_read_from identifier id'>read_from</span> <span class='rubyid_fh identifier id'>fh</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">59</td>
+          <td><pre class="code">          <span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">60</td>
+          <td><pre class="code">        <span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">61</td>
+          <td><pre class="code">      <span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">62</td>
           <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
         </tr>
       
@@ -835,9 +879,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">52</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">63</td>
           <td><pre class="code">      <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Input must be a kind of Array or String (but was: #{source.class}).&quot;</span></pre></td>
         </tr>
       
@@ -846,9 +890,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">53</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">64</td>
           <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -857,9 +901,9 @@ names (HINT: you can provide a Dir.glob)
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">54</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">65</td>
           <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -873,7 +917,7 @@ names (HINT: you can provide a Dir.glob)
       <div class="method_details ">
   <p class="signature " id="open-class_method">
   
-    + (<tt><span class='object_link'><a href="" title="IO_shuten::Memory (class)">Memory</a></span></tt>) <strong>open</strong>(node_name, *args) 
+    + (<tt><span class='object_link'><a href="" title="IO_shuten::Buffer (class)">Buffer</a></span></tt>) <strong>open</strong>(node_name, *args) 
   
 
   
@@ -898,7 +942,7 @@ Itself on success
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="IO_shuten::Memory (class)">Memory</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="IO_shuten::Buffer (class)">Buffer</a></span></tt>)</span>
       
       
       
@@ -926,7 +970,7 @@ itself on success
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/memory.rb', line 75</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/buffer.rb', line 87</span></caption>
   <tr>
     <td>
       <table>
@@ -937,9 +981,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">75</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">87</td>
           <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_open identifier id'>open</span> <span class='rubyid_node_name identifier id'>node_name</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='rubyid_args identifier id'>args</span></pre></td>
         </tr>
       
@@ -948,10 +992,10 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">76</td>
-          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_instance_exists? fid id'>instance_exists?</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">88</td>
+          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_Buffer constant id'>Buffer</span><span class='dot token'>.</span><span class='rubyid_instance_exists? fid id'>instance_exists?</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
         
@@ -959,9 +1003,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">77</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">89</td>
           <td><pre class="code">    <span class='rubyid_if if kw'>if</span> <span class='rubyid_block_given? fid id'>block_given?</span></pre></td>
         </tr>
       
@@ -970,10 +1014,10 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">78</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span> <span class='symbol val'>:load</span><span class='comma token'>,</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">90</td>
+          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span> <span class='assign token'>=</span> <span class='rubyid_Buffer constant id'>Buffer</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span> <span class='symbol val'>:load</span><span class='comma token'>,</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
         
@@ -981,20 +1025,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">79</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_reopen identifier id'>reopen</span><span class='lparen token'>(</span><span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span><span class='rparen token'>)</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_closed_write? fid id'>closed_write?</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">80</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">91</td>
           <td><pre class="code">      <span class='rubyid_yield yield kw'>yield</span><span class='lparen token'>(</span><span class='rubyid_base identifier id'>base</span><span class='rparen token'>)</span></pre></td>
         </tr>
       
@@ -1003,20 +1036,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">81</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_close_write identifier id'>close_write</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">82</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">92</td>
           <td><pre class="code">      <span class='rubyid_base identifier id'>base</span></pre></td>
         </tr>
       
@@ -1025,9 +1047,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">83</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">93</td>
           <td><pre class="code"></pre></td>
         </tr>
       
@@ -1036,9 +1058,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">84</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">94</td>
           <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
         </tr>
       
@@ -1047,10 +1069,10 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">85</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span> <span class='symbol val'>:load</span><span class='comma token'>,</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">95</td>
+          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span> <span class='assign token'>=</span> <span class='rubyid_Buffer constant id'>Buffer</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span> <span class='symbol val'>:load</span><span class='comma token'>,</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
         
@@ -1058,20 +1080,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">86</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_reopen identifier id'>reopen</span><span class='lparen token'>(</span><span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span><span class='rparen token'>)</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_closed_write? fid id'>closed_write?</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">87</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">96</td>
           <td><pre class="code">      <span class='rubyid_base identifier id'>base</span></pre></td>
         </tr>
       
@@ -1080,9 +1091,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">88</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">97</td>
           <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1091,9 +1102,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">89</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">98</td>
           <td><pre class="code"></pre></td>
         </tr>
       
@@ -1102,9 +1113,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">90</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">99</td>
           <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
         </tr>
       
@@ -1113,9 +1124,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">91</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">100</td>
           <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_NodeNotFoundError constant id'>NodeNotFoundError</span></pre></td>
         </tr>
       
@@ -1124,9 +1135,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">92</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">101</td>
           <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1135,9 +1146,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">93</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">102</td>
           <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1181,7 +1192,7 @@ Saves all instances to disk
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/memory.rb', line 59</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/buffer.rb', line 70</span></caption>
   <tr>
     <td>
       <table>
@@ -1192,9 +1203,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">59</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">70</td>
           <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_save_instances identifier id'>save_instances</span></pre></td>
         </tr>
       
@@ -1203,9 +1214,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">60</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">71</td>
           <td><pre class="code">  <span class='rubyid_results identifier id'>results</span> <span class='assign token'>=</span> <span class='rubyid_instances identifier id'>instances</span><span class='dot token'>.</span><span class='rubyid_inject identifier id'>inject</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_result identifier id'>result</span><span class='comma token'>,</span> <span class='rubyid_node identifier id'>node</span><span class='bitor op'>|</span></pre></td>
         </tr>
       
@@ -1214,9 +1225,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">61</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">72</td>
           <td><pre class="code">    <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span><span class='comma token'>,</span><span class='string val'>&quot;w&quot;</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_fh identifier id'>fh</span><span class='bitor op'>|</span></pre></td>
         </tr>
       
@@ -1225,10 +1236,10 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">62</td>
-          <td><pre class="code">      <span class='rubyid_fh identifier id'>fh</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span></pre></td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">73</td>
+          <td><pre class="code">      <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_write_to identifier id'>write_to</span><span class='lparen token'>(</span><span class='rubyid_fh identifier id'>fh</span><span class='rparen token'>)</span></pre></td>
         </tr>
       
         
@@ -1236,9 +1247,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">63</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">74</td>
           <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1247,9 +1258,20 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">64</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">75</td>
+          <td><pre class="code"></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">76</td>
           <td><pre class="code">    <span class='rubyid_result identifier id'>result</span><span class='lbrack token'>[</span><span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:failed</span> <span class='rubyid_unless unless_mod kw'>unless</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span><span class='rparen token'>)</span></pre></td>
         </tr>
       
@@ -1258,9 +1280,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">65</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">77</td>
           <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1269,9 +1291,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">66</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">78</td>
           <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_results identifier id'>results</span></pre></td>
         </tr>
       
@@ -1280,9 +1302,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">67</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">79</td>
           <td><pre class="code">    <span class='rubyid_false false kw'>false</span></pre></td>
         </tr>
       
@@ -1291,9 +1313,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">68</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">80</td>
           <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
         </tr>
       
@@ -1302,9 +1324,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">69</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">81</td>
           <td><pre class="code">    <span class='rubyid_true true kw'>true</span></pre></td>
         </tr>
       
@@ -1313,9 +1335,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">70</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">82</td>
           <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1324,9 +1346,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">71</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">83</td>
           <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1377,7 +1399,7 @@ Saves all instances to disk
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/memory.rb', line 137</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/buffer.rb', line 148</span></caption>
   <tr>
     <td>
       <table>
@@ -1388,9 +1410,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">137</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">148</td>
           <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_file_exists? fid id'>file_exists?</span> <span class='rubyid_file_name identifier id'>file_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
         </tr>
       
@@ -1399,9 +1421,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">138</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">149</td>
           <td><pre class="code">  <span class='rubyid_file_name identifier id'>file_name</span> <span class='opasgn op'>||=</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
@@ -1410,9 +1432,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">139</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">150</td>
           <td><pre class="code">  <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
         </tr>
       
@@ -1421,9 +1443,9 @@ Saves all instances to disk
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">140</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">151</td>
           <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1437,7 +1459,7 @@ Saves all instances to disk
       <div class="method_details ">
   <p class="signature " id="load_from_file-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="IO_shuten::Memory (class)">Memory</a></span></tt>) <strong>load_from_file</strong>(file_name = nil) 
+    - (<tt><span class='object_link'><a href="" title="IO_shuten::Buffer (class)">Buffer</a></span></tt>) <strong>load_from_file</strong>(file_name = nil) 
   
 
   
@@ -1458,7 +1480,7 @@ Itself on success
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="IO_shuten::Memory (class)">Memory</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="IO_shuten::Buffer (class)">Buffer</a></span></tt>)</span>
       
       
       
@@ -1486,7 +1508,7 @@ itself on success
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/memory.rb', line 112</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/buffer.rb', line 121</span></caption>
   <tr>
     <td>
       <table>
@@ -1497,9 +1519,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">112</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">121</td>
           <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_load_from_file identifier id'>load_from_file</span> <span class='rubyid_file_name identifier id'>file_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
         </tr>
       
@@ -1508,9 +1530,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">113</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">122</td>
           <td><pre class="code">  <span class='rubyid_file_name identifier id'>file_name</span> <span class='opasgn op'>||=</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
@@ -1519,9 +1541,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">114</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">123</td>
           <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_file_exists? fid id'>file_exists?</span> <span class='rubyid_file_name identifier id'>file_name</span></pre></td>
         </tr>
       
@@ -1530,10 +1552,10 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">115</td>
-          <td><pre class="code">    <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span> <span class='assign token'>=</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">124</td>
+          <td><pre class="code">    <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_fh identifier id'>fh</span><span class='bitor op'>|</span></pre></td>
         </tr>
       
         
@@ -1541,9 +1563,31 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">116</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">125</td>
+          <td><pre class="code">      <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_read_from identifier id'>read_from</span><span class='lparen token'>(</span><span class='rubyid_fh identifier id'>fh</span><span class='rparen token'>)</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">126</td>
+          <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">127</td>
           <td><pre class="code">    <span class='rubyid_self self kw'>self</span></pre></td>
         </tr>
       
@@ -1552,9 +1596,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">117</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">128</td>
           <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
         </tr>
       
@@ -1563,9 +1607,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">118</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">129</td>
           <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_FileNotFoundError constant id'>FileNotFoundError</span><span class='comma token'>,</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
@@ -1574,9 +1618,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">119</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">130</td>
           <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1585,9 +1629,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">120</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">131</td>
           <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1601,7 +1645,7 @@ itself on success
       <div class="method_details ">
   <p class="signature " id="save_to_file-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="IO_shuten::Memory (class)">Memory</a></span></tt>) <strong>save_to_file</strong>(file_name = nil) 
+    - (<tt><span class='object_link'><a href="" title="IO_shuten::Buffer (class)">Buffer</a></span></tt>) <strong>save_to_file</strong>(file_name = nil) 
   
 
   
@@ -1622,7 +1666,7 @@ Itself on success
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="IO_shuten::Memory (class)">Memory</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="IO_shuten::Buffer (class)">Buffer</a></span></tt>)</span>
       
       
       
@@ -1650,7 +1694,7 @@ itself on success
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/memory.rb', line 124</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/buffer.rb', line 135</span></caption>
   <tr>
     <td>
       <table>
@@ -1661,9 +1705,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">124</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">135</td>
           <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_save_to_file identifier id'>save_to_file</span> <span class='rubyid_file_name identifier id'>file_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
         </tr>
       
@@ -1672,9 +1716,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">125</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">136</td>
           <td><pre class="code">  <span class='rubyid_file_name identifier id'>file_name</span> <span class='opasgn op'>||=</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
         </tr>
       
@@ -1683,9 +1727,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">126</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">137</td>
           <td><pre class="code">  <span class='rubyid_begin begin kw'>begin</span></pre></td>
         </tr>
       
@@ -1694,9 +1738,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">127</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">138</td>
           <td><pre class="code">    <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='comma token'>,</span> <span class='string val'>'w'</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_fh identifier id'>fh</span><span class='bitor op'>|</span></pre></td>
         </tr>
       
@@ -1705,10 +1749,10 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">128</td>
-          <td><pre class="code">      <span class='rubyid_fh identifier id'>fh</span><span class='dot token'>.</span><span class='rubyid_write identifier id'>write</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span><span class='rparen token'>)</span></pre></td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">139</td>
+          <td><pre class="code">      <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_write_to identifier id'>write_to</span><span class='lparen token'>(</span><span class='rubyid_fh identifier id'>fh</span><span class='rparen token'>)</span></pre></td>
         </tr>
       
         
@@ -1716,9 +1760,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">129</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">140</td>
           <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1727,9 +1771,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">130</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">141</td>
           <td><pre class="code">    <span class='rubyid_self self kw'>self</span></pre></td>
         </tr>
       
@@ -1738,9 +1782,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">131</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">142</td>
           <td><pre class="code">  <span class='rubyid_rescue rescue kw'>rescue</span> <span class='rubyid_Exception constant id'>Exception</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_e identifier id'>e</span></pre></td>
         </tr>
       
@@ -1749,9 +1793,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">132</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">143</td>
           <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_FileAccessError constant id'>FileAccessError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Reason: #{e.message}&quot;</span></pre></td>
         </tr>
       
@@ -1760,9 +1804,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">133</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">144</td>
           <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1771,9 +1815,9 @@ itself on success
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">134</td>
+          <td class="date">2012-01-25 22:35:33</td>
+          <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
+          <td class="lines">145</td>
           <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
         </tr>
       
@@ -1789,7 +1833,7 @@ itself on success
 </div>
     
     <div id="footer">
-  Generated on Thu Jan 26 00:45:41 2012 by 
+  Generated on Thu Jan 26 00:45:40 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.8.7).
 </div>
