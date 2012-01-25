@@ -12,8 +12,8 @@ branches:
     - develop
     - master
 
-after_script:
-  - "ruby ./benchmark/compare_mem_w_buf.rb"
+#after_script:
+#  - "ruby ./benchmark/compare_mem_w_buf.rb"
 
 notifications:
   email:
