@@ -283,7 +283,17 @@ describe Memory do
         ungetbyte
         write_nonblock
       ]
+      rbx19_excludes = %w[
+        codepoints
+        each_codepoint
+        external_encoding
+        internal_encoding
+        set_encoding
+        ungetbyte
+        write_nonblock
+      ]
       method_list = RUBY_VERSION =~ /^1\.8\./ ? m18 : (m18 + m19_additionals)
+      method_list = (RUBY_ENGINE == 'rbx' && RUBY_VERSION =~ /^1\.9\./) ? (m18 + m19_additionals - rbx19_excludes) : method_list
 
       method_list.each do |method_name|
         it "- responds to ##{method_name}" do

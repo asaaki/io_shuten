@@ -2,6 +2,10 @@
 
 require "iobuffer"
 
+class ::IO::Buffer
+  def close; end #dummy
+end
+
 module IO_shuten
   # Implementation of the Buffer storage
   class Buffer < IO_shuten::Base
@@ -145,10 +149,6 @@ module IO_shuten
       File.exists?(file_name)
     end
     alias_method :file_exist?, :file_exists?
-
-    def close
-      # Dummy for Logger::LogDevice
-    end
 
   end
 end

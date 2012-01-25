@@ -18,13 +18,10 @@ group :development, :test do
   gem "simplecov-csv", :require => false
 
   gem "redcarpet"
-  gem "rdoc"
   gem "yard"
-  #gem "yard-rspec" # not working :(
   gem "yard-blame"
 
   gem "pry"
-  gem "pry-doc"
+  #gem "pry-doc"
 end
-
 

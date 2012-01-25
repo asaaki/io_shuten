@@ -15,6 +15,10 @@ require "io_shuten/version"
 
 
 
+RUBY_ENGINE = '(no engine)' unless defined? RUBY_ENGINE
+
+
+
 Jeweler::Tasks.new do |gem|
   gem.name        = "io_shuten"
   gem.version     = IO_shuten::VERSION
@@ -70,4 +74,24 @@ task :pry do
   sh "pry -I lib -r io_shuten --no-pager"
 end
 
-task :default => :spec
+
+
+desc "Prints current environment"
+task :envinfo do
+  puts ['RUBY:',RUBY_PLATFORM,RUBY_ENGINE,RUBY_VERSION].join(" ")
+end
+
+
+
+desc "RBX ONLY: Clean up rbc and .rbx"
+task :rbx_clean do
+  Dir["./**/*.rbc","./**/.*.rbc"].each do |f|
+    File.unlink f
+  end
+  sh "rm -rf .rbx" if File.exists?(".rbx") && File.directory?(".rbx")
+end
+
+
+
+task :default => [:envinfo,:spec]
+
