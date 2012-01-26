@@ -1,7 +1,10 @@
+benchmark/out*
+benchmark/report*
+benchmarks/.cache
 coverage
 pkg
 tmp
-.rdoc_options
 .rake_tasks~
+.rdoc_options
 .yardoc
 

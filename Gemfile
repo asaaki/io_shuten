@@ -22,5 +22,9 @@ group :development, :test do
   gem "yard-blame"
 
   gem "pry"
+
+  gem "alf"
+  gem "fastercsv"
+  gem "viiite"
 end
 
