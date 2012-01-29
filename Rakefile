@@ -95,10 +95,9 @@ end
 
 desc "Runs complex viiite benchmark suite"
 task :benchmark do
-  `time ./benchmarks.sh`
+  sh "./benchmarks.sh"
 end
 
 
 
 task :default => [:envinfo,:spec]
-

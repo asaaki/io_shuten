@@ -25,7 +25,7 @@ Dir.mkdir(tmp_path) unless File.exists?(tmp_path)
 
 ioc = IO_shuten.const_get $CUR_IMPL
 runs = 1..5
-internal_loops = 100
+internal_loops = 1_024
 
 Viiite.bench do |b|
   b.variation_point :ruby, Viiite.which_ruby
@@ -77,4 +77,3 @@ Viiite.bench do |b|
   end
 
 end
-

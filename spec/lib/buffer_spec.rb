@@ -4,6 +4,8 @@ require File.expand_path("../../spec_helper.rb", __FILE__)
 include IO_shuten
 describe Buffer do
 
+  it { IO_shuten::Buffer.should inherit_from(IO_shuten::Base) }
+
   describe "Class Methods" do
 
     describe :new do
