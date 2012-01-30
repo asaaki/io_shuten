@@ -2,3 +2,5 @@
 .yardoc
 pkg
 coverage
+benchmark
+benchmarks

@@ -96,9 +96,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-IO_shuten::Base is interface class for other implementations.
-</p>
+    
+<p>IO_shuten::Base is interface class for other implementations.</p>
 
 
   </div>
@@ -108,7 +107,7 @@ IO_shuten::Base is interface class for other implementations.
 
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="Buffer.html" title="IO_shuten::Buffer (class)">Buffer</a></span>, <span class='object_link'><a href="Memory.html" title="IO_shuten::Memory (class)">Memory</a></span>, <span class='object_link'><a href="Mongo.html" title="IO_shuten::Mongo (class)">Mongo</a></span>, <span class='object_link'><a href="Redis.html" title="IO_shuten::Redis (class)">Redis</a></span></p>
+  <p class="children"><span class='object_link'><a href="Buffer.html" title="IO_shuten::Buffer (class)">Buffer</a></span>, <span class='object_link'><a href="Memory.html" title="IO_shuten::Memory (class)">Memory</a></span>, <span class='object_link'><a href="Mongo.html" title="IO_shuten::Mongo (class)">Mongo</a></span>, <span class='object_link'><a href="Redis.html" title="IO_shuten::Redis (class)">Redis</a></span>, <span class='object_link'><a href="Zmq.html" title="IO_shuten::Zmq (class)">Zmq</a></span></p>
 </div>
 
   <h2>Constant Summary</h2>
@@ -118,9 +117,8 @@ IO_shuten::Base is interface class for other implementations.
         <dt id="instances-classvariable" class="">@@instances =
           <div class="docstring">
   <div class="discussion">
-    <p>
-Storage of current Base instances of the running process
-</p>
+    
+<p>Storage of current Base instances of the running process</p>
 
 
   </div>
@@ -143,8 +141,7 @@ Storage of current Base instances of the running process
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-</pre></dd>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='rbracket'>]</span></pre></dd>
       
     </dl>
   
@@ -172,9 +169,8 @@ Storage of current Base instances of the running process
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-holds StringIO node.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>holds StringIO node.</p>
 </div></span>
   
 </li>
@@ -199,9 +195,8 @@ holds StringIO node.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Name of current node instance.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Name of current node instance.</p>
 </div></span>
   
 </li>
@@ -236,9 +231,8 @@ Name of current node instance.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Deletes a single instance of the pool.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Deletes a single instance of the pool.</p>
 </div></span>
   
 </li>
@@ -251,7 +245,7 @@ Deletes a single instance of the pool.
     
 
     
-      (also: instance_exist?, exist?, exists?)
+      (also: instance_exist?, exists?, exist?)
     
   </span>
   
@@ -262,9 +256,8 @@ Deletes a single instance of the pool.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Checks for existence of a node.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Checks for existence of a node.</p>
 </div></span>
   
 </li>
@@ -277,7 +270,7 @@ Checks for existence of a node.
     
 
     
-      (also: nodes, pool)
+      (also: pool, nodes)
     
   </span>
   
@@ -288,9 +281,8 @@ Checks for existence of a node.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Current instances.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Current instances.</p>
 </div></span>
   
 </li>
@@ -312,9 +304,8 @@ Current instances.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Deletes ALL instances in the pool!.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Deletes ALL instances in the pool!.</p>
 </div></span>
   
 </li>
@@ -352,7 +343,7 @@ Deletes ALL instances in the pool!.
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
           <td class="lines">79</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_method_missing identifier id'>method_missing</span> <span class='rubyid_method identifier id'>method</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='rubyid_args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='rubyid_block identifier id'>block</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span></pre></td>
         </tr>
       
         
@@ -363,7 +354,7 @@ Deletes ALL instances in the pool!.
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
           <td class="lines">80</td>
-          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_respond_to_missing? fid id'>respond_to_missing?</span> <span class='rubyid_method identifier id'>method</span></pre></td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span> <span class='id identifier rubyid_method'>method</span></pre></td>
         </tr>
       
         
@@ -374,7 +365,7 @@ Deletes ALL instances in the pool!.
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">81</td>
-          <td><pre class="code">    <span class='rubyid_@container ivar id'>@container</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span> <span class='rubyid_method identifier id'>method</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='rubyid_args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='rubyid_block identifier id'>block</span></pre></td>
+          <td><pre class="code">    <span class='ivar'>@container</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span></pre></td>
         </tr>
       
         
@@ -385,7 +376,7 @@ Deletes ALL instances in the pool!.
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">82</td>
-          <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -396,7 +387,7 @@ Deletes ALL instances in the pool!.
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
           <td class="lines">83</td>
-          <td><pre class="code">    <span class='rubyid_not_yet_implemented! fid id'>not_yet_implemented!</span> <span class='rubyid_method identifier id'>method</span></pre></td>
+          <td><pre class="code">    <span class='id identifier rubyid_not_yet_implemented!'>not_yet_implemented!</span> <span class='id identifier rubyid_method'>method</span></pre></td>
         </tr>
       
         
@@ -407,7 +398,7 @@ Deletes ALL instances in the pool!.
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
           <td class="lines">84</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -418,7 +409,7 @@ Deletes ALL instances in the pool!.
           <td class="date">2012-01-21 18:02:36</td>
           <td class="commit"><a title="Reimplement #method_missing">3369fd59</a><td>
           <td class="lines">85</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -445,9 +436,8 @@ Deletes ALL instances in the pool!.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-holds StringIO node
-</p>
+    
+<p>holds StringIO node</p>
 
 
   </div>
@@ -483,7 +473,7 @@ holds StringIO node
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
           <td class="lines">17</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_container identifier id'>container</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_container'>container</span></pre></td>
         </tr>
       
         
@@ -494,7 +484,7 @@ holds StringIO node
           <td class="date">2012-01-22 15:46:58</td>
           <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
           <td class="lines">18</td>
-          <td><pre class="code">  <span class='rubyid_@container ivar id'>@container</span></pre></td>
+          <td><pre class="code">  <span class='ivar'>@container</span></pre></td>
         </tr>
       
         
@@ -505,7 +495,7 @@ holds StringIO node
           <td class="date">2012-01-22 15:46:58</td>
           <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
           <td class="lines">19</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -527,9 +517,8 @@ holds StringIO node
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Name of current node instance
-</p>
+    
+<p>Name of current node instance</p>
 
 
   </div>
@@ -565,7 +554,7 @@ Name of current node instance
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
           <td class="lines">13</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -576,7 +565,7 @@ Name of current node instance
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">14</td>
-          <td><pre class="code">  <span class='rubyid_@node_name ivar id'>@node_name</span></pre></td>
+          <td><pre class="code">  <span class='ivar'>@node_name</span></pre></td>
         </tr>
       
         
@@ -587,7 +576,7 @@ Name of current node instance
           <td class="date">2012-01-21 23:54:47</td>
           <td class="commit"><a title="Add more specs and yardoc task.">434c2c13</a><td>
           <td class="lines">15</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -613,9 +602,8 @@ Name of current node instance
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Deletes a single instance of the pool
-</p>
+    
+<p>Deletes a single instance of the pool</p>
 
 
   </div>
@@ -634,9 +622,8 @@ Deletes a single instance of the pool
       
       
         &mdash;
-        <div class='inline'><p>
-instance
-</p>
+        <div class='inline'>
+<p>instance</p>
 </div>
       
     </li>
@@ -651,9 +638,8 @@ instance
       
       
         &mdash;
-        <div class='inline'><p>
-of node as String
-</p>
+        <div class='inline'>
+<p>of node as String</p>
 </div>
       
     </li>
@@ -668,9 +654,8 @@ of node as String
       
       
         &mdash;
-        <div class='inline'><p>
-of node as Symbol
-</p>
+        <div class='inline'>
+<p>of node as Symbol</p>
 </div>
       
     </li>
@@ -693,7 +678,7 @@ of node as Symbol
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">42</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_delete_instance identifier id'>delete_instance</span> <span class='rubyid_node_name_or_instance identifier id'>node_name_or_instance</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_delete_instance'>delete_instance</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span></pre></td>
         </tr>
       
         
@@ -704,7 +689,7 @@ of node as Symbol
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">43</td>
-          <td><pre class="code">  <span class='rubyid_@@instances ivar id'>@@instances</span><span class='dot token'>.</span><span class='rubyid_delete_if identifier id'>delete_if</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_node identifier id'>node</span><span class='bitor op'>|</span></pre></td>
+          <td><pre class="code">  <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_node'>node</span><span class='op'>|</span></pre></td>
         </tr>
       
         
@@ -715,7 +700,7 @@ of node as Symbol
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">44</td>
-          <td><pre class="code">    <span class='lparen token'>(</span><span class='rubyid_node_name_or_instance identifier id'>node_name_or_instance</span><span class='dot token'>.</span><span class='rubyid_is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='rubyid_Symbol constant id'>Symbol</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span> <span class='eq op'>==</span> <span class='rubyid_node_name_or_instance identifier id'>node_name_or_instance</span><span class='rparen token'>)</span> <span class='orop op'>||</span></pre></td>
+          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Symbol</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>==</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
         </tr>
       
         
@@ -726,7 +711,7 @@ of node as Symbol
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">45</td>
-          <td><pre class="code">    <span class='lparen token'>(</span><span class='rubyid_node_name_or_instance identifier id'>node_name_or_instance</span><span class='dot token'>.</span><span class='rubyid_is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='rubyid_String constant id'>String</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span> <span class='eq op'>==</span> <span class='rubyid_node_name_or_instance identifier id'>node_name_or_instance</span><span class='rparen token'>)</span> <span class='orop op'>||</span></pre></td>
+          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>==</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='rparen'>)</span> <span class='op'>||</span></pre></td>
         </tr>
       
         
@@ -737,7 +722,7 @@ of node as Symbol
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
           <td class="lines">46</td>
-          <td><pre class="code">    <span class='lparen token'>(</span><span class='rubyid_node_name_or_instance identifier id'>node_name_or_instance</span><span class='dot token'>.</span><span class='rubyid_is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='rubyid_Base constant id'>Base</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_node identifier id'>node</span> <span class='eq op'>==</span> <span class='rubyid_node_name_or_instance identifier id'>node_name_or_instance</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">    <span class='lparen'>(</span><span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Base</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node'>node</span> <span class='op'>==</span> <span class='id identifier rubyid_node_name_or_instance'>node_name_or_instance</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -748,7 +733,7 @@ of node as Symbol
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
           <td class="lines">47</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -759,7 +744,7 @@ of node as Symbol
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
           <td class="lines">48</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -777,14 +762,13 @@ of node as Symbol
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='instance_exist?-class_method'>instance_exist?</span>, <span id='exist?-class_method'>exist?</span>, <span id='exists?-class_method'>exists?</span></span>
+    <span class="names"><span id='instance_exist?-class_method'>instance_exist?</span>, <span id='exists?-class_method'>exists?</span>, <span id='exist?-class_method'>exist?</span></span>
     </span>
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Checks for existence of a node
-</p>
+    
+<p>Checks for existence of a node</p>
 
 
   </div>
@@ -803,9 +787,8 @@ Checks for existence of a node
       
       
         &mdash;
-        <div class='inline'><p>
-of node as String
-</p>
+        <div class='inline'>
+<p>of node as String</p>
 </div>
       
     </li>
@@ -820,9 +803,8 @@ of node as String
       
       
         &mdash;
-        <div class='inline'><p>
-of node as Symbol
-</p>
+        <div class='inline'>
+<p>of node as Symbol</p>
 </div>
       
     </li>
@@ -858,7 +840,7 @@ of node as Symbol
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">56</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_instance_exists? fid id'>instance_exists?</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -869,7 +851,7 @@ of node as Symbol
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">57</td>
-          <td><pre class="code">  <span class='comment val'># we need to check for node_name, otherwise it will fail though node exists</span></pre></td>
+          <td><pre class="code">  <span class='comment'># we need to check for node_name, otherwise it will fail though node exists</pre></td>
         </tr>
       
         
@@ -880,7 +862,7 @@ of node as Symbol
           <td class="date">2012-01-22 15:46:58</td>
           <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
           <td class="lines">58</td>
-          <td><pre class="code">  <span class='notop op'>!</span><span class='rubyid_instances identifier id'>instances</span><span class='dot token'>.</span><span class='rubyid_empty? fid id'>empty?</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_node_name identifier id'>node_name</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_instances identifier id'>instances</span><span class='dot token'>.</span><span class='rubyid_map identifier id'>map</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='symbol val'>:node_name</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_node_name identifier id'>node_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code"></span>  <span class='op'>!</span><span class='id identifier rubyid_instances'>instances</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_instances'>instances</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:node_name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -891,7 +873,7 @@ of node as Symbol
           <td class="date">2012-01-22 15:46:58</td>
           <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
           <td class="lines">59</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -909,14 +891,13 @@ of node as Symbol
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='nodes-class_method'>nodes</span>, <span id='pool-class_method'>pool</span></span>
+    <span class="names"><span id='pool-class_method'>pool</span>, <span id='nodes-class_method'>nodes</span></span>
     </span>
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Current instances
-</p>
+    
+<p>Current instances</p>
 
 
   </div>
@@ -934,9 +915,8 @@ Current instances
       
       
         &mdash;
-        <div class='inline'><p>
-current instances
-</p>
+        <div class='inline'>
+<p>current instances</p>
 </div>
       
     </li>
@@ -958,7 +938,7 @@ current instances
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
           <td class="lines">24</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_instances identifier id'>instances</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_instances'>instances</span></pre></td>
         </tr>
       
         
@@ -969,7 +949,7 @@ current instances
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
           <td class="lines">25</td>
-          <td><pre class="code">  <span class='rubyid_@@instances ivar id'>@@instances</span></pre></td>
+          <td><pre class="code">  <span class='cvar'>@@instances</span></pre></td>
         </tr>
       
         
@@ -980,7 +960,7 @@ current instances
           <td class="date">2012-01-22 21:35:53</td>
           <td class="commit"><a title="Base class is almost feature complete.">f2d93651</a><td>
           <td class="lines">26</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -999,9 +979,8 @@ current instances
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Deletes ALL instances in the pool!
-</p>
+    
+<p>Deletes ALL instances in the pool!</p>
 
 
   </div>
@@ -1037,7 +1016,7 @@ Deletes ALL instances in the pool!
           <td class="date">2012-01-22 15:46:58</td>
           <td class="commit"><a title="Remove mocks, move errors.">33812483</a><td>
           <td class="lines">33</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_purge_instances! fid id'>purge_instances!</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_purge_instances!'>purge_instances!</span></pre></td>
         </tr>
       
         
@@ -1048,7 +1027,7 @@ Deletes ALL instances in the pool!
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
           <td class="lines">34</td>
-          <td><pre class="code">  <span class='rubyid_@@instances ivar id'>@@instances</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='rubyid_and and kw'>and</span> <span class='rubyid_true true kw'>true</span></pre></td>
+          <td><pre class="code">  <span class='cvar'>@@instances</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='kw'>and</span> <span class='kw'>true</span></pre></td>
         </tr>
       
         
@@ -1059,7 +1038,7 @@ Deletes ALL instances in the pool!
           <td class="date">2012-01-21 14:44:16</td>
           <td class="commit"><a title="Add IO_shuten::Base in-memory instance storage.">03ec2d91</a><td>
           <td class="lines">35</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -1074,9 +1053,9 @@ Deletes ALL instances in the pool!
 </div>
     
     <div id="footer">
-  Generated on Thu Jan 26 00:45:39 2012 by 
+  Generated on Mon Jan 30 01:52:36 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.8.7).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>

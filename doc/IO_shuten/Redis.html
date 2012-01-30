@@ -101,28 +101,26 @@
     
   <div class="note todo">
     <strong>TODO:</strong> 
-    <div class='inline'><p>
-Needs two backends (default database interface and pub/sub interface)!
-</p>
+    <div class='inline'>
+<p>Needs two backends (default database interface and pub/sub interface)!</p>
 </div>
   </div>
 
-<p>
-Implementation of the Redis storage
-</p>
-<p>
-Two backends are possible: simple key-value and pub-sub messaging
-</p>
-<p>
-KeyValue has different node types. Incremental single message store: each
-write will create a new key. Message collection store: all writes go to a
-single key. Good for events or logs.
-</p>
-<p>
-PubSub has different node types: publisher and subscriber. In future maybe
+
+<p>Implementation of the Redis storage</p>
+
+<p>Two backends are possible: simple key-value and pub-sub messaging</p>
+
+<p>KeyValue has different node types.</p>
+
+<pre class="code">Single: all writes go into a single key
+Collection: every write will create a new key (namespaced)</pre>
+
+<p>Good for events or logs.</p>
+
+<p>PubSub has different node types: publisher and subscriber. In future maybe
 a combined publisher-subscriber type possible, but in general less needed.
-Good for live event messaging.
-</p>
+Good for live event messaging.</p>
 
 
   </div>
@@ -138,9 +136,8 @@ Good for live event messaging.
         <dt id="redis-classvariable" class="">@@redis =
           <div class="docstring">
   <div class="discussion">
-    <p>
-Global redis client instance for the pool
-</p>
+    
+<p>Global redis client instance for the pool</p>
 
 
   </div>
@@ -158,9 +155,8 @@ Global redis client instance for the pool
       
       
         &mdash;
-        <div class='inline'><p>
-Redis instance
-</p>
+        <div class='inline'>
+<p>Redis instance</p>
 </div>
       
     </li>
@@ -169,8 +165,7 @@ Redis instance
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='colon3 op'>::</span><span class='rubyid_Redis constant id'>Redis</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span>
-</pre></dd>
+        <dd><pre class="code"><span class='op'>::</span><span class='const'>Redis</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span></pre></dd>
       
     </dl>
   
@@ -215,9 +210,8 @@ Redis instance
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Current redis client.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Current redis client.</p>
 </div></span>
   
 </li>
@@ -239,27 +233,17 @@ Current redis client.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Sets a new global redis client for the pool.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Sets a new global redis client for the pool.</p>
 </div></span>
   
 </li>
 
       
-    </ul>
-  
-    <h2>
-      Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#close-instance_method" title="#close (instance method)">- (Object) <strong>close</strong> </a>
+      <a href="#redis_clear%21-class_method" title="redis_clear! (class method)">+ (Object) <strong>redis_clear!</strong> </a>
     
 
     
@@ -276,6 +260,15 @@ Sets a new global redis client for the pool.
   
 </li>
 
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
       
         <li class="public ">
   <span class="summary_signature">
@@ -295,55 +288,9 @@ Sets a new global redis client for the pool.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Redis.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Redis.</p>
 </div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#read-instance_method" title="#read (instance method)">- (Object) <strong>read</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-instance methods ###.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#write-instance_method" title="#write (instance method)">- (Object) <strong>write</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -373,9 +320,8 @@ instance methods ###.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of Redis
-</p>
+    
+<p>A new instance of Redis</p>
 
 
   </div>
@@ -416,9 +362,8 @@ A new instance of Redis
       
       
         &mdash;
-        <div class='inline'><p>
-:key_value, :pub_sub
-</p>
+        <div class='inline'>
+<p>:key_value, :pub_sub</p>
 </div>
       
     </li>
@@ -433,10 +378,9 @@ A new instance of Redis
       
       
         &mdash;
-        <div class='inline'><p>
-for backend :key_value =&gt; [:single,:collection], for backend :pub_sub
-=&gt; [:publisher,:subscriber]
-</p>
+        <div class='inline'>
+<p>for backend :key_value =&gt; [:single,:collection], for backend :pub_sub
+=&gt; [:publisher,:subscriber]</p>
 </div>
       
     </li>
@@ -451,10 +395,9 @@ for backend :key_value =&gt; [:single,:collection], for backend :pub_sub
       
       
         &mdash;
-        <div class='inline'><p>
-an instance for this specific node, otherwise the Redis.redis instance will
-be used
-</p>
+        <div class='inline'>
+<p>an instance for this specific node, otherwise the Redis.redis instance will
+be used</p>
 </div>
       
     </li>
@@ -463,7 +406,7 @@ be used
 
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 33</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 34</span></caption>
   <tr>
     <td>
       <table>
@@ -474,21 +417,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">33</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span> <span class='rubyid_node_name identifier id'>node_name</span><span class='comma token'>,</span> <span class='rubyid_backend identifier id'>backend</span><span class='comma token'>,</span> <span class='rubyid_type identifier id'>type</span><span class='comma token'>,</span> <span class='rubyid_redis_instance identifier id'>redis_instance</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">34</td>
-          <td><pre class="code">  <span class='comment val'># based on the backend type it should instantiate the corresponding backend store module</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_node_name'>node_name</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_redis_instance'>redis_instance</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
         
@@ -496,10 +428,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">35</td>
-          <td><pre class="code">  <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='symbol val'>:nil</span></pre></td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>String</span><span class='comma'>,</span> <span class='const'>Symbol</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -507,10 +439,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">36</td>
-          <td><pre class="code">  <span class='rubyid_case case kw'>case</span> <span class='rubyid_backend identifier id'>backend</span></pre></td>
+          <td><pre class="code">    <span class='kw'>unless</span> <span class='const'>Redis</span><span class='period'>.</span><span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -518,10 +450,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">37</td>
-          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='symbol val'>:key_value</span></pre></td>
+          <td><pre class="code">      <span class='ivar'>@node_name</span>      <span class='op'>=</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -529,10 +461,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">38</td>
-          <td><pre class="code">      <span class='rubyid_Stores constant id'>Stores</span><span class='colon2 op'>::</span><span class='rubyid_Redis constant id'>Redis</span><span class='colon2 op'>::</span><span class='rubyid_KeyValue constant id'>KeyValue</span> <span class='comment val'>#.create(type)</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_redis_instance'>redis_instance</span>  <span class='op'>||=</span> <span class='cvar'>@@redis</span></pre></td>
         </tr>
       
         
@@ -540,10 +472,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">39</td>
-          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='symbol val'>:pub_sub</span></pre></td>
+          <td><pre class="code">      <span class='ivar'>@container</span>      <span class='op'>=</span> <span class='const'>Stores</span><span class='op'>::</span><span class='const'>Redis</span><span class='op'>::</span><span class='const'>Container</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_redis_instance'>redis_instance</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -554,7 +486,7 @@ be used
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">40</td>
-          <td><pre class="code">      <span class='rubyid_Stores constant id'>Stores</span><span class='colon2 op'>::</span><span class='rubyid_Redis constant id'>Redis</span><span class='colon2 op'>::</span><span class='rubyid_PubSub constant id'>PubSub</span> <span class='comment val'>#.create(type)</span></pre></td>
+          <td><pre class="code">      <span class='cvar'>@@instances</span>     <span class='op'>&lt;&lt;</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -562,10 +494,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">41</td>
-          <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">    <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -573,10 +505,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">42</td>
-          <td><pre class="code">      <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='string val'>&quot;Backend type unknown. Use :key_value or :pub_sub&quot;</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeExistsError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Node already in pool, replacement is not allowed.</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -584,10 +516,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">43</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -595,10 +527,10 @@ be used
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">44</td>
-          <td><pre class="code">  <span class='rubyid_@@instances ivar id'>@@instances</span> <span class='lshft op'>&lt;&lt;</span> <span class='rubyid_node identifier id'>node</span></pre></td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -609,7 +541,40 @@ be used
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">45</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNameError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Name must be kind of String or Symbol and can't be nil.</span><span class='tstring_end'>&quot;</span></span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
+          <td class="lines">46</td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">47</td>
+          <td><pre class="code"></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-23 02:28:15</td>
+          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="lines">48</td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -645,9 +610,8 @@ be used
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Current redis client
-</p>
+    
+<p>Current redis client</p>
 
 
   </div>
@@ -665,9 +629,8 @@ Current redis client
       
       
         &mdash;
-        <div class='inline'><p>
-current redis client
-</p>
+        <div class='inline'>
+<p>current redis client</p>
 </div>
       
     </li>
@@ -675,7 +638,7 @@ current redis client
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 52</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 55</span></caption>
   <tr>
     <td>
       <table>
@@ -688,8 +651,8 @@ current redis client
         
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">52</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_redis identifier id'>redis</span></pre></td>
+          <td class="lines">55</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_redis'>redis</span></pre></td>
         </tr>
       
         
@@ -699,8 +662,8 @@ current redis client
         
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">53</td>
-          <td><pre class="code">  <span class='rubyid_@@redis ivar id'>@@redis</span></pre></td>
+          <td class="lines">56</td>
+          <td><pre class="code">  <span class='cvar'>@@redis</span></pre></td>
         </tr>
       
         
@@ -710,8 +673,8 @@ current redis client
         
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">54</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td class="lines">57</td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -730,9 +693,8 @@ current redis client
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Sets a new global redis client for the pool
-</p>
+    
+<p>Sets a new global redis client for the pool</p>
 
 
   </div>
@@ -750,9 +712,8 @@ Sets a new global redis client for the pool
       
       
         &mdash;
-        <div class='inline'><p>
-new redis client
-</p>
+        <div class='inline'>
+<p>new redis client</p>
 </div>
       
     </li>
@@ -760,7 +721,7 @@ new redis client
 </ul>
 
 </div><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 58</span></caption>
+  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 61</span></caption>
   <tr>
     <td>
       <table>
@@ -771,10 +732,10 @@ new redis client
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">58</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_redis= identifier id'>redis=</span> <span class='rubyid_new_redis identifier id'>new_redis</span></pre></td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
+          <td class="lines">61</td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_redis='>redis=</span> <span class='id identifier rubyid_new_redis'>new_redis</span></pre></td>
         </tr>
       
         
@@ -784,8 +745,8 @@ new redis client
         
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">59</td>
-          <td><pre class="code">  <span class='rubyid_@redis ivar id'>@redis</span> <span class='assign token'>=</span> <span class='rubyid_new_redis identifier id'>new_redis</span></pre></td>
+          <td class="lines">62</td>
+          <td><pre class="code">  <span class='cvar'>@@redis</span> <span class='op'>=</span> <span class='id identifier rubyid_new_redis'>new_redis</span></pre></td>
         </tr>
       
         
@@ -795,57 +756,8 @@ new redis client
         
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">60</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
-        </tr>
-      
-      </table>
-    </td>
-    <td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="close-instance_method">
-  
-    - (<tt>Object</tt>) <strong>close</strong> 
-  
-
-  
-</p><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 71</span></caption>
-  <tr>
-    <td>
-      <table>
-      
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">71</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_close identifier id'>close</span></pre></td>
-        </tr>
-      
-        
-        <tr>
-        
-          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
-        
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">72</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td class="lines">63</td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -856,25 +768,13 @@ new redis client
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="read-instance_method">
+  <p class="signature " id="redis_clear!-class_method">
   
-    - (<tt>Object</tt>) <strong>read</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-instance methods ###
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
+    + (<tt>Object</tt>) <strong>redis_clear!</strong> 
   
 
-</div><table class="source_code blame">
+  
+</p><table class="source_code blame">
   <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 65</span></caption>
   <tr>
     <td>
@@ -886,10 +786,10 @@ instance methods ###
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">65</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_read identifier id'>read</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_redis_clear!'>redis_clear!</span></pre></td>
         </tr>
       
         
@@ -897,42 +797,43 @@ instance methods ###
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">66</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='id identifier rubyid_keys'>keys</span> <span class='op'>=</span> <span class='cvar'>@@redis</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span></pre></td>
         </tr>
-      
-      </table>
-    </td>
-    <td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="write-instance_method">
-  
-    - (<tt>Object</tt>) <strong>write</strong> 
-  
-
-  
-</p><table class="source_code blame">
-  <caption><span class="info file"># File 'lib/io_shuten/redis.rb', line 68</span></caption>
-  <tr>
-    <td>
-      <table>
-      
       
         
         <tr>
         
           <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
         
-          <td class="date">2012-01-23 02:28:15</td>
-          <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
+          <td class="lines">67</td>
+          <td><pre class="code">  <span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
           <td class="lines">68</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_write identifier id'>write</span></pre></td>
+          <td><pre class="code">    <span class='cvar'>@@redis</span><span class='period'>.</span><span class='id identifier rubyid_del'>del</span> <span class='id identifier rubyid_key'>key</span></pre></td>
+        </tr>
+      
+        
+        <tr>
+        
+          <td class="author"><a href="mailto:<chris@dinarrr.com>">Christoph Grabo</a></td>
+        
+          <td class="date">2012-01-30 01:31:05</td>
+          <td class="commit"><a title="Add basic redis backends (KeyValue)">3daf4123</a><td>
+          <td class="lines">69</td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -942,8 +843,8 @@ instance methods ###
         
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
-          <td class="lines">69</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td class="lines">70</td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -958,9 +859,9 @@ instance methods ###
 </div>
     
     <div id="footer">
-  Generated on Thu Jan 26 00:45:40 2012 by 
+  Generated on Mon Jan 30 01:52:36 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.8.7).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>
