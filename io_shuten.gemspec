@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "io_shuten"
-  s.version = "0.1.0.dev6"
+  s.version = "0.1.0.dev7"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
@@ -54,12 +54,17 @@ Gem::Specification.new do |s|
     "doc/IO_shuten/Mongo.html",
     "doc/IO_shuten/Redis.html",
     "doc/IO_shuten/Stores.html",
+    "doc/IO_shuten/Stores/BaseContainer.html",
     "doc/IO_shuten/Stores/Mongo.html",
     "doc/IO_shuten/Stores/Mongo/Collection.html",
     "doc/IO_shuten/Stores/Mongo/GridFS.html",
     "doc/IO_shuten/Stores/Redis.html",
+    "doc/IO_shuten/Stores/Redis/Container.html",
     "doc/IO_shuten/Stores/Redis/KeyValue.html",
+    "doc/IO_shuten/Stores/Redis/KeyValue/Collection.html",
+    "doc/IO_shuten/Stores/Redis/KeyValue/Single.html",
     "doc/IO_shuten/Stores/Redis/PubSub.html",
+    "doc/IO_shuten/Zmq.html",
     "doc/_index.html",
     "doc/class_list.html",
     "doc/css/blame.css",

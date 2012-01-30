@@ -11,12 +11,15 @@ describe Memory do
     describe :new do
 
       context "without node_name" do
+
         it "raises Errors::NodeNameError" do
           expect { Memory.new }.to raise_error(Errors::NodeNameError)
         end
+
       end
 
       context "with node_name" do
+
         it "creates a new node with name as String" do
           node_name = "foo bar"
           iom = Memory.new(node_name)
@@ -41,19 +44,24 @@ describe Memory do
           expect { Memory.new(node_name) }.to_not raise_error
           expect { Memory.new(node_name) }.to raise_error(Errors::NodeExistsError)
         end
+
       end
 
     end
 
     describe "class based memory storage" do
+
       describe :purge_instances! do
+
         it "purges all instances" do
           Memory.purge_instances!
           Memory.instances.should have(0).items
         end
+
       end
 
       describe :instances do
+
         it "retrieves all @@instances" do
           Memory.purge_instances!
           nodes = %w[first second last]
@@ -63,9 +71,11 @@ describe Memory do
 
           Memory.instances.should have(3).items
         end
+
       end
 
       describe :delete_instance do
+
         before do
           Memory.purge_instances!
           @node_names = %w[first second last]
@@ -93,6 +103,7 @@ describe Memory do
             store
           end
           Memory.delete_instance(@node_names.first)
+
           Memory.instances.should_not include(@nodes.first)
         end
 
@@ -127,6 +138,7 @@ describe Memory do
         end
 
         describe :save_instances do
+
           before do
             @file_names2 = %w[file4 file5 file6]
           end
@@ -145,9 +157,21 @@ describe Memory do
 
             Memory.save_instances.should be_true
           end
+
+          it "writes only nodes with valid file names" do
+            @file_names2.each do |file_name|
+              node = Memory.new("#{@tmp_path}/#{file_name}")
+              node.<< "content of file: #{file_name}"
+            end
+            Memory.new("/invalid_file")
+
+            Memory.save_instances.should be_false
+          end
+
         end
 
         describe :load_instances do
+
           it "loads an array of files" do
             absolute_files = @file_names.inject([]) do |store, file_name|
               store << "#{@tmp_path}/#{file_name}"
@@ -165,6 +189,11 @@ describe Memory do
             Memory.load_instances @tmp_path
             Memory.pool.should have(3).items
           end
+
+          it "raises error if input is of wrong type" do
+            expect { Memory.load_instances :wrong_type }.to raise_error(ArgumentError)
+          end
+
         end
 
       end
@@ -187,12 +216,15 @@ describe Memory do
       context "with name only" do
 
         context "and node does not exist" do
+
           it "raises NodeNotFound error" do
             expect { Memory.open("foo bar") }.to raise_error(Errors::NodeNotFoundError)
           end
+
         end
 
         context "and node exists" do
+
           it "returns the requested node" do
             node_name = "foo bar"
             stored_obj  = Memory.new(node_name)
@@ -209,10 +241,13 @@ describe Memory do
             node.should be_closed
             Memory.open(node_name).should_not be_closed
           end
+
         end
+
       end
 
       context "with name and block" do
+
         it "opens node, yields the block and closes node for writing" do
           str      = "string set in block"
           origin   = Memory.new(:blocktest)
@@ -244,6 +279,7 @@ describe Memory do
           end.to_not raise_error
           Memory.open(:blocktest).string.should match(other_str)
         end
+
       end
 
     end # open
@@ -257,6 +293,7 @@ describe Memory do
     end
 
     describe "StringIO method wrapper (for: #{RUBY_VERSION})" do
+
       m18 = %w[
         binmode bytes
         chars close close_read close_write closed? closed_read? closed_write?
@@ -302,9 +339,11 @@ describe Memory do
           Memory.new(:string_io_test).should respond_to(method_name)
         end
       end
+
     end
 
     describe "method stub with #not_yet_implemented! call" do
+
       it "raises NotYetImplemented" do
         iom = Memory.new(:not_implemented)
         iom.instance_eval do
@@ -319,6 +358,7 @@ describe Memory do
         expect { iom.not_implemented_method_b }.to raise_error(Errors::NotYetImplemented)
         expect { iom.not_implemented_method_c }.to raise_error(Errors::NotYetImplemented)
       end
+
     end
 
     describe "loading and writing" do
@@ -380,10 +420,12 @@ describe Memory do
         end
 
         context "file does not exist" do
+
           it "raises FileNotFoundError" do
             iom = Memory.new(@tmp_false_file)
             expect { iom.load_from_file }.to raise_error(Errors::FileNotFoundError)
           end
+
         end
 
       end
@@ -391,30 +433,37 @@ describe Memory do
       describe :save_to_file do
 
         context "file path accessible" do
+
           context "with container name as default" do
+
             it "writes container into the file" do
               iom = Memory.new(@tmp_save_file)
               iom.write "Test string"
               iom.save_to_file.should be_true
             end
+
           end
 
           context "with custom name" do
+
             it "writes container into the file" do
               iom = Memory.new(:different_name)
               iom.write "Test string"
               iom.save_to_file(@tmp_save_file).should be_true
             end
+
           end
 
         end
 
         context "path not accessible" do
+
           it "raises FileAccessError with corresponding reason" do
             iom = Memory.new(@denied_path)
             iom.write "Test string"
             expect { iom.save_to_file }.to raise_error(Errors::FileAccessError, /Reason/)
           end
+
         end
 
       end
