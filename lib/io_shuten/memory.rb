@@ -62,8 +62,9 @@ module IO_shuten
             fh.puts node.string
           end
           result[node.node_name] = :failed unless File.exists?(node.node_name)
+          result
         end
-        if results
+        unless results.empty?
           false
         else
           true
@@ -142,4 +143,3 @@ module IO_shuten
 
   end
 end
-

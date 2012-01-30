@@ -72,10 +72,10 @@ module IO_shuten
           File.open(node.node_name,"w") do |fh|
             node.write_to(fh)
           end
-
           result[node.node_name] = :failed unless File.exists?(node.node_name)
+          result
         end
-        if results
+        unless results.empty?
           false
         else
           true
@@ -153,4 +153,3 @@ module IO_shuten
 
   end
 end
-

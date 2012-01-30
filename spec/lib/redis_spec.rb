@@ -35,7 +35,7 @@ describe IO_shuten::Redis do
       end
 
       it "fails, if backend is not known" do
-        expect { IOR.new(:will_fail, :unknown_backend) }.to raise_error(ArgumentError)
+        expect { IOR.new(:will_fail, :unknown_backend, :unknown_type) }.to raise_error(ArgumentError)
       end
 
       it "fails, if type is not known" do
@@ -62,6 +62,7 @@ describe IO_shuten::Redis do
           it "writes data" do
             data = %w[first_entry more_data last_entry]
             ior = IOR.new(:kvs_test_write, :key_value, :single)
+            ior.clear!
             data.each{ |line| ior.write line }
 
             IOR.redis.lrange(:kvs_test_write,0,-1).should == data
@@ -70,6 +71,7 @@ describe IO_shuten::Redis do
           it "reads data" do
             data = %w[first_entry more_data last_entry]
             ior = IOR.new(:kvs_test_read, :key_value, :single)
+            ior.clear!
             data.each{ |line| ior.write line }
 
             ior.read.should == data.join
@@ -82,6 +84,7 @@ describe IO_shuten::Redis do
           it "writes data" do
             data = %w[first_entry more_data last_entry]
             ior = IOR.new(:kvc_test_write, :key_value, :collection)
+            ior.clear!
             data.each{ |line| ior.write line }
 
             keys = IOR.redis.keys("kvc_test_write:*").sort
@@ -93,6 +96,7 @@ describe IO_shuten::Redis do
           it "reads data" do
             data = %w[first_entry more_data last_entry]
             ior = IOR.new(:kvc_test_read, :key_value, :collection)
+            ior.clear!
             data.each{ |line| ior.write line }
 
             ior.read.should == data.join

@@ -11,12 +11,15 @@ describe Buffer do
     describe :new do
 
       context "without node_name" do
+
         it "raises Errors::NodeNameError" do
           expect { Buffer.new }.to raise_error(Errors::NodeNameError)
         end
+
       end
 
       context "with node_name" do
+
         it "creates a new node with name as String" do
           node_name = "foo bar"
           iob = Buffer.new(node_name)
@@ -41,19 +44,24 @@ describe Buffer do
           expect { Buffer.new(node_name) }.to_not raise_error
           expect { Buffer.new(node_name) }.to raise_error(Errors::NodeExistsError)
         end
+
       end
 
     end
 
     describe "class based Buffer storage" do
+
       describe :purge_instances! do
+
         it "purges all instances" do
           Buffer.purge_instances!
           Buffer.instances.should have(0).items
         end
+
       end
 
       describe :instances do
+
         it "retrieves all @@instances" do
           Buffer.purge_instances!
           nodes = %w[first second last]
@@ -63,9 +71,11 @@ describe Buffer do
 
           Buffer.instances.should have(3).items
         end
+
       end
 
       describe :delete_instance do
+
         before do
           Buffer.purge_instances!
           @node_names = %w[first second last]
@@ -93,6 +103,7 @@ describe Buffer do
             store
           end
           Buffer.delete_instance(@node_names.first)
+
           Buffer.instances.should_not include(@nodes.first)
         end
 
@@ -127,6 +138,7 @@ describe Buffer do
         end
 
         describe :save_instances do
+
           before do
             @file_names2 = %w[file4 file5 file6]
           end
@@ -145,9 +157,11 @@ describe Buffer do
 
             Buffer.save_instances.should be_true
           end
+
         end
 
         describe :load_instances do
+
           it "loads an array of files" do
             absolute_files = @file_names.inject([]) do |store, file_name|
               store << "#{@tmp_path}/#{file_name}"
@@ -165,6 +179,11 @@ describe Buffer do
             Buffer.load_instances @tmp_path
             Buffer.pool.should have(3).items
           end
+
+          it "raises error if input is of wrong type" do
+            expect { Buffer.load_instances :wrong_type }.to raise_error(ArgumentError)
+          end
+
         end
 
       end
@@ -179,9 +198,11 @@ describe Buffer do
       end
 
       context "without any args" do
+
         it "raises ArgumentError" do
           expect { Buffer.open }.to raise_error(::ArgumentError)
         end
+
       end
 
       context "with name only" do
@@ -202,6 +223,7 @@ describe Buffer do
           end
 
         end
+
       end
 
       context "with name and block" do
@@ -248,6 +270,7 @@ describe Buffer do
     end
 
     describe "IO::Buffer method wrapper (for: #{RUBY_VERSION})" do
+
       method_list = %w[
         <<
         append
@@ -265,9 +288,11 @@ describe Buffer do
           Buffer.new(:string_io_test).should respond_to(method_name)
         end
       end
+
     end
 
     describe "method stub with #not_yet_implemented! call" do
+
       it "raises NotYetImplemented" do
         iob = Buffer.new(:not_implemented)
         iob.instance_eval do
@@ -282,6 +307,7 @@ describe Buffer do
         expect { iob.not_implemented_method_b }.to raise_error(Errors::NotYetImplemented)
         expect { iob.not_implemented_method_c }.to raise_error(Errors::NotYetImplemented)
       end
+
     end
 
     describe "loading and writing" do
@@ -354,30 +380,37 @@ describe Buffer do
       describe :save_to_file do
 
         context "file path accessible" do
+
           context "with container name as default" do
+
             it "writes container into the file" do
               iob = Buffer.new(@tmp_save_file)
               iob.write "Test string"
               iob.save_to_file.should be_true
             end
+
           end
 
           context "with custom name" do
+
             it "writes container into the file" do
               iob = Buffer.new(:different_name)
               iob.write "Test string"
               iob.save_to_file(@tmp_save_file).should be_true
             end
+
           end
 
         end
 
         context "path not accessible" do
+
           it "raises FileAccessError with corresponding reason" do
             iob = Buffer.new(@denied_path)
             iob.write "Test string"
             expect { iob.save_to_file }.to raise_error(Errors::FileAccessError, /Reason/)
           end
+
         end
 
       end
