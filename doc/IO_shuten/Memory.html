@@ -98,9 +98,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-Implementation of the Memory storage
-</p>
+    
+<p>Implementation of the Memory storage</p>
 
 
   </div>
@@ -149,9 +148,8 @@ Implementation of the Memory storage
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Loads instances from disk.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Loads instances from disk.</p>
 </div></span>
   
 </li>
@@ -175,9 +173,8 @@ Loads instances from disk.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Itself on success.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Itself on success.</p>
 </div></span>
   
 </li>
@@ -199,9 +196,8 @@ Itself on success.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Saves all instances to disk.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Saves all instances to disk.</p>
 </div></span>
   
 </li>
@@ -257,9 +253,8 @@ Saves all instances to disk.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Creates a new Memory node and stores it in the pool.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Creates a new Memory node and stores it in the pool.</p>
 </div></span>
   
 </li>
@@ -281,9 +276,8 @@ Creates a new Memory node and stores it in the pool.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Itself on success.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Itself on success.</p>
 </div></span>
   
 </li>
@@ -305,9 +299,8 @@ Itself on success.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Itself on success.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Itself on success.</p>
 </div></span>
   
 </li>
@@ -338,9 +331,8 @@ Itself on success.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Creates a new Memory node and stores it in the pool
-</p>
+    
+<p>Creates a new Memory node and stores it in the pool</p>
 
 
   </div>
@@ -361,9 +353,8 @@ Creates a new Memory node and stores it in the pool
       
       
         &mdash;
-        <div class='inline'><p>
-Name of the node node (container)
-</p>
+        <div class='inline'>
+<p>Name of the node node (container)</p>
 </div>
       
     </li>
@@ -380,9 +371,8 @@ Name of the node node (container)
       
       
         &mdash;
-        <div class='inline'><p>
-also a symbol is allowed
-</p>
+        <div class='inline'>
+<p>also a symbol is allowed</p>
 </div>
       
     </li>
@@ -418,7 +408,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">13</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_node_name identifier id'>node_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -429,7 +419,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">14</td>
-          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='lbrack token'>[</span><span class='rubyid_String constant id'>String</span><span class='comma token'>,</span> <span class='rubyid_Symbol constant id'>Symbol</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_node_name identifier id'>node_name</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>String</span><span class='comma'>,</span> <span class='const'>Symbol</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_node_name'>node_name</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -440,7 +430,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">15</td>
-          <td><pre class="code">    <span class='rubyid_unless unless kw'>unless</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_instance_exists? fid id'>instance_exists?</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">    <span class='kw'>unless</span> <span class='const'>Memory</span><span class='period'>.</span><span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -451,7 +441,7 @@ also a symbol is allowed
           <td class="date">2012-01-25 22:35:33</td>
           <td class="commit"><a title="Add IO_shuten::Buffer (using IO::Buffer cext) as further interface">1c2e01eb</a><td>
           <td class="lines">16</td>
-          <td><pre class="code">    <span class='rubyid_@node_name ivar id'>@node_name</span>  <span class='assign token'>=</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">    <span class='ivar'>@node_name</span>  <span class='op'>=</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -462,7 +452,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">17</td>
-          <td><pre class="code">    <span class='rubyid_@container ivar id'>@container</span>  <span class='assign token'>=</span> <span class='colon3 op'>::</span><span class='rubyid_StringIO constant id'>StringIO</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>&quot;&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;w+&quot;</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">    <span class='ivar'>@container</span>  <span class='op'>=</span> <span class='op'>::</span><span class='const'>StringIO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w+</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -484,7 +474,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">19</td>
-          <td><pre class="code">    <span class='rubyid_@@instances ivar id'>@@instances</span> <span class='lshft op'>&lt;&lt;</span> <span class='rubyid_self self kw'>self</span> <span class='rubyid_unless unless_mod kw'>unless</span> <span class='rubyid_@@instances ivar id'>@@instances</span><span class='dot token'>.</span><span class='rubyid_include? fid id'>include?</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">    <span class='cvar'>@@instances</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='cvar'>@@instances</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -495,7 +485,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">20</td>
-          <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">    <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -506,7 +496,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">21</td>
-          <td><pre class="code">      <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_NodeExistsError constant id'>NodeExistsError</span><span class='comma token'>,</span> <span class='string val'>&quot;Node already in pool, replacement is not allowed.&quot;</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeExistsError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Node already in pool, replacement is not allowed.</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -517,7 +507,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">22</td>
-          <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -528,7 +518,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">23</td>
-          <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -539,7 +529,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">24</td>
-          <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_NodeNameError constant id'>NodeNameError</span><span class='comma token'>,</span> <span class='string val'>&quot;Name must be kind of String or Symbol and can't be nil.&quot;</span></pre></td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNameError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Name must be kind of String or Symbol and can't be nil.</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -550,7 +540,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">25</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -561,7 +551,7 @@ also a symbol is allowed
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">26</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -597,9 +587,8 @@ also a symbol is allowed
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Loads instances from disk
-</p>
+    
+<p>Loads instances from disk</p>
 
 
   </div>
@@ -618,9 +607,8 @@ Loads instances from disk
       
       
         &mdash;
-        <div class='inline'><p>
-name
-</p>
+        <div class='inline'>
+<p>name</p>
 </div>
       
     </li>
@@ -635,9 +623,8 @@ name
       
       
         &mdash;
-        <div class='inline'><p>
-names (HINT: you can provide a Dir.glob)
-</p>
+        <div class='inline'>
+<p>names (HINT: you can provide a Dir.glob)</p>
 </div>
       
     </li>
@@ -673,7 +660,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">37</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_load_instances identifier id'>load_instances</span> <span class='rubyid_source identifier id'>source</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_load_instances'>load_instances</span> <span class='id identifier rubyid_source'>source</span></pre></td>
         </tr>
       
         
@@ -684,7 +671,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">38</td>
-          <td><pre class="code">  <span class='rubyid_case case kw'>case</span> <span class='rubyid_source identifier id'>source</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='dot token'>.</span><span class='rubyid_to_s identifier id'>to_s</span></pre></td>
+          <td><pre class="code">  <span class='kw'>case</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span></pre></td>
         </tr>
       
         
@@ -695,7 +682,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">39</td>
-          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='string val'>&quot;Array&quot;</span></pre></td>
+          <td><pre class="code">    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -706,7 +693,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">40</td>
-          <td><pre class="code">      <span class='rubyid_source identifier id'>source</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_file_name identifier id'>file_name</span><span class='bitor op'>|</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file_name'>file_name</span><span class='op'>|</span></pre></td>
         </tr>
       
         
@@ -717,7 +704,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">41</td>
-          <td><pre class="code">        <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">        <span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>Memory</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -728,7 +715,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">42</td>
-          <td><pre class="code">        <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">        <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -739,7 +726,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">43</td>
-          <td><pre class="code">      <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">      <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -750,7 +737,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">44</td>
-          <td><pre class="code">    <span class='rubyid_when when kw'>when</span> <span class='string val'>&quot;String&quot;</span></pre></td>
+          <td><pre class="code">    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -761,7 +748,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">45</td>
-          <td><pre class="code">      <span class='rubyid_if if kw'>if</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_source identifier id'>source</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_directory? fid id'>directory?</span><span class='lparen token'>(</span><span class='rubyid_source identifier id'>source</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">      <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -772,7 +759,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">46</td>
-          <td><pre class="code">        <span class='rubyid_Dir constant id'>Dir</span><span class='lbrack token'>[</span><span class='rubyid_source identifier id'>source</span><span class='plus op'>+</span><span class='string val'>&quot;/**/*&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_file_name identifier id'>file_name</span><span class='bitor op'>|</span></pre></td>
+          <td><pre class="code">        <span class='const'>Dir</span><span class='lbracket'>[</span><span class='id identifier rubyid_source'>source</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/**/*</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file_name'>file_name</span><span class='op'>|</span></pre></td>
         </tr>
       
         
@@ -783,7 +770,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">47</td>
-          <td><pre class="code">          <span class='rubyid_node identifier id'>node</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">          <span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='const'>Memory</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -794,7 +781,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">48</td>
-          <td><pre class="code">          <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">          <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -805,7 +792,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">49</td>
-          <td><pre class="code">        <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">        <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -816,7 +803,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">50</td>
-          <td><pre class="code">      <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">      <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -827,7 +814,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">51</td>
-          <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">    <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -838,7 +825,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">52</td>
-          <td><pre class="code">      <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Input must be a kind of Array or String (but was: #{source.class}).&quot;</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Input must be a kind of Array or String (but was: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>).</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -849,7 +836,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">53</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -860,7 +847,7 @@ names (HINT: you can provide a Dir.glob)
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">54</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -883,9 +870,8 @@ names (HINT: you can provide a Dir.glob)
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Itself on success
-</p>
+    
+<p>Itself on success</p>
 
 
   </div>
@@ -903,9 +889,8 @@ Itself on success
       
       
         &mdash;
-        <div class='inline'><p>
-itself on success
-</p>
+        <div class='inline'>
+<p>itself on success</p>
 </div>
       
     </li>
@@ -940,7 +925,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">75</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_open identifier id'>open</span> <span class='rubyid_node_name identifier id'>node_name</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='rubyid_args identifier id'>args</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_open'>open</span> <span class='id identifier rubyid_node_name'>node_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span></pre></td>
         </tr>
       
         
@@ -951,7 +936,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">76</td>
-          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_instance_exists? fid id'>instance_exists?</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='const'>Memory</span><span class='period'>.</span><span class='id identifier rubyid_instance_exists?'>instance_exists?</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -962,7 +947,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">77</td>
-          <td><pre class="code">    <span class='rubyid_if if kw'>if</span> <span class='rubyid_block_given? fid id'>block_given?</span></pre></td>
+          <td><pre class="code">    <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span></pre></td>
         </tr>
       
         
@@ -973,7 +958,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">78</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span> <span class='symbol val'>:load</span><span class='comma token'>,</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='const'>Memory</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -984,7 +969,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">79</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_reopen identifier id'>reopen</span><span class='lparen token'>(</span><span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span><span class='rparen token'>)</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_closed_write? fid id'>closed_write?</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_closed_write?'>closed_write?</span></pre></td>
         </tr>
       
         
@@ -995,7 +980,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">80</td>
-          <td><pre class="code">      <span class='rubyid_yield yield kw'>yield</span><span class='lparen token'>(</span><span class='rubyid_base identifier id'>base</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">      <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -1006,7 +991,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">81</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_close_write identifier id'>close_write</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_close_write'>close_write</span></pre></td>
         </tr>
       
         
@@ -1017,7 +1002,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">82</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span></pre></td>
         </tr>
       
         
@@ -1039,7 +1024,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">84</td>
-          <td><pre class="code">    <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">    <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -1050,7 +1035,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">85</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span> <span class='assign token'>=</span> <span class='rubyid_Memory constant id'>Memory</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span> <span class='symbol val'>:load</span><span class='comma token'>,</span> <span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='const'>Memory</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:load</span><span class='comma'>,</span> <span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1061,7 +1046,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">86</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_reopen identifier id'>reopen</span><span class='lparen token'>(</span><span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span><span class='rparen token'>)</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_base identifier id'>base</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_closed_write? fid id'>closed_write?</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_closed_write?'>closed_write?</span></pre></td>
         </tr>
       
         
@@ -1072,7 +1057,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">87</td>
-          <td><pre class="code">      <span class='rubyid_base identifier id'>base</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_base'>base</span></pre></td>
         </tr>
       
         
@@ -1083,7 +1068,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">88</td>
-          <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1105,7 +1090,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">90</td>
-          <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -1116,7 +1101,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">91</td>
-          <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_NodeNotFoundError constant id'>NodeNotFoundError</span></pre></td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>NodeNotFoundError</span></pre></td>
         </tr>
       
         
@@ -1127,7 +1112,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">92</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1138,7 +1123,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">93</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -1157,9 +1142,8 @@ itself on success
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Saves all instances to disk
-</p>
+    
+<p>Saves all instances to disk</p>
 
 
   </div>
@@ -1195,7 +1179,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">59</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_save_instances identifier id'>save_instances</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_save_instances'>save_instances</span></pre></td>
         </tr>
       
         
@@ -1206,7 +1190,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">60</td>
-          <td><pre class="code">  <span class='rubyid_results identifier id'>results</span> <span class='assign token'>=</span> <span class='rubyid_instances identifier id'>instances</span><span class='dot token'>.</span><span class='rubyid_inject identifier id'>inject</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_result identifier id'>result</span><span class='comma token'>,</span> <span class='rubyid_node identifier id'>node</span><span class='bitor op'>|</span></pre></td>
+          <td><pre class="code">  <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='id identifier rubyid_instances'>instances</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_node'>node</span><span class='op'>|</span></pre></td>
         </tr>
       
         
@@ -1217,7 +1201,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">61</td>
-          <td><pre class="code">    <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span><span class='comma token'>,</span><span class='string val'>&quot;w&quot;</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_fh identifier id'>fh</span><span class='bitor op'>|</span></pre></td>
+          <td><pre class="code">    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fh'>fh</span><span class='op'>|</span></pre></td>
         </tr>
       
         
@@ -1228,7 +1212,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">62</td>
-          <td><pre class="code">      <span class='rubyid_fh identifier id'>fh</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_fh'>fh</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span></pre></td>
         </tr>
       
         
@@ -1239,7 +1223,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">63</td>
-          <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1250,7 +1234,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">64</td>
-          <td><pre class="code">    <span class='rubyid_result identifier id'>result</span><span class='lbrack token'>[</span><span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='symbol val'>:failed</span> <span class='rubyid_unless unless_mod kw'>unless</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_node identifier id'>node</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:failed</span> <span class='kw'>unless</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -1261,7 +1245,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">65</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1272,7 +1256,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">66</td>
-          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_results identifier id'>results</span></pre></td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_results'>results</span></pre></td>
         </tr>
       
         
@@ -1283,7 +1267,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">67</td>
-          <td><pre class="code">    <span class='rubyid_false false kw'>false</span></pre></td>
+          <td><pre class="code">    <span class='kw'>false</span></pre></td>
         </tr>
       
         
@@ -1294,7 +1278,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">68</td>
-          <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -1305,7 +1289,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">69</td>
-          <td><pre class="code">    <span class='rubyid_true true kw'>true</span></pre></td>
+          <td><pre class="code">    <span class='kw'>true</span></pre></td>
         </tr>
       
         
@@ -1316,7 +1300,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">70</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1327,7 +1311,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">71</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -1391,7 +1375,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">137</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_file_exists? fid id'>file_exists?</span> <span class='rubyid_file_name identifier id'>file_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_file_exists?'>file_exists?</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
         
@@ -1402,7 +1386,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">138</td>
-          <td><pre class="code">  <span class='rubyid_file_name identifier id'>file_name</span> <span class='opasgn op'>||=</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1413,7 +1397,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">139</td>
-          <td><pre class="code">  <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -1424,7 +1408,7 @@ Saves all instances to disk
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">140</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -1443,9 +1427,8 @@ Saves all instances to disk
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Itself on success
-</p>
+    
+<p>Itself on success</p>
 
 
   </div>
@@ -1463,9 +1446,8 @@ Itself on success
       
       
         &mdash;
-        <div class='inline'><p>
-itself on success
-</p>
+        <div class='inline'>
+<p>itself on success</p>
 </div>
       
     </li>
@@ -1500,7 +1482,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">112</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_load_from_file identifier id'>load_from_file</span> <span class='rubyid_file_name identifier id'>file_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_load_from_file'>load_from_file</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
         
@@ -1511,7 +1493,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">113</td>
-          <td><pre class="code">  <span class='rubyid_file_name identifier id'>file_name</span> <span class='opasgn op'>||=</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1522,7 +1504,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">114</td>
-          <td><pre class="code">  <span class='rubyid_if if kw'>if</span> <span class='rubyid_file_exists? fid id'>file_exists?</span> <span class='rubyid_file_name identifier id'>file_name</span></pre></td>
+          <td><pre class="code">  <span class='kw'>if</span> <span class='id identifier rubyid_file_exists?'>file_exists?</span> <span class='id identifier rubyid_file_name'>file_name</span></pre></td>
         </tr>
       
         
@@ -1533,7 +1515,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">115</td>
-          <td><pre class="code">    <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span> <span class='assign token'>=</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -1544,7 +1526,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">116</td>
-          <td><pre class="code">    <span class='rubyid_self self kw'>self</span></pre></td>
+          <td><pre class="code">    <span class='kw'>self</span></pre></td>
         </tr>
       
         
@@ -1555,7 +1537,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">117</td>
-          <td><pre class="code">  <span class='rubyid_else else kw'>else</span></pre></td>
+          <td><pre class="code">  <span class='kw'>else</span></pre></td>
         </tr>
       
         
@@ -1566,7 +1548,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">118</td>
-          <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_FileNotFoundError constant id'>FileNotFoundError</span><span class='comma token'>,</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>FileNotFoundError</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1577,7 +1559,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">119</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1588,7 +1570,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">120</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -1607,9 +1589,8 @@ itself on success
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Itself on success
-</p>
+    
+<p>Itself on success</p>
 
 
   </div>
@@ -1627,9 +1608,8 @@ Itself on success
       
       
         &mdash;
-        <div class='inline'><p>
-itself on success
-</p>
+        <div class='inline'>
+<p>itself on success</p>
 </div>
       
     </li>
@@ -1664,7 +1644,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">124</td>
-          <td><pre class="code"><span class='rubyid_def def kw'>def</span> <span class='rubyid_save_to_file identifier id'>save_to_file</span> <span class='rubyid_file_name identifier id'>file_name</span> <span class='assign token'>=</span> <span class='rubyid_nil nil kw'>nil</span></pre></td>
+          <td><pre class="code"><span class='kw'>def</span> <span class='id identifier rubyid_save_to_file'>save_to_file</span> <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='kw'>nil</span></pre></td>
         </tr>
       
         
@@ -1675,7 +1655,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">125</td>
-          <td><pre class="code">  <span class='rubyid_file_name identifier id'>file_name</span> <span class='opasgn op'>||=</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_node_name identifier id'>node_name</span></pre></td>
+          <td><pre class="code">  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_node_name'>node_name</span></pre></td>
         </tr>
       
         
@@ -1686,7 +1666,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">126</td>
-          <td><pre class="code">  <span class='rubyid_begin begin kw'>begin</span></pre></td>
+          <td><pre class="code">  <span class='kw'>begin</span></pre></td>
         </tr>
       
         
@@ -1697,7 +1677,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">127</td>
-          <td><pre class="code">    <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_file_name identifier id'>file_name</span><span class='comma token'>,</span> <span class='string val'>'w'</span><span class='rparen token'>)</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_fh identifier id'>fh</span><span class='bitor op'>|</span></pre></td>
+          <td><pre class="code">    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_file_name'>file_name</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fh'>fh</span><span class='op'>|</span></pre></td>
         </tr>
       
         
@@ -1708,7 +1688,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">128</td>
-          <td><pre class="code">      <span class='rubyid_fh identifier id'>fh</span><span class='dot token'>.</span><span class='rubyid_write identifier id'>write</span><span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_container identifier id'>container</span><span class='dot token'>.</span><span class='rubyid_string identifier id'>string</span><span class='rparen token'>)</span></pre></td>
+          <td><pre class="code">      <span class='id identifier rubyid_fh'>fh</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_container'>container</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span></pre></td>
         </tr>
       
         
@@ -1719,7 +1699,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">129</td>
-          <td><pre class="code">    <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">    <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1730,7 +1710,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">130</td>
-          <td><pre class="code">    <span class='rubyid_self self kw'>self</span></pre></td>
+          <td><pre class="code">    <span class='kw'>self</span></pre></td>
         </tr>
       
         
@@ -1741,7 +1721,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">131</td>
-          <td><pre class="code">  <span class='rubyid_rescue rescue kw'>rescue</span> <span class='rubyid_Exception constant id'>Exception</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_e identifier id'>e</span></pre></td>
+          <td><pre class="code">  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span></pre></td>
         </tr>
       
         
@@ -1752,7 +1732,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">132</td>
-          <td><pre class="code">    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_Errors constant id'>Errors</span><span class='colon2 op'>::</span><span class='rubyid_FileAccessError constant id'>FileAccessError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Reason: #{e.message}&quot;</span></pre></td>
+          <td><pre class="code">    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Errors</span><span class='op'>::</span><span class='const'>FileAccessError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reason: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span></pre></td>
         </tr>
       
         
@@ -1763,7 +1743,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">133</td>
-          <td><pre class="code">  <span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code">  <span class='kw'>end</span></pre></td>
         </tr>
       
         
@@ -1774,7 +1754,7 @@ itself on success
           <td class="date">2012-01-23 02:28:15</td>
           <td class="commit"><a title="Update class/module structure">56e9fc17</a><td>
           <td class="lines">134</td>
-          <td><pre class="code"><span class='rubyid_end end kw'>end</span></pre></td>
+          <td><pre class="code"><span class='kw'>end</span></pre></td>
         </tr>
       
       </table>
@@ -1789,9 +1769,9 @@ itself on success
 </div>
     
     <div id="footer">
-  Generated on Thu Jan 26 00:45:41 2012 by 
+  Generated on Mon Jan 30 01:52:36 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.8.7).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>
