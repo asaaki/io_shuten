@@ -22,20 +22,21 @@ LOREM
 
 
 ioc = IO_shuten.const_get $CUR_IMPL
+ioc.redis = Redis::Namespace.new("io_shuten:benchmark", :redis => Redis.new)
 runs = 1..5
 outer_loops = 32
 internal_loops = 128
 
 Viiite.bench do |b|
   b.variation_point :ruby, Viiite.which_ruby
-  b.variation_point :type, $CUR_IMPL
+  b.variation_point :type, "#{$CUR_IMPL}:#{$CUR_BACKEND}:#{$CUR_TYPE}"
 
   b.range_over(runs, :run) do |run|
 
     ioc.purge_instances!
     b.report :writes do
       outer_loops.times do |o|
-        iob = ioc.new("wbuff-#{run}-#{o}")
+        iob = ioc.new("rbuff-#{run}-#{o}",$CUR_BACKEND,$CUR_TYPE)
 
         internal_loops.times do |i|
           iob.write lorem_ipsum
@@ -43,21 +44,20 @@ Viiite.bench do |b|
       end
     end
 
-    # no purging for reads!
+    ioc.purge_instances!
     b.report :reads do
       outer_loops.times do |o|
-        iob = ioc.open("wbuff-#{run}-#{o}")
+        iob = ioc.new("rbuff-#{run}-#{o}",$CUR_BACKEND,$CUR_TYPE)
 
         internal_loops.times do |i|
           iob.read
         end
       end
-    end
 
     ioc.purge_instances!
     b.report :logging do
       outer_loops.times do |o|
-        logdev = ioc.new("logdev-#{run}-#{o}")
+        logdev = ioc.new("rlogdev-#{run}-#{o}",$CUR_BACKEND,$CUR_TYPE)
         logger = Logger.new(logdev)
 
         internal_loops.times do |i|
@@ -67,6 +67,9 @@ Viiite.bench do |b|
       end
     end
 
+    end
+
+    ioc.redis_clear!
   end
 
 end

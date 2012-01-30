@@ -7,7 +7,7 @@ GEMSET="io_shuten"
 BENCHMARKS=`ls benchmarks`
 BENCH_OUT="benchmark/out.rash"
 BENCH_REP="benchmark/report"
-BENCH_RUN=10
+BENCH_RUN=1
 CUR_RAKE_VER=`gem list rake | awk '$1~/rake/{print $2}'`
 
 [[ -e "$BENCH_OUT" ]] && rm $BENCH_OUT && touch $BENCH_OUT
@@ -41,6 +41,7 @@ for ruby in $RUBIES; do
 
   echo "Running benchmarks ..."
   for bench in $BENCHMARKS; do
+    echo "  - ${bench}"
     viiite run --runs=$BENCH_RUN $bench >> $BENCH_OUT 2>/dev/null
   done
 

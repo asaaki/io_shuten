@@ -75,6 +75,9 @@ Has two different storage types: `Single` and `Collection`.
 
 Stores every message in a single key in redis (like a big document).
 
+Choose this, if you have only small amount of chunks to store.
+More reads, less writes.
+
 ```ruby
 require "io_shuten"
 IO_shuten::Redis.redis = Redis::Namespace.new("io_shuten:key_value:single:test", :redis => Redis.new)
@@ -106,6 +109,9 @@ $ redis-cli LRANGE "io_shuten:key_value:single:test:my_node" 0 -1
 
 Stores every single message in its own key. The provided node_name acts as namespace.
 
+Choose this if you have huge amounts of chunks, especially constantly coming in, like logging events.
+More writes, less reads.
+
 ```ruby
 require "io_shuten"
 IO_shuten::Redis.redis = Redis::Namespace.new("io_shuten:key_value:collection:test", :redis => Redis.new)
@@ -122,9 +128,16 @@ After this you will have two keys in redis like:
 
 ```
 $ redis-cli KEYS "io_shuten:key_value:collection:test:*"
-1) "io_shuten:key_value:collection:test:my_node:1"
-2) "io_shuten:key_value:collection:test:my_node:2"
+1) "io_shuten:key_value:collection:test:my_node:0000000000000000"
+2) "io_shuten:key_value:collection:test:my_node:0000000000000001"
+3) "io_shuten:key_value:collection:test:my_node:0000000000000002"
 ```
+The first key with 16 zeros is a counter (to avoid long running key searches to get the count).
+
+Numerical part is a 16 digit number, should be enough for 10 quadrillion (minus 1) messages per node.
+(The reason is for internal sorting of the keys)
+
+With messages of an average length of only 16 bytes this would end up in 160 petabytes of raw data.
 
 
 ##### PubSub
