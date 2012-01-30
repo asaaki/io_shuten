@@ -15,9 +15,14 @@ Example:
 require "io_shuten"
 require "logger"
 
+# use redis namespace to separate and avoid naming conflicts
+IO_shuten::Redis.redis = Redis::Namespace.new("io_shuten/test", :redis => Redis.new)
+
+# instantiate logdev and logger
 logdev = IO_shuten::Redis.new(:app_log, :key_value, :collection)
 logger = Logger.new(logdev)
 
+# log something
 logger.info "This message will be stored in redis as a single key."
 logger.debug "And this message will be also a single key"
 
@@ -25,6 +30,10 @@ logger.debug "And this message will be also a single key"
 logdev.read #=> will return both messages as a single string
 ```
 
+```bash
+# check in redis for the keys
+redis-cli KEYS "io_shuten/test"
+```
 
 ## IO::shuten? 【五百::終点】(io shūten)!
 
