@@ -15,10 +15,14 @@ Example:
 require "io_shuten"
 require "logger"
 
-logdev = IO_shuten::Memory.new('log_node')
+logdev = IO_shuten::Redis.new(:app_log, :key_value, :collection)
 logger = Logger.new(logdev)
 
-logger.info "This message will be stored in memory."
+logger.info "This message will be stored in redis as a single key."
+logger.debug "And this message will be also a single key"
+
+#check
+logdev.read #=> will return both messages as a single string
 ```
 
 
