@@ -30,10 +30,12 @@ logger.debug "And this message will be also a single key"
 logdev.read #=> will return both messages as a single string
 ```
 
+And check in redis for the keys:
+
 ```bash
-# check in redis for the keys
 redis-cli KEYS "io_shuten/test"
 ```
+
 
 ## IO::shuten? 【五百::終点】(io shūten)!
 
