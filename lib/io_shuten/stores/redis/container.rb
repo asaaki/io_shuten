@@ -26,6 +26,10 @@ module IO_shuten::Stores::Redis
       end
     end
 
+    def backend_spec
+      [@backend,@backend_type]
+    end
+
     def use_redis redis
       @redis = redis unless redis == nil
     end

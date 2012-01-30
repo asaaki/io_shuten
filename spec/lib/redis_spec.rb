@@ -16,26 +16,22 @@ describe IO_shuten::Redis do
 
       it "creates a node with KeyValue as :single" do
         ior = IOR.new(:test, :key_value, :single)
-        ior.container.backend.should      == :key_value
-        ior.container.backend_type.should == :single
+        ior.backend_spec.should == [:key_value,:single]
       end
 
       it "creates a node with KeyValue as :collection" do
         ior = IOR.new(:test, :key_value, :collection)
-        ior.container.backend.should      == :key_value
-        ior.container.backend_type.should == :collection
+        ior.backend_spec.should == [:key_value,:collection]
       end
 
       it "creates a node with PubSub as :publisher" do
         ior = IOR.new(:test, :pub_sub, :publisher)
-        ior.container.backend.should      == :pub_sub
-        ior.container.backend_type.should == :publisher
+        ior.backend_spec.should == [:pub_sub,:publisher]
       end
 
       it "creates a node with PubSub as :subscriber" do
         ior = IOR.new(:test, :pub_sub, :subscriber)
-        ior.container.backend.should      == :pub_sub
-        ior.container.backend_type.should == :subscriber
+        ior.backend_spec.should == [:pub_sub,:subscriber]
       end
 
       it "fails, if backend is not known" do
