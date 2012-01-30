@@ -27,7 +27,7 @@ logger.info "This message will be stored in redis as a single key."
 logger.debug "And this message will be also a single key"
 
 #check
-logdev.read #=> will return both messages as a single string
+puts logdev.read #=> will return both messages as a single string
 ```
 
 And check in redis for the keys:
