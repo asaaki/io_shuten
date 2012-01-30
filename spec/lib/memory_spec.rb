@@ -394,7 +394,7 @@ describe Memory do
           context "with container name as default" do
             it "writes container into the file" do
               iom = Memory.new(@tmp_save_file)
-              iom.puts "Test string"
+              iom.write "Test string"
               iom.save_to_file.should be_true
             end
           end
@@ -402,7 +402,7 @@ describe Memory do
           context "with custom name" do
             it "writes container into the file" do
               iom = Memory.new(:different_name)
-              iom.puts "Test string"
+              iom.write "Test string"
               iom.save_to_file(@tmp_save_file).should be_true
             end
           end
@@ -412,7 +412,7 @@ describe Memory do
         context "path not accessible" do
           it "raises FileAccessError with corresponding reason" do
             iom = Memory.new(@denied_path)
-            iom.puts "Test string"
+            iom.write "Test string"
             expect { iom.save_to_file }.to raise_error(Errors::FileAccessError, /Reason/)
           end
         end

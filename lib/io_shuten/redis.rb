@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require "redis"
+require "redis-namespace"
 
 module IO_shuten
   # Implementation of the Redis storage
@@ -9,8 +10,8 @@ module IO_shuten
   #
   # KeyValue
   # has different node types.
-  # Incremental single message store: each write will create a new key.
-  # Message collection store: all writes go to a single key.
+  #   Single: all writes go into a single key
+  #   Collection: every write will create a new key (namespaced)
   # Good for events or logs.
   #
   # PubSub
@@ -31,17 +32,19 @@ module IO_shuten
     # @param [Symbol] type for backend :key_value => [:single,:collection], for backend :pub_sub => [:publisher,:subscriber]
     # @param [Object] Redis an instance for this specific node, otherwise the Redis.redis instance will be used
     def initialize node_name, backend, type, redis_instance = nil
-      # based on the backend type it should instantiate the corresponding backend store module
-      node = :nil
-      case backend
-        when :key_value
-          Stores::Redis::KeyValue #.create(type)
-        when :pub_sub
-          Stores::Redis::PubSub #.create(type)
+      if [String, Symbol].include?(node_name.class)
+        unless Redis.instance_exists? node_name
+          @node_name      = node_name
+          redis_instance  ||= @@redis
+          @container      = Stores::Redis::Container.new(node_name, backend, type, redis_instance)
+          @@instances     << self unless @@instances.include?(self)
         else
-          raise ArgumentError, "Backend type unknown. Use :key_value or :pub_sub"
+          raise Errors::NodeExistsError, "Node already in pool, replacement is not allowed."
+        end
+      else
+        raise Errors::NodeNameError, "Name must be kind of String or Symbol and can't be nil."
       end
-      @@instances << node
+
     end
 
     ### class methods ###
@@ -56,19 +59,16 @@ module IO_shuten
       # Sets a new global redis client for the pool
       # @return [Object] new redis client
       def redis= new_redis
-        @redis = new_redis
+        @@redis = new_redis
       end
-    end
 
-    ### instance methods ###
+      def redis_clear!
+        keys = @@redis.keys
+        keys.each do |key|
+          @@redis.del key
+        end
+      end
 
-    def read
-    end
-
-    def write
-    end
-
-    def close
     end
 
   end

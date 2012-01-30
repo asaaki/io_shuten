@@ -4,6 +4,7 @@ require 'simplecov'
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "io_shuten"
 
+
 ### MONKEY PATCH raise
 
 RUBY_ENGINE = '(no engine)' unless defined? RUBY_ENGINE
@@ -39,5 +40,14 @@ require 'rspec/expectations'
 RSpec::Matchers.define :inherit_from do |expected|
   match do |actual|
     actual.ancestors.include?(expected)
+  end
+end
+
+### Configuration
+
+Rspec.configure do |conf|
+  conf.before(:suite) do
+    REDIS = Redis::Namespace.new("io_shuten/test", :redis => Redis.new) unless defined? REDIS
+    IO_shuten::Redis.redis_clear!
   end
 end

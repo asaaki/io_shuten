@@ -357,7 +357,7 @@ describe Buffer do
           context "with container name as default" do
             it "writes container into the file" do
               iob = Buffer.new(@tmp_save_file)
-              iob.puts "Test string"
+              iob.write "Test string"
               iob.save_to_file.should be_true
             end
           end
@@ -365,7 +365,7 @@ describe Buffer do
           context "with custom name" do
             it "writes container into the file" do
               iob = Buffer.new(:different_name)
-              iob.puts "Test string"
+              iob.write "Test string"
               iob.save_to_file(@tmp_save_file).should be_true
             end
           end
@@ -375,7 +375,7 @@ describe Buffer do
         context "path not accessible" do
           it "raises FileAccessError with corresponding reason" do
             iob = Buffer.new(@denied_path)
-            iob.puts "Test string"
+            iob.write "Test string"
             expect { iob.save_to_file }.to raise_error(Errors::FileAccessError, /Reason/)
           end
         end

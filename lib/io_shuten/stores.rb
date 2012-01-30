@@ -6,6 +6,6 @@ module IO_shuten
   end
 end
 
+require "io_shuten/stores/base_container"
 require "io_shuten/stores/mongo"
 require "io_shuten/stores/redis"
-
