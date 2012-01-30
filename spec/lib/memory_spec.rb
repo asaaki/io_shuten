@@ -158,6 +158,16 @@ describe Memory do
             Memory.save_instances.should be_true
           end
 
+          it "writes only nodes with valid file names" do
+            @file_names2.each do |file_name|
+              node = Memory.new("#{@tmp_path}/#{file_name}")
+              node.<< "content of file: #{file_name}"
+            end
+            Memory.new("/invalid_file")
+
+            Memory.save_instances.should be_false
+          end
+
         end
 
         describe :load_instances do
@@ -181,7 +191,7 @@ describe Memory do
           end
 
           it "raises error if input is of wrong type" do
-            expect { Buffer.load_instances :wrong_type }.to raise_error(ArgumentError)
+            expect { Memory.load_instances :wrong_type }.to raise_error(ArgumentError)
           end
 
         end

@@ -58,10 +58,13 @@ module IO_shuten
       # @return [Boolean]
       def save_instances
         results = instances.inject({}) do |result, node|
-          File.open(node.node_name,"w") do |fh|
-            fh.puts node.string
+          begin
+            File.open(node.node_name.to_s,"w") do |fh|
+              fh.puts node.string
+            end
+          rescue
+            result[node.node_name] = :failed unless File.exists?(node.node_name.to_s)
           end
-          result[node.node_name] = :failed unless File.exists?(node.node_name)
           result
         end
         unless results.empty?

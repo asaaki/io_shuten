@@ -158,6 +158,16 @@ describe Buffer do
             Buffer.save_instances.should be_true
           end
 
+          it "writes only nodes with valid file names" do
+            @file_names2.each do |file_name|
+              node = Buffer.new("#{@tmp_path}/#{file_name}")
+              node.<< "content of file: #{file_name}"
+            end
+            Buffer.new("/invalid_file")
+
+            Buffer.save_instances.should be_false
+          end
+
         end
 
         describe :load_instances do

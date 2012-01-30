@@ -40,6 +40,16 @@ describe IO_shuten::Redis do
 
       it "fails, if type is not known" do
         expect { IOR.new(:will_fail, :key_value, :unknown_type) }.to raise_error(ArgumentError)
+        expect { IOR.new(:will_fail, :pub_sub, :unknown_type) }.to raise_error(ArgumentError)
+      end
+
+      it "fails if node already exists" do
+        IOR.new(:should_fail, :key_value, :single)
+        expect { IOR.new(:should_fail, :key_value, :single) }.to raise_error(Errors::NodeExistsError)
+      end
+
+      it "fails if node name is of wrong type" do
+        expect { IOR.new(1.23, :key_value, :single) }.to raise_error(Errors::NodeNameError)
       end
 
     end
