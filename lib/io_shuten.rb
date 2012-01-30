@@ -10,10 +10,10 @@ require "io_shuten/buffer"
 require "io_shuten/stores"
 require "io_shuten/mongo"
 require "io_shuten/redis"
+require "io_shuten/zmq"
 
 # IO::Mongo for a more intuitive usage
 IO::Mongo = IO_shuten::Mongo
 
 # IO::Redis for a more intuitive usage
 IO::Redis = IO_shuten::Redis
-

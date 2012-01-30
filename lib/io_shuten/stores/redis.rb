@@ -6,6 +6,9 @@ module IO_shuten::Stores
   end
 end
 
+require "redis"
+require "redis-namespace"
+
 require "io_shuten/stores/redis/key_value"
 require "io_shuten/stores/redis/pub_sub"
-
+require "io_shuten/stores/redis/container"

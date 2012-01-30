@@ -59,6 +59,13 @@ Stores content in a mongodb database.
 Provides basic methods like `#read`, `#write` and `#close`.
 A logger only needs write and close methods of an IO object.
 
+### IO_shuten::Zmq
+
+"Stores" content in a zmq socket.
+
+Provides basic methods like `#read`, `#write` and `#close`.
+A logger only needs write and close methods of an IO object.
+
 
 ## Not for production!
 

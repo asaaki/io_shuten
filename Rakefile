@@ -93,5 +93,11 @@ end
 
 
 
-task :default => [:envinfo,:spec]
+desc "Runs complex viiite benchmark suite"
+task :benchmark do
+  sh "./benchmarks.sh"
+end
 
+
+
+task :default => [:envinfo,:spec]
