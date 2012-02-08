@@ -98,9 +98,10 @@ describe IO_shuten::Redis do
             data.each{ |line| ior.write line }
 
             keys = IOR.redis.keys("kvc_test_write:*").sort
-            res = keys.inject([]){|m,k|m << IOR.redis.get(k); m}
+            res = keys.inject([]){|m,k| m << IOR.redis.get(k); m}
 
-            res.should == data
+            # keep in mind: collecting all related keys include also the counter key
+            res.should == [data.size.to_s] + data
           end
 
           it "reads data" do
