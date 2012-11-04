@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "io_shuten"
-  s.version = "0.1.0.dev7"
+  s.version = "0.1.1.dev1"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Grabo"]
-  s.date = "2012-01-30"
+  s.date = "2012-11-04"
   s.description = "IO::shuten \u{2013} Use databases as IO handler like you would do with files and streams."
   s.email = ["chris@dinarrr.com"]
   s.extra_rdoc_files = [
@@ -19,67 +19,20 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".rspec",
-    ".rvmrc",
-    ".simplecov",
     ".travis.yml",
-    ".yardopts",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
     "LICENSE.de",
     "README.md",
     "Rakefile",
+    "benchmark/viiite-template-redis.rb",
     "benchmark/viiite-template.rb",
     "benchmarks.sh",
     "benchmarks/buffer.rb",
     "benchmarks/memory.rb",
-    "doc/IO_3A_3ABuffer.html",
-    "doc/IO_shuten.html",
-    "doc/IO_shuten/Base.html",
-    "doc/IO_shuten/Base/FileAccessError.html",
-    "doc/IO_shuten/Base/FileNotFoundError.html",
-    "doc/IO_shuten/Base/NodeNameError.html",
-    "doc/IO_shuten/Base/NodeNotFoundError.html",
-    "doc/IO_shuten/Base/NotYetImplemented.html",
-    "doc/IO_shuten/Buffer.html",
-    "doc/IO_shuten/Errors.html",
-    "doc/IO_shuten/Errors/FileAccessError.html",
-    "doc/IO_shuten/Errors/FileNotFoundError.html",
-    "doc/IO_shuten/Errors/NodeExistsError.html",
-    "doc/IO_shuten/Errors/NodeNameError.html",
-    "doc/IO_shuten/Errors/NodeNameExistsError.html",
-    "doc/IO_shuten/Errors/NodeNotFoundError.html",
-    "doc/IO_shuten/Errors/NotYetImplemented.html",
-    "doc/IO_shuten/Memory.html",
-    "doc/IO_shuten/Mongo.html",
-    "doc/IO_shuten/Redis.html",
-    "doc/IO_shuten/Stores.html",
-    "doc/IO_shuten/Stores/BaseContainer.html",
-    "doc/IO_shuten/Stores/Mongo.html",
-    "doc/IO_shuten/Stores/Mongo/Collection.html",
-    "doc/IO_shuten/Stores/Mongo/GridFS.html",
-    "doc/IO_shuten/Stores/Redis.html",
-    "doc/IO_shuten/Stores/Redis/Container.html",
-    "doc/IO_shuten/Stores/Redis/KeyValue.html",
-    "doc/IO_shuten/Stores/Redis/KeyValue/Collection.html",
-    "doc/IO_shuten/Stores/Redis/KeyValue/Single.html",
-    "doc/IO_shuten/Stores/Redis/PubSub.html",
-    "doc/IO_shuten/Zmq.html",
-    "doc/_index.html",
-    "doc/class_list.html",
-    "doc/css/blame.css",
-    "doc/css/common.css",
-    "doc/css/full_list.css",
-    "doc/css/style.css",
-    "doc/file.README.html",
-    "doc/file_list.html",
-    "doc/frames.html",
-    "doc/index.html",
-    "doc/js/app.js",
-    "doc/js/full_list.js",
-    "doc/js/jquery.js",
-    "doc/method_list.html",
-    "doc/top-level-namespace.html",
+    "benchmarks/redis.kvc.rb",
+    "benchmarks/redis.kvs.rb",
     "io_shuten.gemspec",
     "lib/io_shuten.rb",
     "lib/io_shuten/base.rb",
@@ -121,76 +74,61 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/asaaki/io_shuten"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.23"
   s.summary = "IO::shuten \u{2013} Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<iobuffer>, ["~> 1.0.0"])
-      s.add_runtime_dependency(%q<hiredis>, ["~> 0.4.4"])
-      s.add_runtime_dependency(%q<redis>, ["~> 2.2.2"])
-      s.add_runtime_dependency(%q<redis-namespace>, [">= 0"])
+      s.add_runtime_dependency(%q<iobuffer>, ["~> 1.1.2"])
+      s.add_runtime_dependency(%q<hiredis>, ["~> 0.4.5"])
+      s.add_runtime_dependency(%q<redis>, ["~> 3.0.2"])
+      s.add_runtime_dependency(%q<redis-namespace>, ["~> 1.2.1"])
       s.add_runtime_dependency(%q<bson_ext>, ["~> 1.5.2"])
       s.add_runtime_dependency(%q<mongo>, ["~> 1.5.2"])
-      s.add_runtime_dependency(%q<ffi>, [">= 0"])
-      s.add_runtime_dependency(%q<ffi-rzmq>, [">= 0"])
+      s.add_runtime_dependency(%q<ffi>, ["~> 1.1.5"])
+      s.add_runtime_dependency(%q<ffi-rzmq>, ["~> 0.9.6"])
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.8.0"])
-      s.add_development_dependency(%q<simplecov>, [">= 0"])
-      s.add_development_dependency(%q<simplecov-rcov>, [">= 0"])
-      s.add_development_dependency(%q<simplecov-csv>, [">= 0"])
-      s.add_development_dependency(%q<redcarpet>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<yard-blame>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.11.0"])
       s.add_development_dependency(%q<pry>, [">= 0"])
+      s.add_development_dependency(%q<pry-doc>, [">= 0"])
       s.add_development_dependency(%q<alf>, [">= 0"])
       s.add_development_dependency(%q<fastercsv>, [">= 0"])
       s.add_development_dependency(%q<viiite>, [">= 0"])
     else
-      s.add_dependency(%q<iobuffer>, ["~> 1.0.0"])
-      s.add_dependency(%q<hiredis>, ["~> 0.4.4"])
-      s.add_dependency(%q<redis>, ["~> 2.2.2"])
-      s.add_dependency(%q<redis-namespace>, [">= 0"])
+      s.add_dependency(%q<iobuffer>, ["~> 1.1.2"])
+      s.add_dependency(%q<hiredis>, ["~> 0.4.5"])
+      s.add_dependency(%q<redis>, ["~> 3.0.2"])
+      s.add_dependency(%q<redis-namespace>, ["~> 1.2.1"])
       s.add_dependency(%q<bson_ext>, ["~> 1.5.2"])
       s.add_dependency(%q<mongo>, ["~> 1.5.2"])
-      s.add_dependency(%q<ffi>, [">= 0"])
-      s.add_dependency(%q<ffi-rzmq>, [">= 0"])
+      s.add_dependency(%q<ffi>, ["~> 1.1.5"])
+      s.add_dependency(%q<ffi-rzmq>, ["~> 0.9.6"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["~> 2.8.0"])
-      s.add_dependency(%q<simplecov>, [">= 0"])
-      s.add_dependency(%q<simplecov-rcov>, [">= 0"])
-      s.add_dependency(%q<simplecov-csv>, [">= 0"])
-      s.add_dependency(%q<redcarpet>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<yard-blame>, [">= 0"])
+      s.add_dependency(%q<rspec>, ["~> 2.11.0"])
       s.add_dependency(%q<pry>, [">= 0"])
+      s.add_dependency(%q<pry-doc>, [">= 0"])
       s.add_dependency(%q<alf>, [">= 0"])
       s.add_dependency(%q<fastercsv>, [">= 0"])
       s.add_dependency(%q<viiite>, [">= 0"])
     end
   else
-    s.add_dependency(%q<iobuffer>, ["~> 1.0.0"])
-    s.add_dependency(%q<hiredis>, ["~> 0.4.4"])
-    s.add_dependency(%q<redis>, ["~> 2.2.2"])
-    s.add_dependency(%q<redis-namespace>, [">= 0"])
+    s.add_dependency(%q<iobuffer>, ["~> 1.1.2"])
+    s.add_dependency(%q<hiredis>, ["~> 0.4.5"])
+    s.add_dependency(%q<redis>, ["~> 3.0.2"])
+    s.add_dependency(%q<redis-namespace>, ["~> 1.2.1"])
     s.add_dependency(%q<bson_ext>, ["~> 1.5.2"])
     s.add_dependency(%q<mongo>, ["~> 1.5.2"])
-    s.add_dependency(%q<ffi>, [">= 0"])
-    s.add_dependency(%q<ffi-rzmq>, [">= 0"])
+    s.add_dependency(%q<ffi>, ["~> 1.1.5"])
+    s.add_dependency(%q<ffi-rzmq>, ["~> 0.9.6"])
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<rspec>, ["~> 2.8.0"])
-    s.add_dependency(%q<simplecov>, [">= 0"])
-    s.add_dependency(%q<simplecov-rcov>, [">= 0"])
-    s.add_dependency(%q<simplecov-csv>, [">= 0"])
-    s.add_dependency(%q<redcarpet>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<yard-blame>, [">= 0"])
+    s.add_dependency(%q<rspec>, ["~> 2.11.0"])
     s.add_dependency(%q<pry>, [">= 0"])
+    s.add_dependency(%q<pry-doc>, [">= 0"])
     s.add_dependency(%q<alf>, [">= 0"])
     s.add_dependency(%q<fastercsv>, [">= 0"])
     s.add_dependency(%q<viiite>, [">= 0"])
