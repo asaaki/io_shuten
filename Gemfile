@@ -1,34 +1,28 @@
 source "https://rubygems.org"
 
-gem "iobuffer", "~> 1.0.0"
+gem "iobuffer", "~> 1.1.2"
 
 # REDIS STORE
-gem "hiredis", "~> 0.4.4"
-gem "redis", "~> 2.2.2", :require => ["redis/connection/hiredis", "redis"]
-gem "redis-namespace"
+gem "hiredis", "~> 0.4.5"
+gem "redis", "~> 3.0.2", :require => ["redis/connection/hiredis", "redis"]
+gem "redis-namespace", "~> 1.2.1"
 
 # MONGO STORE
 gem "bson_ext", "~> 1.5.2"
 gem "mongo", "~> 1.5.2"
 
 # ZMQ "STORE"
-gem "ffi"
-gem "ffi-rzmq"
+gem "ffi", "~> 1.1.5"
+gem "ffi-rzmq", "~> 0.9.6"
 
 group :development, :test do
   gem "rake"
   gem "jeweler"
 
-  gem "rspec", "~> 2.8.0"
-  gem "simplecov", :require => false
-  gem "simplecov-rcov", :require => false
-  gem "simplecov-csv", :require => false
-
-  gem "redcarpet"
-  gem "yard"
-  gem "yard-blame"
+  gem "rspec", "~> 2.11.0"
 
   gem "pry"
+  gem "pry-doc"
 
   gem "alf"
   gem "fastercsv"
