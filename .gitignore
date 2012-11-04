@@ -1,10 +1,9 @@
 benchmark/out*
 benchmark/report*
 benchmarks/.cache
-coverage
 pkg
 tmp
-.rake_tasks~
-.rdoc_options
-.yardoc
-
+.ruby-version
+.rbenv-version
+.rbenv-gemsets
+.rbx
