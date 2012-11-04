@@ -8,8 +8,8 @@ gem "redis", "~> 3.0.2", :require => ["redis/connection/hiredis", "redis"]
 gem "redis-namespace", "~> 1.2.1"
 
 # MONGO STORE
-gem "bson_ext", "~> 1.5.2"
-gem "mongo", "~> 1.5.2"
+gem "bson_ext", "~> 1.7.0"
+gem "mongo", "~> 1.7.0"
 
 # ZMQ "STORE"
 gem "ffi", "~> 1.1.5"
