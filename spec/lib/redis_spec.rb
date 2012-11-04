@@ -6,7 +6,7 @@ IOR = IO_shuten::Redis
 describe IO_shuten::Redis do
   it { IO_shuten::Redis.should inherit_from(IO_shuten::Base) }
 
-  describe "Class Methods" do
+  context "Class Methods" do
 
     describe :new do
 
@@ -54,7 +54,7 @@ describe IO_shuten::Redis do
 
     end
 
-    describe "Instance Methods" do
+    context "Instance Methods" do
 
       before do
         IOR.purge_instances!
@@ -65,7 +65,7 @@ describe IO_shuten::Redis do
         IOR.redis_clear!
       end
 
-      describe "KeyValue backend" do
+      context "KeyValue backend" do
 
         describe "Single type" do
 
@@ -98,9 +98,9 @@ describe IO_shuten::Redis do
             data.each{ |line| ior.write line }
 
             keys = IOR.redis.keys("kvc_test_write:*").sort
-            res = keys.inject([]){|m,k|m << IOR.redis.get(k); m}
+            res = keys.map{|k| IOR.redis.get(k) }
 
-            res.should == data
+            res.should == [data.size.to_s] + data
           end
 
           it "reads data" do

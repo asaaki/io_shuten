@@ -7,17 +7,11 @@ require "jeweler"
 require "rspec"
 require "rspec/core/rake_task"
 
-require "yard"
-
 
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require "io_shuten/version"
 
-
-
 RUBY_ENGINE = '(no engine)' unless defined? RUBY_ENGINE
-
-
 
 Jeweler::Tasks.new do |gem|
   gem.name        = "io_shuten"
@@ -30,8 +24,6 @@ Jeweler::Tasks.new do |gem|
   gem.summary     = "IO::shuten – Use databases as IO handler. (NOT YET READY FOR PRODUCTION!)"
   gem.description = "IO::shuten – Use databases as IO handler like you would do with files and streams."
 end
-
-
 
 task :gem => :build
 
@@ -49,21 +41,6 @@ task RSpec::Core::RakeTask.new(:spec) do |t|
   t.verbose = false
 end
 
-desc "Run all specs + code coverage"
-task "spec:cov" do
-  ENV["COV"] = 'true'
-  Rake::Task["spec"].invoke
-end
-
-
-
-YARD::Rake::YardocTask.new do |t|
-  t.files   = ['lib/**/*.rb']
-  #t.options = ['--any', '--extra', '--opts']
-end
-
-
-
 desc "Starts IRB with env"
 task :irb do
   sh "irb -I lib -r io_shuten"
@@ -74,14 +51,10 @@ task :pry do
   sh "pry -I lib -r io_shuten --no-pager"
 end
 
-
-
 desc "Prints current environment"
 task :envinfo do
   puts ['RUBY:',RUBY_PLATFORM,RUBY_ENGINE,RUBY_VERSION].join(" ")
 end
-
-
 
 desc "RBX ONLY: Clean up rbc and .rbx"
 task :rbx_clean do
@@ -90,8 +63,6 @@ task :rbx_clean do
   end
   sh "rm -rf .rbx" if File.exists?(".rbx") && File.directory?(".rbx")
 end
-
-
 
 desc "Runs complex viiite benchmark suite"
 task :benchmark do

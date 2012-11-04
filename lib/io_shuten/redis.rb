@@ -24,7 +24,7 @@ module IO_shuten
 
     # Global redis client instance for the pool
     # @return [Object] Redis instance
-    @@redis = ::Redis.new
+    @@redis = ::Redis::Namespace.new(:io_shuten, :redis => ::Redis.new)
 
     # @param [String] node_name
     # @param [Symbol] node_name

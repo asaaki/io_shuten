@@ -1,6 +1,4 @@
 # encoding: utf-8
-require 'simplecov'
-
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "io_shuten"
 
@@ -47,7 +45,7 @@ end
 
 Rspec.configure do |conf|
   conf.before(:suite) do
-    REDIS = Redis::Namespace.new("io_shuten/test", :redis => Redis.new) unless defined? REDIS
+    REDIS = Redis::Namespace.new("io_shuten/test", :redis => Redis.new)
     IO_shuten::Redis.redis_clear!
   end
 end
